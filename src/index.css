@@ -9,56 +9,54 @@
   
   html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
-    background-color: #050505;
-    color: #FFFFFF;
-    font-family: 'Inter', sans-serif;
+    background-color: #080808;
+    color: #FDFDFD;
+    font-family: 'Kantumruy Pro', 'Inter', sans-serif;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
-  /* Custom scrollbar for cinematic look */
+  /* Custom cinematic scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #0A0A0A;
+    background: #0D0D0D;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #27272A;
-    border-radius: 4px;
+    background: #2A2A2A;
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #FF3030;
+    background: #E5383B;
   }
 }
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 20px rgba(255, 48, 48, 0.4);
+    text-shadow: 0 0 25px rgba(229, 56, 59, 0.5);
   }
 
   .text-subtle-glow {
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
   }
 
-  .glass-card {
-    background: rgba(17, 17, 17, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(39, 39, 42, 0.8);
+  /* Subtle camera film grain overlay */
+  .film-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
   }
 
-  .glass-card-hover {
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  
-  .glass-card-hover:hover {
-    border-color: rgba(255, 48, 48, 0.5);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px -10px rgba(255, 48, 48, 0.15);
+  /* Mobile touch responsive tap optimization */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
   }
 }

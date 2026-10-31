@@ -3,38 +3,43 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Play, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import AudioDecibelMeter from './AudioDecibelMeter';
 
 export default function Hero({ onWatchClick }) {
   const { language, t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16">
+    <section className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16 px-4">
       {/* Background Cinematic Texture & Vignette */}
       <div className="absolute inset-0 z-0 bg-background-primary">
-        {/* Subtle texture grid */}
-        <div className="absolute inset-0 opacity-[0.035] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:28px_28px]" />
+        {/* Film grain subtle texture grid */}
+        <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]" />
         
         {/* Dramatic radial dark gradient overlay */}
         <div className="absolute inset-0 bg-radial-gradient from-transparent via-background-primary/75 to-background-primary" />
         <div className="absolute inset-0 bg-gradient-to-t from-background-primary via-background-primary/50 to-transparent" />
         
         {/* Ambient warm red flare */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[380px] bg-accent-red/10 blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-accent-red/12 blur-[150px] rounded-full pointer-events-none" />
       </div>
 
       {/* Cinematic Viewfinder / Camera HUD Accents */}
-      <div className="absolute inset-6 sm:inset-12 pointer-events-none border border-white/5 rounded-2xl flex flex-col justify-between p-4 sm:p-6 select-none">
-        <div className="flex justify-between items-start text-[11px] font-mono text-content-muted">
+      <div className="absolute inset-4 sm:inset-10 pointer-events-none border border-white/5 rounded-2xl flex flex-col justify-between p-3 sm:p-6 select-none">
+        <div className="flex justify-between items-start text-[10px] sm:text-[11px] font-mono text-content-muted">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-rec-pulse" />
             <span className="text-accent-red font-bold tracking-widest uppercase">{t.hero.recStatus}</span>
           </div>
-          <div className="tracking-widest hidden sm:block">
-            ISO 400 • 1/50 • F/2.8 • 24fps
+          
+          <div className="flex items-center gap-4">
+            <AudioDecibelMeter />
+            <div className="tracking-widest hidden sm:block">
+              ISO 400 • 1/50 • F/2.8
+            </div>
           </div>
         </div>
 
-        <div className="flex justify-between items-end text-[11px] font-mono text-content-muted">
+        <div className="flex justify-between items-end text-[10px] sm:text-[11px] font-mono text-content-muted">
           <div>
             CAM 01 // V-REAL PHNOM PENH
           </div>

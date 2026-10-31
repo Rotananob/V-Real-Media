@@ -2,31 +2,109 @@
 <html lang="km" class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <title>V-REAL MEDIA — រឿងរ៉ាវពិត មនុស្សពិត ផលប៉ះពាល់ពិត</title>
     
     <!-- Meta & SEO -->
     <meta name="description" content="V-REAL MEDIA — ស្ទូឌីយោផលិតភាពយន្តឯកសារ និងកម្មវិធីតថភាពតាមដងផ្លូវកម្ពុជា។ យើងកត់ត្រារឿងរ៉ាវពិតរបស់មនុស្ស និងការពិសោធន៍សង្គមប្រកបដោយអត្ថន័យ។" />
-    <meta name="keywords" content="V-Real Media, Street Reality, Social Experiments, Human Documentaries, Cambodia, ភាពយន្តឯកសារ, រឿងរ៉ាវពិត, ការពិសោធន៍សង្គម" />
+    <meta name="keywords" content="V-Real Media, Street Reality, Social Experiments, Human Documentaries, Cambodia, ភាពយន្តឯកសារ, រឿងរ៉ាវពិត, ការពិសោធន៍សង្គម, ភ្នំពេញ, Cambodian Media" />
     <meta name="author" content="V-REAL MEDIA" />
-    <meta name="theme-color" content="#080808" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://v-real-media.web.app/" />
+    <link rel="alternate" hreflang="km" href="https://v-real-media.web.app/" />
+    <link rel="alternate" hreflang="en" href="https://v-real-media.web.app/" />
+    <link rel="alternate" hreflang="x-default" href="https://v-real-media.web.app/" />
 
-    <!-- Open Graph -->
+    <!-- PWA Meta -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#E5383B" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="V-Real Media" />
+    <link rel="apple-touch-icon" href="/assets/logo.jpg" />
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://v-real-media.web.app/" />
-    <meta property="og:title" content="V-REAL MEDIA — Real Stories. Real People. Real Impact." />
+    <meta property="og:site_name" content="V-REAL MEDIA" />
+    <meta property="og:title" content="V-REAL MEDIA — រឿងរ៉ាវពិត មនុស្សពិត ផលប៉ះពាល់ពិត" />
     <meta property="og:description" content="Cinematic street reality shows, high-impact social experiments, and emotional human documentaries in Cambodia." />
-    <meta property="og:image" content="/assets/logo.jpg" />
+    <meta property="og:image" content="https://v-real-media.web.app/assets/logo.jpg" />
+    <meta property="og:image:width" content="1080" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:alt" content="V-REAL MEDIA Brand Emblem" />
+    <meta property="og:locale" content="km_KH" />
+    <meta property="og:locale:alternate" content="en_US" />
 
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://v-real-media.web.app/" />
+    <meta name="twitter:title" content="V-REAL MEDIA — Real Stories. Real People. Real Impact." />
+    <meta name="twitter:description" content="Cinematic street reality shows and unscripted human stories in Cambodia." />
+    <meta name="twitter:image" content="https://v-real-media.web.app/assets/logo.jpg" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="/assets/logo.jpg" />
 
-    <!-- Google Fonts: Space Grotesk, Inter, Manrope + Khmer (Kantumruy Pro, Koulen) -->
+    <!-- Google Fonts: Space Grotesk, Inter, Manrope, Kantumruy Pro, Koulen -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Koulen&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org Structured Data (JSON-LD) for High SEO Ranking -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "NewsMediaOrganization",
+          "@id": "https://v-real-media.web.app/#organization",
+          "name": "V-REAL MEDIA",
+          "url": "https://v-real-media.web.app/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://v-real-media.web.app/assets/logo.jpg"
+          },
+          "description": "V-REAL MEDIA is a cinematic street reality and human documentary production house in Cambodia.",
+          "telephone": "+855968691543",
+          "email": "v.real.khmer@gmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Phnom Penh",
+            "addressCountry": "KH"
+          },
+          "sameAs": [
+            "https://www.tiktok.com/@v_real_khmer",
+            "https://www.youtube.com/@v-real-khmer"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://v-real-media.web.app/#website",
+          "url": "https://v-real-media.web.app/",
+          "name": "V-REAL MEDIA",
+          "publisher": {
+            "@id": "https://v-real-media.web.app/#organization"
+          },
+          "inLanguage": ["km-KH", "en-US"]
+        }
+      ]
+    }
+    </script>
   </head>
   <body class="bg-background-primary text-content-primary font-khmer antialiased selection:bg-accent-red selection:text-white overflow-x-hidden min-h-screen">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((reg) => console.log('[PWA] Service Worker registered:', reg.scope))
+            .catch((err) => console.log('[PWA] Service Worker registration failed:', err));
+        });
+      }
+    </script>
   </body>
 </html>

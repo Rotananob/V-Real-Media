@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import PageTransition from './components/layout/PageTransition';
+import PWAInstallPrompt from './components/common/PWAInstallPrompt';
 
 // Pages
 import Home from './pages/Home';
@@ -22,7 +23,7 @@ export default function App() {
   const isAdminRoute = location.pathname.startsWith('/admin') || location.pathname === '/login';
 
   return (
-    <div className="flex flex-col min-h-screen bg-background-primary text-content-primary selection:bg-accent-red selection:text-white">
+    <div className="relative flex flex-col min-h-screen bg-background-primary text-content-primary selection:bg-accent-red selection:text-white film-grain">
       {/* Show Public Navbar except on Admin/Login routes */}
       {!isAdminRoute && <Navbar />}
 
@@ -74,6 +75,9 @@ export default function App() {
 
       {/* Show Public Footer except on Admin/Login routes */}
       {!isAdminRoute && <Footer />}
+
+      {/* Floating PWA Install Banner */}
+      <PWAInstallPrompt />
     </div>
   );
 }
