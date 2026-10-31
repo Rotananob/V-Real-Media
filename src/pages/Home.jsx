@@ -22,8 +22,11 @@ export default function Home() {
 
   return (
     <div className="w-full bg-[#FAFAFA]">
-      {/* Cinematic Clean Hero */}
-      <Hero onWatchClick={() => setFeaturedModalOpen(true)} />
+      {/* Cinematic Clean Hero with 2026 Interactive Teaser & Scroll Parallax */}
+      <Hero 
+        onWatchTeaser={() => setFeaturedModalOpen(true)} 
+        onWatchClick={() => setFeaturedModalOpen(true)} 
+      />
 
       {/* About Section (Vision, Mission, Pillars) */}
       <About />
