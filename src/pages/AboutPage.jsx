@@ -110,7 +110,7 @@ export default function AboutPage() {
             <ul className="space-y-2 text-xs text-neutral-500">
               <li>• {language === 'km' ? 'ចុះទៅកាន់គ្រប់ខេត្តក្រុងដើម្បីស្តាប់រឿងរ៉ាវផ្សេងៗពីគ្នា' : 'Document authentic voices across all Cambodian provinces'}</li>
               <li>• {language === 'km' ? 'ធ្វើការពិសោធន៍សង្គមប្រកបដោយភាពស្មោះត្រង់ និងមិនបំភ្លៃ' : 'Conduct honest, unmanipulated social experiments'}</li>
-              <li>• {language === 'km' ? 'លើកទឹកចិត្តយុវជនឱ្យចាប់អារម្មណ៍រឿងរ៉ាវពិតក្នុងសង្គម' : 'Inspire youth to appreciate real stories in society'}</li>
+              <li>• {language === 'km' ? 'លើកទឹកចិត្តយុវជនឱ្យយល់ដឹងពីតថភាពជាក់ស្ដែងក្នុងសង្គម' : 'Inspire youth to understand real social dynamics'}</li>
             </ul>
           </div>
         </div>

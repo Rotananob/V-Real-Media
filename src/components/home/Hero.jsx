@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown, Play, Sparkles, Phone, Flame, Zap } from 'lucide-react';
+import { ArrowDown, Play, Sparkles, Phone, Flame, Zap, Video, Compass, MapPin } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { BRAND } from '../../config/brand';
 
@@ -187,7 +187,7 @@ export default function Hero({ onWatchTeaser }) {
         </motion.div>
       </motion.div>
 
-      {/* 2D Infinite Marquee Ticker (GitHub 2026 Creative Creator Standard) */}
+      {/* 2D Infinite Marquee Ticker (GitHub 2026 Creative Creator Standard - Zero Emojis) */}
       <div className="relative z-10 w-full mt-12 pt-6 border-t border-neutral-200/70 overflow-hidden">
         <div className="flex whitespace-nowrap overflow-hidden select-none opacity-80 hover:opacity-100 transition-opacity">
           <motion.div
@@ -195,31 +195,31 @@ export default function Hero({ onWatchTeaser }) {
             transition={{ duration: 25, ease: 'linear', repeat: Infinity }}
             className="flex items-center gap-8 text-xs font-mono tracking-wider font-semibold text-neutral-500"
           >
-            <span>⚡ 100% RAW & UNSCRIPTED</span>
+            <span className="inline-flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-accent-red" /> 100% RAW & UNSCRIPTED</span>
             <span className="text-accent-red">•</span>
-            <span>🎬 4K CINEMATIC CAPTURE</span>
+            <span className="inline-flex items-center gap-1.5"><Video className="w-3.5 h-3.5 text-neutral-600" /> 4K CINEMATIC CAPTURE</span>
             <span className="text-accent-red">•</span>
-            <span>🧠 VIRAL SOCIAL EXPERIMENTS</span>
+            <span className="inline-flex items-center gap-1.5"><Compass className="w-3.5 h-3.5 text-neutral-600" /> VIRAL SOCIAL EXPERIMENTS</span>
             <span className="text-accent-red">•</span>
-            <span>💥 HIGH-RETENTION GEN Z</span>
+            <span className="inline-flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-accent-red" /> HIGH-RETENTION GEN Z</span>
             <span className="text-accent-red">•</span>
-            <span>🇰🇭 CAMBODIA GROUND ZERO</span>
+            <span className="inline-flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-neutral-600" /> CAMBODIA GROUND ZERO</span>
             <span className="text-accent-red">•</span>
-            <span>🔥 ZERO STAGING • PURE REALITY</span>
+            <span className="inline-flex items-center gap-1.5"><Flame className="w-3.5 h-3.5 text-accent-red" /> ZERO STAGING • PURE REALITY</span>
             <span className="text-accent-red">•</span>
 
             {/* Repeated for continuous loop */}
-            <span>⚡ 100% RAW & UNSCRIPTED</span>
+            <span className="inline-flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-accent-red" /> 100% RAW & UNSCRIPTED</span>
             <span className="text-accent-red">•</span>
-            <span>🎬 4K CINEMATIC CAPTURE</span>
+            <span className="inline-flex items-center gap-1.5"><Video className="w-3.5 h-3.5 text-neutral-600" /> 4K CINEMATIC CAPTURE</span>
             <span className="text-accent-red">•</span>
-            <span>🧠 VIRAL SOCIAL EXPERIMENTS</span>
+            <span className="inline-flex items-center gap-1.5"><Compass className="w-3.5 h-3.5 text-neutral-600" /> VIRAL SOCIAL EXPERIMENTS</span>
             <span className="text-accent-red">•</span>
-            <span>💥 HIGH-RETENTION GEN Z</span>
+            <span className="inline-flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-accent-red" /> HIGH-RETENTION GEN Z</span>
             <span className="text-accent-red">•</span>
-            <span>🇰🇭 CAMBODIA GROUND ZERO</span>
+            <span className="inline-flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-neutral-600" /> CAMBODIA GROUND ZERO</span>
             <span className="text-accent-red">•</span>
-            <span>🔥 ZERO STAGING • PURE REALITY</span>
+            <span className="inline-flex items-center gap-1.5"><Flame className="w-3.5 h-3.5 text-accent-red" /> ZERO STAGING • PURE REALITY</span>
             <span className="text-accent-red">•</span>
           </motion.div>
         </div>

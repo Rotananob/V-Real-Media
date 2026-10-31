@@ -40,7 +40,8 @@ import {
   Sparkles,
   RefreshCw,
   Home,
-  Globe
+  Globe,
+  X
 } from 'lucide-react';
 
 export default function AdminDashboard() {
@@ -857,10 +858,11 @@ export default function AdminDashboard() {
                 </h3>
               </div>
               <button
+                type="button"
                 onClick={() => setEditorModal({ isOpen: false, mode: 'create', type: 'post', item: null })}
-                className="text-neutral-400 hover:text-neutral-800 text-sm"
+                className="text-neutral-400 hover:text-neutral-800 p-1 rounded-lg hover:bg-neutral-100 transition-colors"
               >
-                ✕
+                <X className="w-4 h-4" />
               </button>
             </div>
 

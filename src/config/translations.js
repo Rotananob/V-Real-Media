@@ -99,14 +99,14 @@ export const TRANSLATIONS = {
       "street-reality": "តថភាពតាមដងផ្លូវ",
       "social-experiment": "ការពិសោធន៍សង្គម",
       documentary: "ភាពយន្តឯកសារជីវិត",
-      "human-stories": "រឿងរ៉ាវមនុស្សពិត",
+      "human-stories": "រឿងរ៉ាវមនុស្ស & កម្លាំងចិត្ត",
     },
 
     // Portfolio
     portfolio: {
       sectionBadge: "ORIGINAL PRODUCTIONS",
       title: "មាតិកាវីដេអូរបស់ពួកយើង",
-      subtitle: "រាល់វីដេអូ គឺជាការចុះថតជាក់ស្តែង ជួបមនុស្សពិត និងរឿងរ៉ាវពិតដែលគ្មានការរៀបចំទុកជាមុន។",
+      subtitle: "រាល់វីដេអូ គឺជាការចុះថតជាក់ស្តែង គ្មានស្គ្រីប គ្មានការសម្តែង ថតយកសកម្មភាពពិត ១០០%។",
       watchNow: "ទស្សនា",
       featured: "វីដេអូពិសេស",
       searchPlaceholder: "ស្វែងរកវីដេអូ...",
