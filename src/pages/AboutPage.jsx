@@ -12,9 +12,11 @@ export default function AboutPage() {
         
         {/* Page Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-neutral-200 text-xs text-neutral-700 mb-4 shadow-sm">
+          <div className="flex items-center justify-center gap-2 mb-3">
             <span className="w-2 h-2 rounded-full bg-accent-red" />
-            <span className="font-semibold">{t.about.sectionBadge}</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-accent-red font-semibold">
+              {t.about.sectionBadge}
+            </span>
           </div>
 
           <h1 className={`text-4xl sm:text-6xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-6 ${

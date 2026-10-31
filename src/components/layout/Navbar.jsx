@@ -26,14 +26,28 @@ export default function Navbar() {
 
   const navLinks = [
     { name: t.nav.home, path: '/' },
-    { name: t.nav.about, path: '/about' },
-    { name: t.nav.portfolio, path: '/portfolio' },
+    { name: t.nav.about, path: '/#about', hash: '#about' },
+    { name: t.nav.portfolio, path: '/#portfolio', hash: '#portfolio' },
     { name: t.nav.news, path: '/news' },
+    { name: t.nav.contact, path: '/#contact', hash: '#contact' },
   ];
 
-  const isActive = (path) => {
-    if (path === '/' && location.pathname === '/') return true;
-    if (path !== '/' && location.pathname.startsWith(path)) return true;
+  const handleNavClick = (e, link) => {
+    if (link.hash) {
+      if (location.pathname === '/') {
+        e.preventDefault();
+        const elem = document.querySelector(link.hash);
+        if (elem) {
+          elem.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
+  const isActive = (link) => {
+    if (link.path === '/' && location.pathname === '/' && !location.hash) return true;
+    if (link.hash && location.hash === link.hash) return true;
+    if (!link.hash && link.path !== '/' && location.pathname.startsWith(link.path)) return true;
     return false;
   };
 
@@ -80,14 +94,15 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
+                onClick={(e) => handleNavClick(e, link)}
                 className={`text-sm transition-colors duration-150 relative py-1 font-khmer ${
-                  isActive(link.path)
+                  isActive(link)
                     ? 'text-neutral-900 font-semibold'
                     : 'text-neutral-600 hover:text-neutral-900'
                 }`}
               >
                 {link.name}
-                {isActive(link.path) && (
+                {isActive(link) && (
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-red rounded-full" />
                 )}
               </Link>
@@ -182,8 +197,12 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
+                onClick={(e) => {
+                  handleNavClick(e, link);
+                  setMobileMenuOpen(false);
+                }}
                 className={`px-4 py-2.5 rounded-lg text-sm font-medium font-khmer transition ${
-                  isActive(link.path)
+                  isActive(link)
                     ? 'bg-neutral-100 text-neutral-900 font-bold'
                     : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
                 }`}

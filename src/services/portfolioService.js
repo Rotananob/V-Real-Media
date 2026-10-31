@@ -20,79 +20,15 @@ import { slugify } from '../utils/slugify';
 
 const COLLECTION_NAME = 'portfolio';
 
-// Initial high-impact portfolio pieces showcasing V-REAL MEDIA's concept
-export const INITIAL_PORTFOLIO = [
-  {
-    id: 'port-1',
-    title: 'STREET REALITY: 24 Hours with Phnom Penh Tuk-Tuk Drivers',
-    slug: 'street-reality-24-hours-tuk-tuk-drivers',
-    description: 'An unscripted day-in-the-life documentary following street transportation workers through blistering heat and monsoon downpours.',
-    category: 'street-reality',
-    thumbnailURL: '/assets/logo.jpg',
-    thumbnailPath: null,
-    videoURL: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    videoProvider: 'youtube',
-    featured: true,
-    status: 'published',
-    publishedAt: new Date('2026-10-10'),
-    createdAt: new Date('2026-10-10'),
-  },
-  {
-    id: 'port-2',
-    title: 'SOCIAL EXPERIMENT: Dropping Money in Front of Strangers',
-    slug: 'social-experiment-dropping-money-strangers',
-    description: 'A psychological and social experiment on honesty and community integrity in local markets.',
-    category: 'social-experiment',
-    thumbnailURL: '/assets/logo.jpg',
-    thumbnailPath: null,
-    videoURL: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    videoProvider: 'youtube',
-    featured: true,
-    status: 'published',
-    publishedAt: new Date('2026-10-18'),
-    createdAt: new Date('2026-10-18'),
-  },
-  {
-    id: 'port-3',
-    title: 'HUMAN DOCUMENTARY: Shadows of the Tonle Sap',
-    slug: 'human-documentary-shadows-tonle-sap',
-    description: 'Exploring the floating villages and preserving the ancestral wisdom of indigenous fishing communities facing environmental shifts.',
-    category: 'documentary',
-    thumbnailURL: '/assets/logo.jpg',
-    thumbnailPath: null,
-    videoURL: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    videoProvider: 'youtube',
-    featured: true,
-    status: 'published',
-    publishedAt: new Date('2026-10-24'),
-    createdAt: new Date('2026-10-24'),
-  },
-  {
-    id: 'port-4',
-    title: 'HUMAN STORIES: The Silent Craftsmen of Siem Reap',
-    slug: 'human-stories-silent-craftsmen-siem-reap',
-    description: 'Stone carvers and silk weavers who keep ancient Khmer heritage alive with unmatched passion and dedication.',
-    category: 'human-stories',
-    thumbnailURL: '/assets/logo.jpg',
-    thumbnailPath: null,
-    videoURL: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    videoProvider: 'youtube',
-    featured: false,
-    status: 'published',
-    publishedAt: new Date('2026-10-27'),
-    createdAt: new Date('2026-10-27'),
-  }
-];
+// Clean initial state: No fake or exaggerated placeholder items
+export const INITIAL_PORTFOLIO = [];
 
 /**
  * Fetch published portfolio items
  */
 export async function getPublishedPortfolio(category = 'all', maxItems = 24) {
   if (!isFirebaseConfigured || !db) {
-    if (category && category !== 'all') {
-      return INITIAL_PORTFOLIO.filter(item => item.category === category);
-    }
-    return INITIAL_PORTFOLIO;
+    return [];
   }
 
   try {
@@ -118,7 +54,7 @@ export async function getPublishedPortfolio(category = 'all', maxItems = 24) {
 
     const snapshot = await getDocs(q);
     if (snapshot.empty) {
-      return INITIAL_PORTFOLIO;
+      return [];
     }
 
     return snapshot.docs.map(doc => ({
@@ -126,8 +62,8 @@ export async function getPublishedPortfolio(category = 'all', maxItems = 24) {
       ...doc.data()
     }));
   } catch (error) {
-    console.warn('[portfolioService] Falling back to initial portfolio:', error);
-    return INITIAL_PORTFOLIO;
+    console.warn('[portfolioService] Falling back to empty array:', error);
+    return [];
   }
 }
 
@@ -136,7 +72,7 @@ export async function getPublishedPortfolio(category = 'all', maxItems = 24) {
  */
 export function subscribeToPublishedPortfolio(callback, category = 'all') {
   if (!isFirebaseConfigured || !db) {
-    callback(category && category !== 'all' ? INITIAL_PORTFOLIO.filter(i => i.category === category) : INITIAL_PORTFOLIO);
+    callback([]);
     return () => {};
   }
 
@@ -165,18 +101,18 @@ export function subscribeToPublishedPortfolio(callback, category = 'all') {
       q,
       (snapshot) => {
         if (snapshot.empty) {
-          callback(INITIAL_PORTFOLIO);
+          callback([]);
         } else {
           callback(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
         }
       },
       (error) => {
         console.error('[portfolioService] Snapshot error:', error);
-        callback(INITIAL_PORTFOLIO);
+        callback([]);
       }
     );
   } catch (err) {
-    callback(INITIAL_PORTFOLIO);
+    callback([]);
     return () => {};
   }
 }
@@ -186,16 +122,21 @@ export function subscribeToPublishedPortfolio(callback, category = 'all') {
  */
 export async function getPortfolioById(id) {
   if (!isFirebaseConfigured || !db) {
-    return INITIAL_PORTFOLIO.find(i => i.id === id || i.slug === id) || null;
+    return null;
   }
 
-  const docRef = doc(db, COLLECTION_NAME, id);
-  const snap = await getDoc(docRef);
+  try {
+    const docRef = doc(db, COLLECTION_NAME, id);
+    const snap = await getDoc(docRef);
 
-  if (snap.exists()) {
-    return { id: snap.id, ...snap.data() };
+    if (snap.exists()) {
+      return { id: snap.id, ...snap.data() };
+    }
+    return null;
+  } catch (err) {
+    console.warn('[portfolioService] Error getting item:', err);
+    return null;
   }
-  return null;
 }
 
 /**
@@ -203,17 +144,22 @@ export async function getPortfolioById(id) {
  */
 export async function getAllPortfolioAdmin() {
   if (!isFirebaseConfigured || !db) {
-    return INITIAL_PORTFOLIO;
+    return [];
   }
 
-  const colRef = collection(db, COLLECTION_NAME);
-  const q = query(colRef, orderBy('createdAt', 'desc'));
-  const snapshot = await getDocs(q);
+  try {
+    const colRef = collection(db, COLLECTION_NAME);
+    const q = query(colRef, orderBy('createdAt', 'desc'));
+    const snapshot = await getDocs(q);
 
-  return snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
+    return snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+  } catch (err) {
+    console.warn('[portfolioService] Error fetching admin portfolio:', err);
+    return [];
+  }
 }
 
 /**
@@ -292,12 +238,10 @@ export async function deletePortfolioItem(id, thumbnailPath = null) {
     throw new Error('Firebase Firestore is not configured.');
   }
 
-  // 1. Delete associated Storage assets
   if (thumbnailPath) {
     await deleteMedia(thumbnailPath);
   }
 
-  // 2. Delete Firestore document
   const docRef = doc(db, COLLECTION_NAME, id);
   await deleteDoc(docRef);
   return true;

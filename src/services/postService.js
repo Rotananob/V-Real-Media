@@ -20,79 +20,15 @@ import { slugify } from '../utils/slugify';
 
 const COLLECTION_NAME = 'posts';
 
-// Sample fallback data if Firestore is empty or unconfigured
-export const INITIAL_POSTS = [
-  {
-    id: 'post-1',
-    title: 'Behind The Lens: The Reality of Phnom Penh Street Life',
-    slug: 'behind-the-lens-phnom-penh-street-life',
-    description: 'An intimate look into the lives of night-market vendors and street recyclers, captured through unfiltered cinematography.',
-    content: `Documentary filmmaking in real streets requires vulnerability and patience. In our latest feature, we walked through the neon-lit alleyways of Phnom Penh after midnight.
-
-We listened to stories of resilience from street cart vendors, tricycle drivers, and youth pursuing their dreams against immense odds.
-
-"You cannot direct real life; you can only bear witness to it." — V-REAL MEDIA Director.
-
-Our goal was never to sensationalize struggle, but to honor the dignity and warmth of our community. Check out the full episode in our portfolio section.`,
-    category: 'documentary',
-    thumbnailURL: '/assets/logo.jpg',
-    thumbnailPath: null,
-    videoURL: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    videoProvider: 'youtube',
-    status: 'published',
-    featured: true,
-    publishedAt: new Date('2026-10-15'),
-    createdAt: new Date('2026-10-15'),
-  },
-  {
-    id: 'post-2',
-    title: 'Social Experiment: Would Strangers Share Food In Need?',
-    slug: 'social-experiment-strangers-share-food',
-    description: 'We tested human kindness and empathy in a busy public square. The results surprised the entire crew.',
-    content: `In an era dominated by screens and social detachment, we wanted to know: has our collective empathy faded?
-
-We placed an actor pretending to have lost their wallet and asking ordinary pedestrians for a piece of bread. The response from everyday Cambodian citizens was overwhelming.
-
-More than 80% offered not just their food, but their own money. This experiment reminds us of the profound compassion at the core of our culture.`,
-    category: 'social-experiment',
-    thumbnailURL: '/assets/logo.jpg',
-    thumbnailPath: null,
-    videoURL: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    videoProvider: 'youtube',
-    status: 'published',
-    featured: true,
-    publishedAt: new Date('2026-10-22'),
-    createdAt: new Date('2026-10-22'),
-  },
-  {
-    id: 'post-3',
-    title: 'V-REAL MEDIA Manifesto: Unscripted. Fearless. Real.',
-    slug: 'v-real-media-manifesto',
-    description: 'Why we reject glossy commercial setups to champion unscripted street reality and human truth.',
-    content: `V-REAL MEDIA was founded with one clear conviction: authentic human connection cannot be manufactured on a soundstage.
-
-We capture the raw pulse of Cambodian culture—the laughter, the tears, the dilemmas, and the community unity. We bring social awareness directly to the screen through uncompromising storytelling.`,
-    category: 'human-stories',
-    thumbnailURL: '/assets/logo.jpg',
-    thumbnailPath: null,
-    videoURL: '',
-    videoProvider: null,
-    status: 'published',
-    featured: false,
-    publishedAt: new Date('2026-10-28'),
-    createdAt: new Date('2026-10-28'),
-  }
-];
+// Clean initial state: No fake or exaggerated placeholder posts
+export const INITIAL_POSTS = [];
 
 /**
  * Fetch published posts for public site
  */
 export async function getPublishedPosts(category = 'all', maxItems = 20) {
   if (!isFirebaseConfigured || !db) {
-    if (category && category !== 'all') {
-      return INITIAL_POSTS.filter(p => p.category === category);
-    }
-    return INITIAL_POSTS;
+    return [];
   }
 
   try {
@@ -118,7 +54,7 @@ export async function getPublishedPosts(category = 'all', maxItems = 20) {
 
     const snapshot = await getDocs(q);
     if (snapshot.empty) {
-      return INITIAL_POSTS;
+      return [];
     }
 
     return snapshot.docs.map(doc => ({
@@ -126,8 +62,8 @@ export async function getPublishedPosts(category = 'all', maxItems = 20) {
       ...doc.data()
     }));
   } catch (error) {
-    console.warn('[postService] Falling back to initial posts:', error);
-    return INITIAL_POSTS;
+    console.warn('[postService] Falling back to empty array:', error);
+    return [];
   }
 }
 
@@ -136,7 +72,7 @@ export async function getPublishedPosts(category = 'all', maxItems = 20) {
  */
 export function subscribeToPublishedPosts(callback, category = 'all') {
   if (!isFirebaseConfigured || !db) {
-    callback(category && category !== 'all' ? INITIAL_POSTS.filter(p => p.category === category) : INITIAL_POSTS);
+    callback([]);
     return () => {};
   }
 
@@ -165,7 +101,7 @@ export function subscribeToPublishedPosts(callback, category = 'all') {
       q,
       (snapshot) => {
         if (snapshot.empty) {
-          callback(INITIAL_POSTS);
+          callback([]);
         } else {
           const items = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
           callback(items);
@@ -173,11 +109,11 @@ export function subscribeToPublishedPosts(callback, category = 'all') {
       },
       (error) => {
         console.error('[postService] Snapshot error:', error);
-        callback(INITIAL_POSTS);
+        callback([]);
       }
     );
   } catch (err) {
-    callback(INITIAL_POSTS);
+    callback([]);
     return () => {};
   }
 }
@@ -187,7 +123,7 @@ export function subscribeToPublishedPosts(callback, category = 'all') {
  */
 export async function getPostBySlug(slug) {
   if (!isFirebaseConfigured || !db) {
-    return INITIAL_POSTS.find(p => p.slug === slug) || null;
+    return null;
   }
 
   try {
@@ -196,14 +132,14 @@ export async function getPostBySlug(slug) {
     const snapshot = await getDocs(q);
 
     if (snapshot.empty) {
-      return INITIAL_POSTS.find(p => p.slug === slug) || null;
+      return null;
     }
 
     const doc = snapshot.docs[0];
     return { id: doc.id, ...doc.data() };
   } catch (error) {
     console.error('[postService] Error fetching post by slug:', error);
-    return INITIAL_POSTS.find(p => p.slug === slug) || null;
+    return null;
   }
 }
 
@@ -212,17 +148,22 @@ export async function getPostBySlug(slug) {
  */
 export async function getAllPostsAdmin() {
   if (!isFirebaseConfigured || !db) {
-    return INITIAL_POSTS;
+    return [];
   }
 
-  const postsRef = collection(db, COLLECTION_NAME);
-  const q = query(postsRef, orderBy('createdAt', 'desc'));
-  const snapshot = await getDocs(q);
+  try {
+    const postsRef = collection(db, COLLECTION_NAME);
+    const q = query(postsRef, orderBy('createdAt', 'desc'));
+    const snapshot = await getDocs(q);
 
-  return snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
+    return snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+  } catch (err) {
+    console.warn('[postService] Error fetching admin posts:', err);
+    return [];
+  }
 }
 
 /**
@@ -304,12 +245,10 @@ export async function deletePost(id, thumbnailPath = null) {
     throw new Error('Firebase Firestore is not configured.');
   }
 
-  // 1. Delete associated Storage assets if present
   if (thumbnailPath) {
     await deleteMedia(thumbnailPath);
   }
 
-  // 2. Delete Firestore document
   const docRef = doc(db, COLLECTION_NAME, id);
   await deleteDoc(docRef);
   return true;

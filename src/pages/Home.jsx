@@ -5,7 +5,7 @@ import PortfolioGrid from '../components/home/PortfolioGrid';
 import LatestPosts from '../components/home/LatestPosts';
 import VideoModal from '../components/home/VideoModal';
 import { BRAND } from '../config/brand';
-import { Phone, Mail } from 'lucide-react';
+import { Phone, Mail, MapPin, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function Home() {
@@ -25,48 +25,137 @@ export default function Home() {
       {/* Cinematic Clean Hero */}
       <Hero onWatchClick={() => setFeaturedModalOpen(true)} />
 
-      {/* About Section */}
+      {/* About Section (Vision, Mission, Pillars) */}
       <About />
 
-      {/* Featured Portfolio Grid */}
+      {/* Portfolio Grid (Street Reality, Social Experiments, Documentaries) */}
       <PortfolioGrid title={t.portfolio.title} showAll={false} />
 
-      {/* Latest Editorial Posts */}
-      <LatestPosts />
+      {/* Latest Editorial Posts & Field Notes */}
+      <div id="news">
+        <LatestPosts />
+      </div>
 
-      {/* Human Contact & Community Call to Action (Clean Light Design) */}
-      <section className="py-20 bg-white border-t border-neutral-200 font-khmer">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs text-neutral-700 mb-6 font-medium">
-            <span className="w-2 h-2 rounded-full bg-accent-red" />
-            <span>{t.cta.badge}</span>
+      {/* All-in-One Direct Contact Section (Clean Human Design) */}
+      <section id="contact" className="py-24 bg-white border-t border-neutral-200 font-khmer">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <span className="w-2 h-2 rounded-full bg-accent-red" />
+              <span className="text-xs font-mono uppercase tracking-widest text-accent-red font-semibold">
+                {t.cta.badge}
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-4">
+              {t.cta.title}
+            </h2>
+
+            <p className="text-base text-neutral-600 max-w-2xl mx-auto leading-relaxed">
+              {t.cta.desc}
+            </p>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-4">
-            {t.cta.title}
-          </h2>
-
-          <p className="text-base text-neutral-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-            {t.cta.desc}
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          {/* Contact Direct Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+            {/* Phone Direct */}
             <a
               href={`tel:${BRAND.contact.phone}`}
-              className="w-full sm:w-auto px-7 py-3 rounded-lg bg-neutral-900 text-white text-sm font-semibold hover:bg-neutral-800 transition flex items-center justify-center gap-2 shadow-sm"
+              className="p-6 rounded-2xl bg-[#FAFAFA] border border-neutral-200 hover:border-neutral-300 hover:shadow-xs transition group flex flex-col justify-between"
             >
-              <Phone className="w-4 h-4 text-accent-red" />
-              <span>{t.cta.callBtn}</span>
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-white border border-neutral-200 flex items-center justify-center text-accent-red mb-4 group-hover:scale-105 transition">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <span className="text-xs text-neutral-500 font-mono block mb-1">
+                  {language === 'km' ? 'ទូរស័ព្ទផ្ទាល់' : 'Direct Phone'}
+                </span>
+                <span className="text-lg font-bold text-neutral-900 font-mono block">
+                  {BRAND.contact.phoneDisplay}
+                </span>
+              </div>
+              <span className="mt-4 text-xs font-medium text-accent-red flex items-center gap-1">
+                <span>{language === 'km' ? 'ហៅចេញឥឡូវនេះ' : 'Call directly'}</span>
+                <ExternalLink className="w-3 h-3" />
+              </span>
             </a>
 
+            {/* Email Direct */}
             <a
               href={`mailto:${BRAND.contact.email}`}
-              className="w-full sm:w-auto px-7 py-3 rounded-lg bg-white border border-neutral-200 text-neutral-800 text-sm font-semibold hover:bg-neutral-50 transition flex items-center justify-center gap-2 shadow-sm"
+              className="p-6 rounded-2xl bg-[#FAFAFA] border border-neutral-200 hover:border-neutral-300 hover:shadow-xs transition group flex flex-col justify-between"
             >
-              <Mail className="w-4 h-4 text-accent-red" />
-              <span>{t.cta.emailBtn}</span>
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-white border border-neutral-200 flex items-center justify-center text-accent-red mb-4 group-hover:scale-105 transition">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <span className="text-xs text-neutral-500 font-mono block mb-1">
+                  {language === 'km' ? 'អ៊ីមែលផលិតកម្ម' : 'Production Email'}
+                </span>
+                <span className="text-base font-bold text-neutral-900 break-all block">
+                  {BRAND.contact.email}
+                </span>
+              </div>
+              <span className="mt-4 text-xs font-medium text-accent-red flex items-center gap-1">
+                <span>{language === 'km' ? 'ផ្ញើសារឥឡូវនេះ' : 'Send inquiry'}</span>
+                <ExternalLink className="w-3 h-3" />
+              </span>
             </a>
+
+            {/* Official Studio Location */}
+            <div className="p-6 rounded-2xl bg-[#FAFAFA] border border-neutral-200 flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-white border border-neutral-200 flex items-center justify-center text-accent-red mb-4">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <span className="text-xs text-neutral-500 font-mono block mb-1">
+                  {language === 'km' ? 'ទីតាំងផលិតកម្ម' : 'Production Base'}
+                </span>
+                <span className="text-base font-bold text-neutral-900 block">
+                  {BRAND.contact.location}
+                </span>
+              </div>
+              <span className="mt-4 text-xs text-neutral-500">
+                {language === 'km' ? 'ចុះថតផ្ទាល់ទូទាំងប្រទេសកម្ពុជា' : 'Operating nationwide'}
+              </span>
+            </div>
           </div>
+
+          {/* Social Channels Pill row */}
+          <div className="p-6 rounded-2xl bg-neutral-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-center sm:text-left">
+              <h3 className="text-base font-bold mb-1">
+                {language === 'km' ? 'តាមដានបណ្តាញសង្គមផ្លូវការ V-REAL' : 'Follow V-REAL Official Channels'}
+              </h3>
+              <p className="text-xs text-neutral-400">
+                {language === 'km' ? 'ទស្សនាវីដេអូប្រចាំថ្ងៃ ឈុតក្រៅឆាក និងរឿងរ៉ាវថ្មីៗ' : 'Daily street reels, behind-the-scenes, and updates'}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <a
+                href={BRAND.social.tiktok.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition flex items-center gap-2 border border-white/15"
+              >
+                <span>TikTok: {BRAND.social.tiktok.handle}</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+
+              <a
+                href={BRAND.social.youtube.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-lg bg-accent-red hover:bg-accent-darkRed text-white text-xs font-semibold transition flex items-center gap-2 shadow-xs"
+              >
+                <span>YouTube: {BRAND.social.youtube.handle}</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+          </div>
+
         </div>
       </section>
 

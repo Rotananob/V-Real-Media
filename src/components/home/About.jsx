@@ -14,7 +14,8 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-white border-b border-neutral-200">
+    <section id="vision" className="relative py-24 bg-white border-b border-neutral-200">
+      <div id="about" className="absolute -top-20" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -35,7 +36,7 @@ export default function About() {
         {/* 2-Column Editorial Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
           
-          {/* Left Column: Framed Emblem */}
+          {/* Left Column: Framed Logo Emblem */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -47,14 +48,14 @@ export default function About() {
               <div className="relative aspect-square rounded-xl overflow-hidden bg-white border border-neutral-200 flex items-center justify-center">
                 <img
                   src="/assets/logo.jpg"
-                  alt="V-Real Media Emblem"
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  alt="V-Real Media"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
 
               <div className="pt-4 flex items-center justify-between text-xs text-neutral-500 font-khmer">
                 <span>V-REAL MEDIA PRODUCTION</span>
-                <span className="text-accent-red font-mono font-medium">PHNOM PENH</span>
+                <span className="text-accent-red font-mono font-medium">CAMBODIA</span>
               </div>
             </div>
           </motion.div>
@@ -72,7 +73,7 @@ export default function About() {
               <p>{t.about.p2}</p>
             </div>
 
-            {/* Badges (No emoji, clean check icons) */}
+            {/* Factual Commitments */}
             <div className="pt-2 flex flex-wrap gap-3 text-xs font-khmer">
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-200 text-neutral-800">
                 <Check className="w-3.5 h-3.5 text-accent-red" />
@@ -130,7 +131,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: index * 0.08 }}
-              className="p-5 rounded-xl bg-white border border-neutral-200 hover:border-neutral-300 transition-all flex flex-col justify-between shadow-sm"
+              className="p-5 rounded-xl bg-white border border-neutral-200 hover:border-neutral-300 transition-all flex flex-col justify-between shadow-xs"
             >
               <div>
                 <span className="text-[10px] font-mono font-bold tracking-widest text-accent-red uppercase px-2 py-0.5 rounded bg-red-50 border border-red-100 inline-block mb-3">

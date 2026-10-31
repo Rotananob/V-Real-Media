@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -22,8 +22,22 @@ export default function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin') || location.pathname === '/login';
 
+  // Smooth scroll handler for anchor links
+  useEffect(() => {
+    if (location.hash) {
+      const targetElement = document.querySelector(location.hash);
+      if (targetElement) {
+        setTimeout(() => {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location.pathname, location.hash]);
+
   return (
-    <div className="relative flex flex-col min-h-screen bg-background-primary text-content-primary selection:bg-accent-red selection:text-white film-grain">
+    <div className="relative flex flex-col min-h-screen bg-background-primary text-content-primary selection:bg-accent-red selection:text-white">
       {/* Show Public Navbar except on Admin/Login routes */}
       {!isAdminRoute && <Navbar />}
 
