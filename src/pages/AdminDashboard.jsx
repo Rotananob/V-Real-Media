@@ -20,7 +20,6 @@ import { formatDate } from '../utils/formatDate';
 import ConfirmDialog from '../components/common/ConfirmDialog';
 import Loader from '../components/common/Loader';
 import EmptyState from '../components/common/EmptyState';
-import { BRAND } from '../config/brand';
 
 import {
   LayoutDashboard,
@@ -40,7 +39,6 @@ import {
   Sparkles,
   RefreshCw,
   Home,
-  Play,
   Globe
 } from 'lucide-react';
 
@@ -138,7 +136,6 @@ export default function AdminDashboard() {
     return { totalPosts, publishedPosts, draftPosts, totalPortfolio, publishedPortfolio };
   }, [posts, portfolio]);
 
-  // Categories list
   const categoryOptions = [
     { id: 'street-reality', label: t.categories['street-reality'] },
     { id: 'social-experiment', label: t.categories['social-experiment'] },
@@ -187,11 +184,11 @@ export default function AdminDashboard() {
     if (!file) return;
 
     if (!file.type.startsWith('image/')) {
-      showFeedback('error', language === 'km' ? 'សូមជ្រើសរើសឯកសាររូបភាពត្រឹមត្រូវ (JPG, PNG, WEBP)' : 'Please select a valid image file (JPG, PNG, WEBP).');
+      showFeedback('error', language === 'km' ? 'សូមជ្រើសរើសរូបភាពត្រឹមត្រូវ (JPG, PNG, WEBP)' : 'Please select a valid image file (JPG, PNG, WEBP).');
       return;
     }
     if (file.size > 10 * 1024 * 1024) {
-      showFeedback('error', language === 'km' ? 'ទំហំរូបភាពលើសពីកម្រិតកំណត់ ១០MB' : 'Image exceeds maximum 10MB limit.');
+      showFeedback('error', language === 'km' ? 'ទំហំរូបភាពលើសពីកម្រិតកំណត់ 10MB' : 'Image exceeds maximum 10MB limit.');
       return;
     }
 
@@ -235,18 +232,18 @@ export default function AdminDashboard() {
       if (editorModal.type === 'post') {
         if (editorModal.mode === 'create') {
           await createPost(payload, user?.uid || 'admin');
-          showFeedback('success', language === 'km' ? 'បានបង្កើតរឿងរ៉ាវថ្មីជោគជ័យ!' : 'Story created successfully!');
+          showFeedback('success', language === 'km' ? 'បានបង្កើតរឿងរ៉ាវថ្មីជោគជ័យ' : 'Story created successfully');
         } else {
           await updatePost(editorModal.item.id, payload);
-          showFeedback('success', language === 'km' ? 'បានកែប្រែរឿងរ៉ាវជោគជ័យ!' : 'Story updated successfully!');
+          showFeedback('success', language === 'km' ? 'បានកែប្រែរឿងរ៉ាវជោគជ័យ' : 'Story updated successfully');
         }
       } else {
         if (editorModal.mode === 'create') {
           await createPortfolioItem(payload);
-          showFeedback('success', language === 'km' ? 'បានបន្ថែមស្នាដៃវីដេអូថ្មីជោគជ័យ!' : 'Portfolio item created successfully!');
+          showFeedback('success', language === 'km' ? 'បានបន្ថែមស្នាដៃវីដេអូថ្មីជោគជ័យ' : 'Portfolio item created successfully');
         } else {
           await updatePortfolioItem(editorModal.item.id, payload);
-          showFeedback('success', language === 'km' ? 'បានកែប្រែស្នាដៃវីដេអូជោគជ័យ!' : 'Portfolio item updated successfully!');
+          showFeedback('success', language === 'km' ? 'បានកែប្រែស្នាដៃវីដេអូជោគជ័យ' : 'Portfolio item updated successfully');
         }
       }
 
@@ -315,40 +312,40 @@ export default function AdminDashboard() {
   const safeVideoEmbed = formData.videoURL ? getSafeEmbedUrl(formData.videoURL) : null;
 
   return (
-    <div className="min-h-screen bg-background-primary text-white flex flex-col md:flex-row font-khmer">
+    <div className="min-h-screen bg-[#FAFAFA] text-neutral-900 flex flex-col md:flex-row font-khmer">
       
-      {/* Sidebar Navigation */}
-      <aside className="w-full md:w-64 bg-background-secondary border-b md:border-b-0 md:border-r border-border shrink-0 flex flex-col justify-between">
+      {/* Sidebar Navigation (GitHub 2026 Style) */}
+      <aside className="w-full md:w-64 bg-white border-b md:border-b-0 md:border-r border-neutral-200 shrink-0 flex flex-col justify-between">
         <div>
           {/* Top Branding */}
-          <div className="p-6 border-b border-border flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl overflow-hidden border border-border bg-surface p-0.5 shadow-human-card">
-                <img src="/assets/logo.jpg" alt="V-Real Media" className="w-full h-full object-cover rounded-lg" />
+          <div className="p-5 border-b border-neutral-200 flex items-center justify-between">
+            <Link to="/" className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg overflow-hidden border border-neutral-200 bg-white p-0.5 shadow-xs">
+                <img src="/assets/logo.jpg" alt="V-Real Media" className="w-full h-full object-cover rounded-md" />
               </div>
               <div className="flex flex-col">
-                <span className="font-display font-bold text-sm tracking-tight text-white">
+                <span className="font-display font-bold text-sm tracking-tight text-neutral-900">
                   V-REAL CMS
                 </span>
                 <span className="text-[10px] text-accent-red font-mono font-semibold">
-                  {language === 'km' ? 'ផ្ទាំងគ្រប់គ្រង' : 'ADMIN DASHBOARD'}
+                  {language === 'km' ? 'ផ្ទាំងគ្រប់គ្រង' : 'DASHBOARD'}
                 </span>
               </div>
             </Link>
 
-            <Link to="/" title={language === 'km' ? 'មើលគេហទំព័រផ្ទាល់' : 'View Live Site'} className="text-content-muted hover:text-white transition">
+            <Link to="/" title={language === 'km' ? 'មើលគេហទំព័រ' : 'View Site'} className="text-neutral-400 hover:text-neutral-900 transition">
               <Home className="w-4 h-4" />
             </Link>
           </div>
 
           {/* Navigation Links */}
-          <nav className="p-4 space-y-1.5">
+          <nav className="p-3 space-y-1">
             <button
               onClick={() => { setActiveTab('overview'); setCurrentPage(1); }}
-              className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition ${
+              className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold transition ${
                 activeTab === 'overview'
-                  ? 'bg-accent-red text-white shadow-rec-glow'
-                  : 'text-content-secondary hover:text-white hover:bg-surface'
+                  ? 'bg-neutral-900 text-white shadow-xs'
+                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
               }`}
             >
               <LayoutDashboard className="w-4 h-4" />
@@ -357,34 +354,34 @@ export default function AdminDashboard() {
 
             <button
               onClick={() => { setActiveTab('posts'); setCurrentPage(1); }}
-              className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition ${
+              className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold transition ${
                 activeTab === 'posts'
-                  ? 'bg-accent-red text-white shadow-rec-glow'
-                  : 'text-content-secondary hover:text-white hover:bg-surface'
+                  ? 'bg-neutral-900 text-white shadow-xs'
+                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
               }`}
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5">
                 <FileText className="w-4 h-4" />
                 <span>{t.admin.postsTab}</span>
               </div>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-black/50 text-content-primary">
+              <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded ${activeTab === 'posts' ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-600'}`}>
                 {posts.length}
               </span>
             </button>
 
             <button
               onClick={() => { setActiveTab('portfolio'); setCurrentPage(1); }}
-              className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition ${
+              className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold transition ${
                 activeTab === 'portfolio'
-                  ? 'bg-accent-red text-white shadow-rec-glow'
-                  : 'text-content-secondary hover:text-white hover:bg-surface'
+                  ? 'bg-neutral-900 text-white shadow-xs'
+                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
               }`}
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5">
                 <Film className="w-4 h-4" />
                 <span>{t.admin.portfolioTab}</span>
               </div>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-black/50 text-content-primary">
+              <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded ${activeTab === 'portfolio' ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-600'}`}>
                 {portfolio.length}
               </span>
             </button>
@@ -392,22 +389,22 @@ export default function AdminDashboard() {
         </div>
 
         {/* User Info & Logout */}
-        <div className="p-4 border-t border-border bg-surface/50">
-          <div className="flex items-center justify-between mb-3">
+        <div className="p-4 border-t border-neutral-200 bg-neutral-50/70">
+          <div className="flex items-center justify-between mb-2.5">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-xs font-mono text-content-primary truncate max-w-[130px]">
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              <span className="text-xs text-neutral-700 truncate max-w-[130px] font-mono">
                 {user?.email || 'admin@v-real.com'}
               </span>
             </div>
-            <span className="text-[10px] px-1.5 py-0.5 rounded bg-accent-red/20 text-accent-red font-mono font-bold">
+            <span className="text-[10px] px-1.5 py-0.2 rounded bg-neutral-200 text-neutral-700 font-mono font-semibold">
               ADMIN
             </span>
           </div>
 
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-surface hover:bg-surface-elevated border border-border text-xs text-content-secondary hover:text-white transition"
+            className="w-full flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-neutral-100 border border-neutral-200 text-xs text-neutral-700 transition shadow-xs"
           >
             <LogOut className="w-3.5 h-3.5" />
             <span>{t.admin.signOut}</span>
@@ -419,39 +416,39 @@ export default function AdminDashboard() {
       <main className="flex-1 flex flex-col overflow-y-auto">
         
         {/* Top Header Bar */}
-        <header className="px-6 py-4 bg-background-secondary border-b border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-rec-pulse" />
-            <h1 className="text-lg font-bold text-white tracking-wider">
+        <header className="px-6 py-4 bg-white border-b border-neutral-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-2.5">
+            <span className="w-2 h-2 rounded-full bg-accent-red" />
+            <h1 className="text-base font-bold text-neutral-900 tracking-wide">
               {activeTab === 'overview' && t.admin.overview}
               {activeTab === 'posts' && t.admin.postsTab}
               {activeTab === 'portfolio' && t.admin.portfolioTab}
             </h1>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {/* Language toggle inside CMS */}
-            <div className="flex items-center bg-surface border border-border rounded-lg p-0.5 text-xs font-medium">
+            <div className="flex items-center bg-neutral-100 border border-neutral-200 rounded-lg p-0.5 text-xs font-medium">
               <button
                 type="button"
                 onClick={() => setLanguage('km')}
-                className={`px-2 py-0.5 rounded transition ${language === 'km' ? 'bg-accent-red text-white font-bold' : 'text-content-secondary'}`}
+                className={`px-2 py-0.5 rounded transition ${language === 'km' ? 'bg-white text-neutral-900 font-bold shadow-xs' : 'text-neutral-600'}`}
               >
-                🇰🇭 ខ្មែរ
+                ខ្មែរ
               </button>
               <button
                 type="button"
                 onClick={() => setLanguage('en')}
-                className={`px-2 py-0.5 rounded transition ${language === 'en' ? 'bg-accent-red text-white font-bold' : 'text-content-secondary'}`}
+                className={`px-2 py-0.5 rounded transition font-mono ${language === 'en' ? 'bg-white text-neutral-900 font-bold shadow-xs' : 'text-neutral-600'}`}
               >
-                🇬🇧 EN
+                EN
               </button>
             </div>
 
             {activeTab !== 'overview' && (
               <button
                 onClick={() => openEditor(activeTab === 'posts' ? 'post' : 'portfolio', 'create')}
-                className="px-4 py-2 rounded-xl bg-accent-red hover:bg-accent-darkRed text-white text-xs font-bold shadow-rec-glow transition flex items-center gap-2"
+                className="px-3.5 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-semibold shadow-xs transition flex items-center gap-1.5"
               >
                 <Plus className="w-4 h-4" />
                 <span>{activeTab === 'posts' ? t.admin.newPost : t.admin.newPortfolio}</span>
@@ -462,7 +459,7 @@ export default function AdminDashboard() {
               onClick={loadAllData}
               disabled={loading}
               title={language === 'km' ? 'ទាញយកទិន្នន័យឡើងវិញ' : 'Refresh Data'}
-              className="p-2 rounded-xl bg-surface border border-border text-content-muted hover:text-white transition"
+              className="p-1.5 rounded-lg bg-white border border-neutral-200 text-neutral-600 hover:text-neutral-900 transition shadow-xs"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
             </button>
@@ -472,10 +469,10 @@ export default function AdminDashboard() {
         {/* Feedback Banner */}
         {feedback.message && (
           <div
-            className={`px-6 py-3 border-b text-xs flex items-center gap-2 font-khmer ${
+            className={`px-6 py-2.5 border-b text-xs flex items-center gap-2 font-khmer ${
               feedback.type === 'error'
-                ? 'bg-accent-red/10 border-accent-red/30 text-accent-red'
-                : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                ? 'bg-red-50 border-red-200 text-red-700'
+                : 'bg-emerald-50 border-emerald-200 text-emerald-800'
             }`}
           >
             {feedback.type === 'error' ? <AlertCircle className="w-4 h-4 shrink-0" /> : <CheckCircle className="w-4 h-4 shrink-0" />}
@@ -484,73 +481,73 @@ export default function AdminDashboard() {
         )}
 
         {/* Content Body */}
-        <div className="p-6 max-w-7xl w-full mx-auto space-y-8">
+        <div className="p-6 max-w-7xl w-full mx-auto space-y-6">
           
           {/* TAB 1: OVERVIEW */}
           {activeTab === 'overview' && (
-            <div className="space-y-8">
+            <div className="space-y-6">
               {/* Stats Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div className="p-5 rounded-2xl bg-surface border border-border shadow-human-card">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs text-content-muted">{t.admin.totalPosts}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="p-5 rounded-xl bg-white border border-neutral-200 shadow-xs">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs text-neutral-500">{t.admin.totalPosts}</span>
                     <FileText className="w-4 h-4 text-accent-red" />
                   </div>
-                  <span className="text-3xl font-display font-extrabold text-white block mb-1">
+                  <span className="text-3xl font-extrabold text-neutral-900 block font-display mb-1">
                     {stats.totalPosts}
                   </span>
-                  <span className="text-xs text-content-secondary">
+                  <span className="text-xs text-neutral-500">
                     {stats.publishedPosts} {t.admin.publishedCount} • {stats.draftPosts} {t.admin.draftCount}
                   </span>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-surface border border-border shadow-human-card">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs text-content-muted">{t.admin.totalPortfolio}</span>
+                <div className="p-5 rounded-xl bg-white border border-neutral-200 shadow-xs">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs text-neutral-500">{t.admin.totalPortfolio}</span>
                     <Film className="w-4 h-4 text-accent-red" />
                   </div>
-                  <span className="text-3xl font-display font-extrabold text-white block mb-1">
+                  <span className="text-3xl font-extrabold text-neutral-900 block font-display mb-1">
                     {stats.totalPortfolio}
                   </span>
-                  <span className="text-xs text-content-secondary">
+                  <span className="text-xs text-neutral-500">
                     {stats.publishedPortfolio} {language === 'km' ? 'វីដេអូចាក់ផ្សាយ' : 'live productions'}
                   </span>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-surface border border-border shadow-human-card">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs text-content-muted">{t.admin.securityStatus}</span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <div className="p-5 rounded-xl bg-white border border-neutral-200 shadow-xs">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs text-neutral-500">{t.admin.securityStatus}</span>
+                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
                   </div>
-                  <span className="text-base font-bold text-emerald-400 block mb-1">
+                  <span className="text-base font-bold text-emerald-700 block mb-1">
                     {t.admin.authenticated}
                   </span>
-                  <span className="text-[11px] text-content-secondary font-mono">
-                    Firebase Auth: {user?.email}
+                  <span className="text-xs text-neutral-500 font-mono truncate block">
+                    {user?.email}
                   </span>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-surface border border-border shadow-human-card">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs text-content-muted">HOSTING TARGET</span>
-                    <ExternalLink className="w-4 h-4 text-content-muted" />
+                <div className="p-5 rounded-xl bg-white border border-neutral-200 shadow-xs">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs text-neutral-500">HOSTING</span>
+                    <ExternalLink className="w-4 h-4 text-neutral-400" />
                   </div>
-                  <span className="text-base font-bold text-white block mb-1 font-mono">
+                  <span className="text-base font-bold text-neutral-900 block mb-1 font-mono">
                     v-real-media.web.app
                   </span>
-                  <span className="text-xs text-accent-red">
-                    {language === 'km' ? 'ផ្សាយផ្ទាល់លើអ៊ីនធឺណិត' : 'Production Live'}
+                  <span className="text-xs text-accent-red font-medium">
+                    {language === 'km' ? 'ផ្សាយផ្ទាល់' : 'Production Live'}
                   </span>
                 </div>
               </div>
 
-              {/* Quick Actions & Recent Activity */}
+              {/* Recent Activity */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 
                 {/* Recent Posts */}
-                <div className="p-6 rounded-2xl bg-surface border border-border shadow-human-card">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-white">
+                <div className="p-5 rounded-xl bg-white border border-neutral-200 shadow-xs">
+                  <div className="flex items-center justify-between mb-3.5 pb-2 border-b border-neutral-100">
+                    <h3 className="text-sm font-bold text-neutral-900">
                       {language === 'km' ? 'អត្ថបទថ្មីៗ' : 'Recent Posts'}
                     </h3>
                     <button
@@ -562,21 +559,21 @@ export default function AdminDashboard() {
                   </div>
 
                   {posts.length === 0 ? (
-                    <p className="text-xs text-content-muted">{language === 'km' ? 'មិនទាន់មានអត្ថបទឡើយ។' : 'No posts available.'}</p>
+                    <p className="text-xs text-neutral-500">{language === 'km' ? 'មិនទាន់មានអត្ថបទឡើយ។' : 'No posts available.'}</p>
                   ) : (
-                    <div className="space-y-3">
+                    <div className="space-y-2.5">
                       {posts.slice(0, 4).map((p) => (
-                        <div key={p.id} className="flex items-center justify-between p-3 rounded-xl bg-surface-elevated border border-border/60">
-                          <div className="flex items-center gap-3">
-                            <div className="w-9 h-9 rounded-lg overflow-hidden bg-black shrink-0 border border-border">
+                        <div key={p.id} className="flex items-center justify-between p-2.5 rounded-lg bg-neutral-50 border border-neutral-200/60">
+                          <div className="flex items-center gap-2.5">
+                            <div className="w-8 h-8 rounded overflow-hidden bg-neutral-200 shrink-0 border border-neutral-200">
                               <img src={p.thumbnailURL || '/assets/logo.jpg'} alt="" className="w-full h-full object-cover" />
                             </div>
                             <div>
-                              <p className="text-xs font-semibold text-white truncate max-w-[200px]">{p.title}</p>
-                              <span className="text-[11px] text-content-muted font-mono">{formatDate(p.publishedAt || p.createdAt)}</span>
+                              <p className="text-xs font-semibold text-neutral-900 truncate max-w-[200px]">{p.title}</p>
+                              <span className="text-[10px] text-neutral-500 font-mono">{formatDate(p.publishedAt || p.createdAt)}</span>
                             </div>
                           </div>
-                          <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full uppercase ${p.status === 'published' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-neutral-800 text-neutral-400'}`}>
+                          <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${p.status === 'published' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-neutral-200 text-neutral-600'}`}>
                             {p.status}
                           </span>
                         </div>
@@ -586,10 +583,10 @@ export default function AdminDashboard() {
                 </div>
 
                 {/* Recent Portfolio Items */}
-                <div className="p-6 rounded-2xl bg-surface border border-border shadow-human-card">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-white">
-                      {language === 'km' ? 'ស្នាដៃវីដេអូថ្មីៗ' : 'Recent Portfolio Works'}
+                <div className="p-5 rounded-xl bg-white border border-neutral-200 shadow-xs">
+                  <div className="flex items-center justify-between mb-3.5 pb-2 border-b border-neutral-100">
+                    <h3 className="text-sm font-bold text-neutral-900">
+                      {language === 'km' ? 'ស្នាដៃវីដេអូថ្មីៗ' : 'Recent Productions'}
                     </h3>
                     <button
                       onClick={() => setActiveTab('portfolio')}
@@ -600,21 +597,21 @@ export default function AdminDashboard() {
                   </div>
 
                   {portfolio.length === 0 ? (
-                    <p className="text-xs text-content-muted">{language === 'km' ? 'មិនទាន់មានវីដេអូឡើយ។' : 'No portfolio entries.'}</p>
+                    <p className="text-xs text-neutral-500">{language === 'km' ? 'មិនទាន់មានវីដេអូឡើយ។' : 'No portfolio entries.'}</p>
                   ) : (
-                    <div className="space-y-3">
+                    <div className="space-y-2.5">
                       {portfolio.slice(0, 4).map((item) => (
-                        <div key={item.id} className="flex items-center justify-between p-3 rounded-xl bg-surface-elevated border border-border/60">
-                          <div className="flex items-center gap-3">
-                            <div className="w-9 h-9 rounded-lg overflow-hidden bg-black shrink-0 border border-border">
+                        <div key={item.id} className="flex items-center justify-between p-2.5 rounded-lg bg-neutral-50 border border-neutral-200/60">
+                          <div className="flex items-center gap-2.5">
+                            <div className="w-8 h-8 rounded overflow-hidden bg-neutral-200 shrink-0 border border-neutral-200">
                               <img src={item.thumbnailURL || '/assets/logo.jpg'} alt="" className="w-full h-full object-cover" />
                             </div>
                             <div>
-                              <p className="text-xs font-semibold text-white truncate max-w-[200px]">{item.title}</p>
-                              <span className="text-[11px] text-accent-red">{t.categories[item.category] || item.category}</span>
+                              <p className="text-xs font-semibold text-neutral-900 truncate max-w-[200px]">{item.title}</p>
+                              <span className="text-[10px] text-accent-red">{t.categories[item.category] || item.category}</span>
                             </div>
                           </div>
-                          <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full uppercase ${item.status === 'published' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-neutral-800 text-neutral-400'}`}>
+                          <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${item.status === 'published' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-neutral-200 text-neutral-600'}`}>
                             {item.status}
                           </span>
                         </div>
@@ -629,19 +626,19 @@ export default function AdminDashboard() {
 
           {/* TAB 2 & 3: DATA TABLES (POSTS & PORTFOLIO) */}
           {(activeTab === 'posts' || activeTab === 'portfolio') && (
-            <div className="space-y-6">
+            <div className="space-y-4">
               
               {/* Search & Filters */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 rounded-2xl bg-surface border border-border shadow-human-card">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3.5 rounded-xl bg-white border border-neutral-200 shadow-xs">
                 {/* Search */}
                 <div className="relative flex-1">
-                  <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
+                  <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
                   <input
                     type="text"
-                    placeholder={language === 'km' ? `ស្វែងរកក្នុង ${activeTab === 'posts' ? 'អត្ថបទ' : 'ស្នាដៃវីដេអូ'}...` : `Search ${activeTab}...`}
+                    placeholder={language === 'km' ? `ស្វែងរក...` : `Search...`}
                     value={searchQuery}
                     onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
-                    className="w-full pl-10 pr-4 py-2 rounded-xl bg-background-primary border border-border text-xs text-white placeholder-content-muted focus:border-accent-red focus:outline-none"
+                    className="w-full pl-10 pr-4 py-1.5 rounded-lg bg-neutral-50 border border-neutral-200 text-xs text-neutral-900 placeholder-neutral-400 focus:border-neutral-900 focus:outline-none"
                   />
                 </div>
 
@@ -649,18 +646,18 @@ export default function AdminDashboard() {
                 <select
                   value={statusFilter}
                   onChange={(e) => { setStatusFilter(e.target.value); setCurrentPage(1); }}
-                  className="px-3 py-2 rounded-xl bg-background-primary border border-border text-xs text-content-primary focus:border-accent-red focus:outline-none"
+                  className="px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-200 text-xs text-neutral-800 focus:border-neutral-900 focus:outline-none"
                 >
                   <option value="all">{language === 'km' ? 'ស្ថានភាពទាំងអស់' : 'All Statuses'}</option>
-                  <option value="published">{language === 'km' ? 'បានចេញផ្សាយ (Published)' : 'Published'}</option>
-                  <option value="draft">{language === 'km' ? 'សេចក្តីព្រាង (Draft)' : 'Draft'}</option>
+                  <option value="published">{language === 'km' ? 'បានចេញផ្សាយ' : 'Published'}</option>
+                  <option value="draft">{language === 'km' ? 'សេចក្តីព្រាង' : 'Draft'}</option>
                 </select>
 
                 {/* Category Filter */}
                 <select
                   value={categoryFilter}
                   onChange={(e) => { setCategoryFilter(e.target.value); setCurrentPage(1); }}
-                  className="px-3 py-2 rounded-xl bg-background-primary border border-border text-xs text-content-primary focus:border-accent-red focus:outline-none"
+                  className="px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-200 text-xs text-neutral-800 focus:border-neutral-900 focus:outline-none"
                 >
                   <option value="all">{t.categories.all}</option>
                   {categoryOptions.map((c) => (
@@ -675,21 +672,21 @@ export default function AdminDashboard() {
               ) : paginatedItems.length === 0 ? (
                 <EmptyState
                   title={language === 'km' ? 'រកមិនឃើញទិន្នន័យឡើយ' : `No ${activeTab} found`}
-                  description={language === 'km' ? 'មិនមានទិន្នន័យដែលត្រូវនឹងតម្រូវការស្វែងរកឡើយ។ អ្នកអាចបង្កើតទិន្នន័យថ្មីបាន។' : 'No items match your criteria.'}
+                  description={language === 'km' ? 'មិនមានទិន្នន័យដែលត្រូវនឹងតម្រូវការស្វែងរកឡើយ។' : 'No items match your criteria.'}
                   action={
                     <button
                       onClick={() => openEditor(activeTab === 'posts' ? 'post' : 'portfolio', 'create')}
-                      className="px-4 py-2 rounded-xl bg-accent-red text-white text-xs font-semibold"
+                      className="px-4 py-2 rounded-lg bg-neutral-900 text-white text-xs font-semibold"
                     >
                       {activeTab === 'posts' ? t.admin.newPost : t.admin.newPortfolio}
                     </button>
                   }
                 />
               ) : (
-                <div className="rounded-2xl overflow-hidden border border-border bg-surface shadow-human-card">
+                <div className="rounded-xl overflow-hidden border border-neutral-200 bg-white shadow-xs">
                   <div className="overflow-x-auto">
                     <table className="w-full text-left text-xs">
-                      <thead className="bg-surface-elevated border-b border-border text-content-muted uppercase tracking-wider font-semibold">
+                      <thead className="bg-neutral-50 border-b border-neutral-200 text-neutral-600 uppercase tracking-wider font-semibold">
                         <tr>
                           <th className="py-3 px-4">{t.admin.tableItem}</th>
                           <th className="py-3 px-4">{t.admin.tableCategory}</th>
@@ -699,13 +696,13 @@ export default function AdminDashboard() {
                           <th className="py-3 px-4 text-right">{t.admin.tableActions}</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-border">
+                      <tbody className="divide-y divide-neutral-200">
                         {paginatedItems.map((item) => (
-                          <tr key={item.id} className="hover:bg-surface-elevated/40 transition">
+                          <tr key={item.id} className="hover:bg-neutral-50 transition">
                             {/* Item Title & Thumb */}
-                            <td className="py-3.5 px-4">
-                              <div className="flex items-center gap-3">
-                                <div className="w-11 h-11 rounded-lg overflow-hidden bg-black shrink-0 border border-border">
+                            <td className="py-3 px-4">
+                              <div className="flex items-center gap-2.5">
+                                <div className="w-10 h-10 rounded-lg overflow-hidden bg-neutral-100 shrink-0 border border-neutral-200">
                                   <img
                                     src={item.thumbnailURL || '/assets/logo.jpg'}
                                     alt=""
@@ -714,10 +711,10 @@ export default function AdminDashboard() {
                                   />
                                 </div>
                                 <div>
-                                  <span className="font-semibold text-white block max-w-xs truncate text-sm">
+                                  <span className="font-semibold text-neutral-900 block max-w-xs truncate text-xs">
                                     {item.title}
                                   </span>
-                                  <span className="text-[10px] text-content-muted font-mono block">
+                                  <span className="text-[10px] text-neutral-400 font-mono block">
                                     /{item.slug}
                                   </span>
                                 </div>
@@ -725,55 +722,55 @@ export default function AdminDashboard() {
                             </td>
 
                             {/* Category */}
-                            <td className="py-3.5 px-4 text-content-secondary">
+                            <td className="py-3 px-4 text-neutral-600">
                               {t.categories[item.category] || item.category}
                             </td>
 
                             {/* Status */}
-                            <td className="py-3.5 px-4">
+                            <td className="py-3 px-4">
                               <span
-                                className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase font-bold ${
+                                className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono uppercase font-semibold ${
                                   item.status === 'published'
-                                    ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
-                                    : 'bg-neutral-800 text-neutral-400 border border-neutral-700'
+                                    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                                    : 'bg-neutral-100 text-neutral-600 border border-neutral-200'
                                 }`}
                               >
-                                <span className={`w-1.5 h-1.5 rounded-full ${item.status === 'published' ? 'bg-emerald-400' : 'bg-neutral-400'}`} />
+                                <span className={`w-1.5 h-1.5 rounded-full ${item.status === 'published' ? 'bg-emerald-600' : 'bg-neutral-400'}`} />
                                 {item.status}
                               </span>
                             </td>
 
                             {/* Video */}
-                            <td className="py-3.5 px-4">
+                            <td className="py-3 px-4">
                               {item.videoURL ? (
                                 <a
                                   href={item.videoURL}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-accent-red hover:underline flex items-center gap-1 font-mono"
+                                  className="text-accent-red hover:underline flex items-center gap-1 font-mono text-[11px]"
                                 >
                                   <span>{item.videoProvider || 'Video'}</span>
                                   <ExternalLink className="w-3 h-3" />
                                 </a>
                               ) : (
-                                <span className="text-content-muted">—</span>
+                                <span className="text-neutral-400">—</span>
                               )}
                             </td>
 
                             {/* Date */}
-                            <td className="py-3.5 px-4 text-content-muted font-mono">
+                            <td className="py-3 px-4 text-neutral-500 font-mono text-[11px]">
                               {formatDate(item.publishedAt || item.createdAt)}
                             </td>
 
                             {/* Actions */}
-                            <td className="py-3.5 px-4 text-right">
-                              <div className="flex items-center justify-end gap-2">
+                            <td className="py-3 px-4 text-right">
+                              <div className="flex items-center justify-end gap-1.5">
                                 <button
                                   onClick={() => openEditor(activeTab === 'posts' ? 'post' : 'portfolio', 'edit', item)}
-                                  className="p-2 rounded-xl bg-surface-elevated hover:bg-surface border border-border text-content-secondary hover:text-white transition"
+                                  className="p-1.5 rounded-lg bg-neutral-100 hover:bg-neutral-200 text-neutral-700 transition"
                                   title={language === 'km' ? 'កែប្រែ' : 'Edit'}
                                 >
-                                  <Edit3 className="w-4 h-4" />
+                                  <Edit3 className="w-3.5 h-3.5" />
                                 </button>
                                 <button
                                   onClick={() => setConfirmDelete({
@@ -783,10 +780,10 @@ export default function AdminDashboard() {
                                     thumbnailPath: item.thumbnailPath || null,
                                     title: item.title,
                                   })}
-                                  className="p-2 rounded-xl bg-accent-red/10 hover:bg-accent-red/20 border border-accent-red/30 text-accent-red transition"
+                                  className="p-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition"
                                   title={language === 'km' ? 'លុប' : 'Delete'}
                                 >
-                                  <Trash2 className="w-4 h-4" />
+                                  <Trash2 className="w-3.5 h-3.5" />
                                 </button>
                               </div>
                             </td>
@@ -797,26 +794,26 @@ export default function AdminDashboard() {
                   </div>
 
                   {/* Pagination */}
-                  <div className="p-4 bg-surface-elevated border-t border-border flex items-center justify-between text-xs text-content-muted">
+                  <div className="p-3.5 bg-neutral-50 border-t border-neutral-200 flex items-center justify-between text-xs text-neutral-500">
                     <span>
                       {language === 'km' 
                         ? `ទំព័រ ${currentPage} នៃ ${totalPages} (សរុប ${filteredItems.length})`
                         : `Page ${currentPage} of ${totalPages} (${filteredItems.length} total)`}
                     </span>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5">
                       <button
                         onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
                         disabled={currentPage === 1}
-                        className="p-2 rounded-lg bg-surface border border-border disabled:opacity-40"
+                        className="p-1.5 rounded-lg bg-white border border-neutral-200 disabled:opacity-40"
                       >
-                        <ChevronLeft className="w-4 h-4" />
+                        <ChevronLeft className="w-3.5 h-3.5" />
                       </button>
                       <button
                         onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
                         disabled={currentPage === totalPages}
-                        className="p-2 rounded-lg bg-surface border border-border disabled:opacity-40"
+                        className="p-1.5 rounded-lg bg-white border border-neutral-200 disabled:opacity-40"
                       >
-                        <ChevronRight className="w-4 h-4" />
+                        <ChevronRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   </div>
@@ -829,53 +826,53 @@ export default function AdminDashboard() {
         </div>
       </main>
 
-      {/* CREATE / EDIT MODAL (100% HUMAN DESIGN) */}
+      {/* CREATE / EDIT MODAL (CLEAN LIGHT THEME) */}
       {editorModal.isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
-          <div className="relative w-full max-w-2xl bg-surface border border-border rounded-2xl shadow-2xl p-6 sm:p-8 my-8 max-h-[92vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs overflow-y-auto">
+          <div className="relative w-full max-w-2xl bg-white border border-neutral-200 rounded-2xl shadow-xl p-6 sm:p-7 my-8 max-h-[92vh] overflow-y-auto">
             
-            <div className="flex items-center justify-between pb-4 mb-6 border-b border-border">
+            <div className="flex items-center justify-between pb-3.5 mb-5 border-b border-neutral-200">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-rec-pulse" />
-                <h3 className="text-lg font-bold text-white">
-                  {editorModal.mode === 'create' ? t.admin.createTitle : t.admin.editTitle} {editorModal.type === 'post' ? (language === 'km' ? 'អត្ថបទរឿងរ៉ាវ' : 'Story Post') : (language === 'km' ? 'ស្នាដៃវីដេអូ' : 'Portfolio Video')}
+                <span className="w-2 h-2 rounded-full bg-accent-red" />
+                <h3 className="text-base font-bold text-neutral-900">
+                  {editorModal.mode === 'create' ? t.admin.createTitle : t.admin.editTitle} {editorModal.type === 'post' ? (language === 'km' ? 'អត្ថបទ' : 'Story') : (language === 'km' ? 'ស្នាដៃវីដេអូ' : 'Production')}
                 </h3>
               </div>
               <button
                 onClick={() => setEditorModal({ isOpen: false, mode: 'create', type: 'post', item: null })}
-                className="text-content-muted hover:text-white text-base"
+                className="text-neutral-400 hover:text-neutral-800 text-sm"
               >
                 ✕
               </button>
             </div>
 
-            <form onSubmit={handleFormSubmit} className="space-y-5 text-xs">
+            <form onSubmit={handleFormSubmit} className="space-y-4 text-xs">
               
               {/* Title */}
               <div>
-                <label className="block text-content-secondary font-semibold uppercase tracking-wider mb-1.5">
+                <label className="block text-neutral-700 font-semibold uppercase tracking-wider mb-1">
                   {t.admin.titleLabel}
                 </label>
                 <input
                   type="text"
                   required
-                  placeholder={language === 'km' ? "ឧ. តថភាពតាមដងផ្លូវ៖ ២៤ ម៉ោងជាមួយអ្នករត់កង់បី" : "e.g. STREET REALITY: Phnom Penh Tuk-Tuk Drivers"}
+                  placeholder={language === 'km' ? "ចំណងជើង..." : "Title..."}
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-background-primary border border-border focus:border-accent-red text-white text-sm focus:outline-none"
+                  className="w-full px-3.5 py-2 rounded-lg bg-white border border-neutral-200 focus:border-neutral-900 text-neutral-900 text-xs focus:outline-none"
                 />
               </div>
 
               {/* Category & Status */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-content-secondary font-semibold uppercase tracking-wider mb-1.5">
+                  <label className="block text-neutral-700 font-semibold uppercase tracking-wider mb-1">
                     {t.admin.categoryLabel}
                   </label>
                   <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-xl bg-background-primary border border-border focus:border-accent-red text-white focus:outline-none"
+                    className="w-full px-3 py-2 rounded-lg bg-white border border-neutral-200 focus:border-neutral-900 text-neutral-900 focus:outline-none"
                   >
                     {categoryOptions.map((opt) => (
                       <option key={opt.id} value={opt.id}>{opt.label}</option>
@@ -884,13 +881,13 @@ export default function AdminDashboard() {
                 </div>
 
                 <div>
-                  <label className="block text-content-secondary font-semibold uppercase tracking-wider mb-1.5">
+                  <label className="block text-neutral-700 font-semibold uppercase tracking-wider mb-1">
                     {t.admin.statusLabel}
                   </label>
                   <select
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-xl bg-background-primary border border-border focus:border-accent-red text-white focus:outline-none"
+                    className="w-full px-3 py-2 rounded-lg bg-white border border-neutral-200 focus:border-neutral-900 text-neutral-900 focus:outline-none"
                   >
                     <option value="published">{t.admin.statusPublished}</option>
                     <option value="draft">{t.admin.statusDraft}</option>
@@ -900,7 +897,7 @@ export default function AdminDashboard() {
 
               {/* Video URL with Live Provider Detection */}
               <div>
-                <label className="block text-content-secondary font-semibold uppercase tracking-wider mb-1.5">
+                <label className="block text-neutral-700 font-semibold uppercase tracking-wider mb-1">
                   {t.admin.videoLabel}
                 </label>
                 <input
@@ -908,21 +905,21 @@ export default function AdminDashboard() {
                   placeholder="https://www.youtube.com/watch?v=..."
                   value={formData.videoURL}
                   onChange={(e) => setFormData({ ...formData, videoURL: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-background-primary border border-border focus:border-accent-red text-white font-mono focus:outline-none"
+                  className="w-full px-3.5 py-2 rounded-lg bg-white border border-neutral-200 focus:border-neutral-900 text-neutral-900 font-mono focus:outline-none"
                 />
                 
                 {/* Live Video Preview Box */}
                 {detectedVideo && (
-                  <div className="mt-3 p-3 rounded-xl bg-background-primary border border-border/80">
-                    <div className="flex items-center justify-between text-[11px] text-content-secondary mb-2">
+                  <div className="mt-2.5 p-3 rounded-lg bg-neutral-50 border border-neutral-200">
+                    <div className="flex items-center justify-between text-[11px] text-neutral-600 mb-2">
                       <span className="font-mono text-accent-red font-semibold">
                         Provider: {detectedVideo.provider.toUpperCase()}
                       </span>
-                      <span>Live Embed Preview</span>
+                      <span>Preview</span>
                     </div>
 
                     {safeVideoEmbed ? (
-                      <div className="aspect-video w-full rounded-lg overflow-hidden bg-black">
+                      <div className="aspect-video w-full rounded-md overflow-hidden bg-black">
                         <iframe
                           src={safeVideoEmbed}
                           title="Preview"
@@ -931,7 +928,7 @@ export default function AdminDashboard() {
                         />
                       </div>
                     ) : (
-                      <p className="text-[11px] text-content-muted">
+                      <p className="text-[11px] text-neutral-500">
                         {language === 'km' ? 'វីដេអូនេះនឹងត្រូវបើកតាមរយៈតំណភ្ជាប់ផ្ទាល់។' : 'Video will open directly via external link.'}
                       </p>
                     )}
@@ -939,36 +936,36 @@ export default function AdminDashboard() {
                 )}
               </div>
 
-              {/* Thumbnail Upload (Firebase Storage) */}
+              {/* Thumbnail Upload */}
               <div>
-                <label className="block text-content-secondary font-semibold uppercase tracking-wider mb-1.5">
+                <label className="block text-neutral-700 font-semibold uppercase tracking-wider mb-1">
                   {t.admin.thumbnailLabel}
                 </label>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-xl border border-border bg-background-primary">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-3 rounded-lg border border-neutral-200 bg-neutral-50">
                   {imagePreview ? (
-                    <div className="w-20 h-20 rounded-xl overflow-hidden border border-border bg-black shrink-0">
+                    <div className="w-16 h-16 rounded-md overflow-hidden border border-neutral-200 bg-white shrink-0">
                       <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
                     </div>
                   ) : (
-                    <div className="w-20 h-20 rounded-xl border border-dashed border-border flex items-center justify-center text-content-muted shrink-0">
-                      <Upload className="w-6 h-6" />
+                    <div className="w-16 h-16 rounded-md border border-dashed border-neutral-300 flex items-center justify-center text-neutral-400 shrink-0">
+                      <Upload className="w-5 h-5" />
                     </div>
                   )}
 
-                  <div className="flex-1 space-y-2">
+                  <div className="flex-1 space-y-1.5">
                     <input
                       type="file"
                       accept="image/jpeg,image/png,image/webp"
                       onChange={handleImageChange}
-                      className="block w-full text-xs text-content-secondary file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-surface-elevated file:text-white hover:file:bg-border cursor-pointer"
+                      className="block w-full text-xs text-neutral-600 file:mr-2.5 file:py-1 file:px-2.5 file:rounded-md file:border file:border-neutral-200 file:text-xs file:font-medium file:bg-white file:text-neutral-800 hover:file:bg-neutral-100 cursor-pointer"
                     />
-                    <p className="text-[10px] text-content-muted">
-                      {language === 'km' ? 'ជ្រើសរើសរូបភាព JPG, PNG, WEBP (ទំហំអតិបរមា 10MB)' : 'Upload JPG, PNG, WEBP (Max 10MB)'}
+                    <p className="text-[10px] text-neutral-500">
+                      JPG, PNG, WEBP (Max 10MB)
                     </p>
                     {uploadProgress > 0 && uploadProgress < 100 && (
-                      <div className="w-full bg-surface-elevated rounded-full h-1.5">
+                      <div className="w-full bg-neutral-200 rounded-full h-1">
                         <div
-                          className="bg-accent-red h-1.5 rounded-full transition-all"
+                          className="bg-accent-red h-1 rounded-full transition-all"
                           style={{ width: `${uploadProgress}%` }}
                         />
                       </div>
@@ -979,68 +976,68 @@ export default function AdminDashboard() {
 
               {/* Description */}
               <div>
-                <label className="block text-content-secondary font-semibold uppercase tracking-wider mb-1.5">
+                <label className="block text-neutral-700 font-semibold uppercase tracking-wider mb-1">
                   {t.admin.descLabel}
                 </label>
                 <textarea
                   required
-                  rows={3}
-                  placeholder={language === 'km' ? "សង្ខេបអំពីវីដេអូ ឬរឿងរ៉ាវនេះ..." : "Brief synopsis or teaser of this production..."}
+                  rows={2}
+                  placeholder={language === 'km' ? "ការពិពណ៌នាសង្ខេប..." : "Brief synopsis..."}
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-background-primary border border-border focus:border-accent-red text-white text-xs focus:outline-none"
+                  className="w-full px-3 py-2 rounded-lg bg-white border border-neutral-200 focus:border-neutral-900 text-neutral-900 text-xs focus:outline-none"
                 />
               </div>
 
-              {/* Full Content (Especially for Posts) */}
+              {/* Full Content */}
               {editorModal.type === 'post' && (
                 <div>
-                  <label className="block text-content-secondary font-semibold uppercase tracking-wider mb-1.5">
+                  <label className="block text-neutral-700 font-semibold uppercase tracking-wider mb-1">
                     {t.admin.contentLabel}
                   </label>
                   <textarea
-                    rows={6}
-                    placeholder={language === 'km' ? "សរសេររឿងរ៉ាវលម្អិត បទពិសោធន៍ពីទីតាំងថត..." : "Write the full story, interview quotes, field notes..."}
+                    rows={5}
+                    placeholder={language === 'km' ? "ខ្លឹមសាររឿងរ៉ាវពេញលេញ..." : "Full story text..."}
                     value={formData.content}
                     onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-background-primary border border-border focus:border-accent-red text-white text-xs focus:outline-none"
+                    className="w-full px-3 py-2 rounded-lg bg-white border border-neutral-200 focus:border-neutral-900 text-neutral-900 text-xs focus:outline-none"
                   />
                 </div>
               )}
 
               {/* Featured Checkbox */}
-              <div className="flex items-center gap-3 pt-2">
+              <div className="flex items-center gap-2 pt-1">
                 <input
                   type="checkbox"
                   id="featuredToggle"
                   checked={formData.featured}
                   onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                  className="w-4 h-4 rounded border-border text-accent-red focus:ring-accent-red"
+                  className="w-4 h-4 rounded border-neutral-300 text-accent-red focus:ring-accent-red"
                 />
-                <label htmlFor="featuredToggle" className="text-white font-medium cursor-pointer flex items-center gap-1.5">
+                <label htmlFor="featuredToggle" className="text-neutral-800 font-medium cursor-pointer flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-accent-red" />
                   <span>{t.admin.featuredToggle}</span>
                 </label>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-border">
+              <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-neutral-200">
                 <button
                   type="button"
                   onClick={() => setEditorModal({ isOpen: false, mode: 'create', type: 'post', item: null })}
                   disabled={actionLoading}
-                  className="px-4 py-2 rounded-xl bg-surface-elevated border border-border text-content-secondary hover:text-white"
+                  className="px-3.5 py-1.5 rounded-lg bg-neutral-100 hover:bg-neutral-200 text-neutral-700"
                 >
                   {t.admin.cancelBtn}
                 </button>
                 <button
                   type="submit"
                   disabled={actionLoading}
-                  className="px-6 py-2 rounded-xl bg-accent-red hover:bg-accent-darkRed text-white font-bold uppercase tracking-wider shadow-rec-glow flex items-center gap-2 disabled:opacity-50"
+                  className="px-5 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white font-semibold shadow-xs flex items-center gap-2 disabled:opacity-50"
                 >
                   {actionLoading ? (
                     <>
-                      <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <span className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       <span>{language === 'km' ? 'កំពុងរក្សាទុក...' : 'Saving...'}</span>
                     </>
                   ) : (

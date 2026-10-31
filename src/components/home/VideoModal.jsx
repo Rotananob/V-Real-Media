@@ -29,34 +29,34 @@ export default function VideoModal({ isOpen, video, onClose }) {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/90 backdrop-blur-md">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/60 backdrop-blur-sm">
         
         {/* Backdrop click */}
         <div className="absolute inset-0" onClick={onClose} />
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 15 }}
+          initial={{ opacity: 0, scale: 0.98, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 15 }}
-          transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="relative z-10 w-full max-w-4xl bg-surface border border-border rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+          exit={{ opacity: 0, scale: 0.98, y: 10 }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
+          className="relative z-10 w-full max-w-4xl bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
         >
           {/* Header Bar */}
-          <div className="flex items-center justify-between px-5 py-3.5 bg-surface-elevated border-b border-border">
+          <div className="flex items-center justify-between px-5 py-3.5 bg-neutral-50 border-b border-neutral-200">
             <div className="flex items-center gap-2.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-rec-pulse" />
-              <span className="text-xs font-mono font-bold tracking-widest text-accent-red uppercase">
-                {parsed.provider.toUpperCase()} {t.portfolio.modalPlayback}
+              <span className="w-2 h-2 rounded-full bg-accent-red" />
+              <span className="text-xs font-mono font-bold tracking-widest text-neutral-800 uppercase">
+                {parsed.provider.toUpperCase()}
               </span>
-              <span className="text-content-muted text-xs hidden sm:inline">•</span>
-              <span className="text-xs text-content-secondary truncate max-w-xs sm:max-w-md font-khmer">
+              <span className="text-neutral-400 text-xs hidden sm:inline">•</span>
+              <span className="text-xs text-neutral-600 truncate max-w-xs sm:max-w-md font-khmer">
                 {video.title}
               </span>
             </div>
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-content-muted hover:text-white hover:bg-surface border border-transparent hover:border-border transition"
+              className="p-1 rounded-lg text-neutral-500 hover:text-neutral-900 hover:bg-neutral-200/60 transition"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -81,21 +81,21 @@ export default function VideoModal({ isOpen, video, onClose }) {
                 className="w-full h-full object-contain"
               />
             ) : (
-              <div className="text-center p-8 max-w-md font-khmer">
-                <div className="w-12 h-12 rounded-full bg-surface-elevated border border-border flex items-center justify-center mx-auto mb-4 text-accent-red">
+              <div className="text-center p-8 max-w-md font-khmer text-white">
+                <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center mx-auto mb-4 text-accent-red">
                   <ExternalLink className="w-6 h-6" />
                 </div>
-                <h4 className="text-lg font-bold text-white mb-2">
+                <h4 className="text-lg font-bold mb-2">
                   {video.title}
                 </h4>
-                <p className="text-xs text-content-secondary mb-6 leading-relaxed">
+                <p className="text-xs text-neutral-400 mb-6 leading-relaxed">
                   វីដេអូនេះត្រូវបានបង្ហោះនៅលើ {parsed.provider}។ អ្នកអាចចុចបើកទស្សនាលើផ្លេតហ្វមដើមបានដោយផ្ទាល់។
                 </p>
                 <a
                   href={videoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent-red text-white text-xs font-bold uppercase tracking-wider shadow-rec-glow hover:bg-accent-darkRed transition"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-accent-red text-white text-xs font-bold uppercase tracking-wider hover:bg-accent-darkRed transition"
                 >
                   <span>{t.portfolio.openInNewTab}</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -105,12 +105,12 @@ export default function VideoModal({ isOpen, video, onClose }) {
           </div>
 
           {/* Video Metadata Footer */}
-          <div className="p-5 bg-surface border-t border-border/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-khmer">
+          <div className="p-5 bg-white border-t border-neutral-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-khmer">
             <div>
-              <h3 className="text-base font-bold text-white mb-1">
+              <h3 className="text-base font-bold text-neutral-900 mb-1">
                 {video.title}
               </h3>
-              <p className="text-xs text-content-secondary line-clamp-2 max-w-2xl leading-relaxed">
+              <p className="text-xs text-neutral-600 line-clamp-2 max-w-2xl leading-relaxed">
                 {video.description}
               </p>
             </div>
@@ -120,7 +120,7 @@ export default function VideoModal({ isOpen, video, onClose }) {
                 href={videoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 px-3.5 py-1.5 rounded-lg bg-surface-elevated border border-border hover:border-accent-red text-xs text-content-secondary hover:text-white transition flex items-center gap-1.5"
+                className="shrink-0 px-3.5 py-1.5 rounded-lg bg-neutral-100 border border-neutral-200 hover:border-neutral-300 text-xs text-neutral-700 hover:text-neutral-900 transition flex items-center gap-1.5"
               >
                 <span>{t.portfolio.originalLink}</span>
                 <ExternalLink className="w-3.5 h-3.5" />

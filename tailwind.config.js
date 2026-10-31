@@ -4,59 +4,46 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         background: {
-          primary: '#080808',
-          secondary: '#101010',
+          primary: '#FAFAFA',
+          secondary: '#FFFFFF',
+          tertiary: '#F4F4F5',
         },
         surface: {
-          DEFAULT: '#141414',
-          elevated: '#1D1D1D',
-          hover: '#242424',
+          DEFAULT: '#FFFFFF',
+          elevated: '#F9FAFB',
+          hover: '#F4F4F5',
         },
         accent: {
-          red: '#E5383B',
+          red: '#D90429',
           darkRed: '#BA181B',
-          warmAmber: '#E0A96D',
+          softRed: '#FFF1F2',
         },
         content: {
-          primary: '#FDFDFD',
-          secondary: '#A8A8A8',
-          muted: '#737373',
+          primary: '#09090B',
+          secondary: '#52525B',
+          muted: '#71717A',
         },
         border: {
-          DEFAULT: '#262626',
-          subtle: '#383838',
+          DEFAULT: '#E4E4E7',
+          subtle: '#F4F4F5',
+          strong: '#D4D4D8',
         },
       },
       fontFamily: {
         khmer: ['"Kantumruy Pro"', 'Inter', 'sans-serif'],
-        'khmer-display': ['"Koulen"', '"Space Grotesk"', 'sans-serif'],
+        'khmer-display': ['"Koulen"', '"Manrope"', 'sans-serif'],
         sans: ['Inter', '"Kantumruy Pro"', 'sans-serif'],
         display: ['"Space Grotesk"', '"Koulen"', 'sans-serif'],
         heading: ['Manrope', '"Kantumruy Pro"', 'sans-serif'],
       },
-      animation: {
-        'rec-pulse': 'recPulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'subtle-pulse': 'subtlePulse 3s infinite ease-in-out',
-      },
-      keyframes: {
-        recPulse: {
-          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
-          '50%': { opacity: '0.25', transform: 'scale(0.92)' },
-        },
-        subtlePulse: {
-          '0%, 100%': { opacity: '0.8' },
-          '50%': { opacity: '0.4' },
-        },
-      },
       boxShadow: {
-        'rec-glow': '0 0 25px -2px rgba(229, 56, 59, 0.45)',
-        'surface-card': '0 12px 35px -12px rgba(0, 0, 0, 0.85)',
-        'human-card': '0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05)',
+        'human-card': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05)',
+        'human-card-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04)',
+        'subtle-elevation': '0 4px 12px rgba(0, 0, 0, 0.05)',
       },
     },
   },

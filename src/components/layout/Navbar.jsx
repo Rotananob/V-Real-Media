@@ -14,7 +14,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 15);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -39,62 +39,56 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-200 ${
         isScrolled
-          ? 'bg-background-primary/95 backdrop-blur-md border-b border-border py-3 shadow-2xl'
-          : 'bg-gradient-to-b from-black/90 via-black/50 to-transparent py-4'
+          ? 'bg-white/95 backdrop-blur-md border-b border-neutral-200 py-3 shadow-sm'
+          : 'bg-white/80 backdrop-blur-sm border-b border-neutral-100 py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Brand Logo & Physical REC Indicator */}
+          {/* Brand Logo & Subtle REC Indicator */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-border group-hover:border-accent-red/60 transition-colors bg-surface shadow-human-card flex items-center justify-center p-0.5">
+            <div className="w-10 h-10 rounded-lg overflow-hidden border border-neutral-200 bg-white p-0.5 shadow-sm flex items-center justify-center">
               <img
                 src="/assets/logo.jpg"
-                alt="V-Real Media Logo"
-                className="w-full h-full object-cover rounded-lg transform group-hover:scale-105 transition-transform duration-300"
+                alt="V-Real Media"
+                className="w-full h-full object-cover rounded-md"
               />
             </div>
             
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
-                <span className="font-display font-extrabold text-xl tracking-tight text-white group-hover:text-accent-red transition-colors">
+                <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight text-neutral-900 group-hover:text-accent-red transition-colors">
                   V-REAL
                 </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-surface border border-border text-content-secondary font-mono tracking-wider">
+                <span className="text-[10px] px-1.5 py-0.2 rounded bg-neutral-100 border border-neutral-200 text-neutral-600 font-mono tracking-wider font-semibold">
                   MEDIA
                 </span>
-                {/* Physical Camera REC Lamp */}
-                <div className="flex items-center gap-1.5 bg-accent-red/10 border border-accent-red/30 px-2 py-0.5 rounded-full shadow-rec-glow/20">
-                  <span className="w-2 h-2 rounded-full bg-accent-red animate-rec-pulse" />
-                  <span className="text-[10px] font-mono font-bold tracking-widest text-accent-red uppercase">
-                    REC
-                  </span>
-                </div>
+                <span className="w-2 h-2 rounded-full bg-accent-red inline-block" title="Active Production" />
               </div>
-              <span className="text-[11px] text-content-muted tracking-wide font-khmer hidden sm:block">
+              <span className="text-[11px] text-neutral-500 font-khmer hidden sm:block">
                 តថភាពតាមដងផ្លូវកម្ពុជា
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-7">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm transition-all duration-200 relative py-1 font-khmer ${
+                className={`text-sm transition-colors duration-150 relative py-1 font-khmer ${
                   isActive(link.path)
-                    ? 'text-white font-semibold'
-                    : 'text-content-secondary hover:text-white'
+                    ? 'text-neutral-900 font-semibold'
+                    : 'text-neutral-600 hover:text-neutral-900'
                 }`}
               >
                 {link.name}
                 {isActive(link.path) && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-red shadow-rec-glow" />
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-red rounded-full" />
                 )}
               </Link>
             ))}
@@ -103,80 +97,75 @@ export default function Navbar() {
           {/* Right Controls: Language Selector, Quick Call, CMS Link */}
           <div className="hidden md:flex items-center gap-3">
             
-            {/* Language Switcher Pill */}
-            <div className="flex items-center bg-surface border border-border rounded-lg p-0.5 text-xs font-medium">
+            {/* Language Switcher (Zero Emoji - Clean Icons & Text) */}
+            <div className="flex items-center bg-neutral-100 border border-neutral-200 rounded-lg p-0.5 text-xs">
               <button
                 type="button"
                 onClick={() => setLanguage('km')}
-                className={`px-2.5 py-1 rounded-md transition flex items-center gap-1 ${
+                className={`px-2.5 py-1 rounded-md transition font-khmer text-xs ${
                   language === 'km'
-                    ? 'bg-accent-red text-white shadow-sm font-semibold'
-                    : 'text-content-secondary hover:text-white'
+                    ? 'bg-white text-neutral-900 font-bold shadow-sm'
+                    : 'text-neutral-600 hover:text-neutral-900'
                 }`}
-                title="ប្តូរទៅភាសាខ្មែរ"
               >
-                <span>🇰🇭</span>
-                <span>ខ្មែរ</span>
+                ខ្មែរ
               </button>
               <button
                 type="button"
                 onClick={() => setLanguage('en')}
-                className={`px-2.5 py-1 rounded-md transition flex items-center gap-1 ${
+                className={`px-2.5 py-1 rounded-md transition text-xs font-mono ${
                   language === 'en'
-                    ? 'bg-accent-red text-white shadow-sm font-semibold'
-                    : 'text-content-secondary hover:text-white'
+                    ? 'bg-white text-neutral-900 font-bold shadow-sm'
+                    : 'text-neutral-600 hover:text-neutral-900'
                 }`}
-                title="Switch to English"
               >
-                <span>🇬🇧</span>
-                <span>EN</span>
+                EN
               </button>
             </div>
 
-            {/* Direct Phone Call Button */}
+            {/* Quick Call */}
             <a
               href={`tel:${BRAND.contact.phone}`}
-              className="px-3.5 py-2 text-xs font-semibold rounded-lg bg-surface border border-border hover:border-accent-red/50 text-white transition flex items-center gap-2 group"
+              className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-neutral-50 border border-neutral-200 hover:border-neutral-300 text-neutral-800 transition flex items-center gap-2"
             >
-              <Phone className="w-3.5 h-3.5 text-accent-red group-hover:scale-110 transition-transform" />
+              <Phone className="w-3.5 h-3.5 text-accent-red" />
               <span className="font-mono">{BRAND.contact.phoneDisplay}</span>
             </a>
 
-            {/* Admin CMS Access Button */}
+            {/* Admin CMS Access */}
             <Link
               to={user ? "/admin" : "/login"}
-              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition flex items-center gap-2 ${
+              className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition flex items-center gap-1.5 ${
                 user
-                  ? 'bg-accent-red text-white hover:bg-accent-darkRed shadow-rec-glow'
-                  : 'bg-surface-elevated text-content-primary hover:text-white hover:border-accent-red/50 border border-border'
+                  ? 'bg-accent-red text-white hover:bg-accent-darkRed shadow-sm'
+                  : 'bg-neutral-900 text-white hover:bg-neutral-800'
               }`}
-              title={user ? "Open Admin CMS" : "Admin Login"}
             >
-              <Shield className={`w-3.5 h-3.5 ${user ? 'text-white' : 'text-accent-red'}`} />
-              <span className="font-khmer">{user ? t.nav.admin : "Admin CMS"}</span>
+              <Shield className="w-3.5 h-3.5" />
+              <span className="font-khmer">{user ? t.nav.admin : "Admin"}</span>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Trigger */}
           <div className="flex items-center gap-2 md:hidden">
-            {/* Mobile Language Switcher */}
+            {/* Mobile Lang Button (Clean) */}
             <button
               onClick={() => setLanguage(language === 'km' ? 'en' : 'km')}
-              className="px-2.5 py-1 text-xs rounded-lg bg-surface border border-border text-white font-medium"
+              className="px-2.5 py-1 text-xs rounded-lg bg-neutral-100 border border-neutral-200 text-neutral-800 font-semibold"
             >
-              {language === 'km' ? '🇰🇭 ខ្មែរ' : '🇬🇧 EN'}
+              {language === 'km' ? 'EN' : 'ខ្មែរ'}
             </button>
 
             <Link
               to={user ? "/admin" : "/login"}
-              className="p-2 rounded-lg bg-surface border border-border text-accent-red"
+              className="p-2 rounded-lg bg-neutral-100 border border-neutral-200 text-neutral-800"
             >
               <Shield className="w-4 h-4" />
             </Link>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-surface border border-border text-content-primary hover:text-white"
+              className="p-2 rounded-lg bg-neutral-100 border border-neutral-200 text-neutral-800 hover:bg-neutral-200"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -187,16 +176,16 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-background-primary/95 backdrop-blur-xl border-b border-border px-4 pt-4 pb-6 mt-2 space-y-4 shadow-2xl">
-          <div className="flex flex-col space-y-2">
+        <div className="md:hidden bg-white border-b border-neutral-200 px-4 pt-4 pb-6 mt-2 space-y-4 shadow-lg">
+          <div className="flex flex-col space-y-1.5">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={`px-4 py-2.5 rounded-lg text-sm font-medium font-khmer transition ${
                   isActive(link.path)
-                    ? 'bg-surface text-accent-red border border-accent-red/30'
-                    : 'text-content-secondary hover:text-white hover:bg-surface/50'
+                    ? 'bg-neutral-100 text-neutral-900 font-bold'
+                    : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
                 }`}
               >
                 {link.name}
@@ -204,20 +193,20 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="pt-4 border-t border-border flex flex-col gap-3">
+          <div className="pt-4 border-t border-neutral-100 flex flex-col gap-2.5">
             <a
               href={`tel:${BRAND.contact.phone}`}
-              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-surface border border-border text-sm text-white font-medium"
+              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-neutral-50 border border-neutral-200 text-sm text-neutral-800 font-medium"
             >
               <Phone className="w-4 h-4 text-accent-red" />
               <span>{t.nav.callUs}: {BRAND.contact.phoneDisplay}</span>
             </a>
             <Link
               to={user ? "/admin" : "/login"}
-              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-accent-red text-white text-sm font-semibold shadow-rec-glow font-khmer"
+              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-neutral-900 text-white text-sm font-semibold font-khmer shadow-sm"
             >
               <Shield className="w-4 h-4" />
-              <span>{user ? t.nav.admin : "ចូលកាន់ Admin CMS"}</span>
+              <span>{user ? t.nav.admin : "Admin CMS"}</span>
             </Link>
           </div>
         </div>

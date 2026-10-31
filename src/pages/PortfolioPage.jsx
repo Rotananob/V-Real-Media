@@ -34,43 +34,43 @@ export default function PortfolioPage() {
   }, [portfolio, searchQuery]);
 
   return (
-    <div className="pt-28 pb-24 bg-background-primary min-h-screen font-khmer">
+    <div className="pt-28 pb-24 bg-[#FAFAFA] min-h-screen font-khmer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="max-w-3xl mb-12">
           <div className="flex items-center gap-2 mb-2">
-            <span className="w-2 h-2 rounded-full bg-accent-red animate-rec-pulse" />
+            <span className="w-2 h-2 rounded-full bg-accent-red" />
             <span className="text-xs font-mono uppercase tracking-widest text-accent-red font-semibold">
               {t.portfolio.sectionBadge}
             </span>
           </div>
 
-          <h1 className={`text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 ${
+          <h1 className={`text-4xl sm:text-5xl font-extrabold text-neutral-900 tracking-tight mb-4 ${
             language === 'km' ? 'font-khmer' : 'font-display uppercase'
           }`}>
             {t.portfolio.title}
           </h1>
 
-          <p className="text-base text-content-secondary leading-relaxed">
+          <p className="text-base text-neutral-600 leading-relaxed">
             {t.portfolio.subtitle}
           </p>
         </div>
 
         {/* Search & Category Filter Bar */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 pb-6 border-b border-border">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 pb-6 border-b border-neutral-200">
           
           {/* Categories */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none bg-neutral-100 p-1 rounded-xl border border-neutral-200">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 type="button"
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-medium font-khmer whitespace-nowrap transition-all duration-200 ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium font-khmer whitespace-nowrap transition-all duration-150 ${
                   selectedCategory === cat.id
-                    ? 'bg-accent-red text-white shadow-rec-glow'
-                    : 'bg-surface border border-border text-content-secondary hover:text-white hover:border-border/80'
+                    ? 'bg-white text-neutral-900 font-bold shadow-xs'
+                    : 'text-neutral-600 hover:text-neutral-900'
                 }`}
               >
                 {cat.name}
@@ -80,13 +80,13 @@ export default function PortfolioPage() {
 
           {/* Search Box */}
           <div className="relative w-full md:w-72">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-content-muted" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
             <input
               type="text"
               placeholder={t.portfolio.searchPlaceholder}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 text-xs rounded-lg bg-surface border border-border focus:border-accent-red focus:outline-none text-white placeholder-content-muted"
+              className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-white border border-neutral-200 focus:border-neutral-900 focus:outline-none text-neutral-900 placeholder-neutral-400 shadow-xs"
             />
           </div>
         </div>
@@ -107,7 +107,7 @@ export default function PortfolioPage() {
               searchQuery ? (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="px-4 py-2 text-xs rounded-lg bg-surface border border-border text-accent-red hover:text-white"
+                  className="px-4 py-2 text-xs rounded-lg bg-neutral-900 text-white font-medium"
                 >
                   សម្អាតការស្វែងរក
                 </button>

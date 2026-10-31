@@ -13,7 +13,7 @@ export default function LatestPosts() {
   const latestPosts = posts.slice(0, 3);
 
   return (
-    <section className="py-24 bg-background-secondary border-t border-border relative">
+    <section className="py-24 bg-white border-b border-neutral-200 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -25,7 +25,7 @@ export default function LatestPosts() {
                 {t.news.sectionBadge}
               </span>
             </div>
-            <h2 className={`text-3xl sm:text-4xl font-extrabold text-white tracking-tight ${
+            <h2 className={`text-3xl sm:text-4xl font-extrabold text-neutral-900 tracking-tight ${
               language === 'km' ? 'font-khmer' : 'font-display uppercase'
             }`}>
               {t.news.title}
@@ -34,10 +34,10 @@ export default function LatestPosts() {
 
           <Link
             to="/news"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-accent-red hover:text-white transition group font-khmer font-semibold"
+            className="inline-flex items-center gap-1.5 text-xs tracking-wider text-accent-red hover:text-neutral-900 transition font-khmer font-semibold"
           >
             <span>{t.news.viewAll}</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
