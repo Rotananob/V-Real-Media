@@ -54,7 +54,7 @@ export default function About() {
               </div>
 
               <div className="pt-4 flex items-center justify-between text-xs text-neutral-500 font-khmer">
-                <span>V-REAL MEDIA PRODUCTION</span>
+                <span>V-REAL • GEN-Z STREET MEDIA</span>
                 <span className="text-accent-red font-mono font-medium">CAMBODIA</span>
               </div>
             </div>

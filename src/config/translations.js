@@ -1,68 +1,88 @@
 /**
- * V-REAL MEDIA — Clean Human Editorial Translations (Khmer / English)
- * 100% Emoji-Free. Natural, Human, Warm & Strategic Storytelling.
+ * V-REAL MEDIA — Gen Z, Viral Street Reality & High-Impact Media House
+ * Inspired by modern viral creators (MrBeast, Yes Theory, Jubilee, Cut).
+ * Bold, Captivating, Authentic, Fearless, Brand & Sponsor Ready.
+ * 100% Emoji-Free. Crisp, Professional Typography.
  */
 export const TRANSLATIONS = {
   km: {
     // Navigation
     nav: {
       home: "ទំព័រដើម",
-      about: "អំពីពួកយើង",
-      portfolio: "វីដេអូរបស់យើង",
-      news: "រឿងរ៉ាវ & កំណត់ត្រា",
+      about: "V-REAL ជាអ្នកណា?",
+      portfolio: "មាតិកាវីដេអូ",
+      sponsors: "សម្រាប់ Sponsor & Brands",
+      news: "កំណត់ត្រាក្រៅឆាក",
       admin: "ប្រព័ន្ធគ្រប់គ្រង",
-      contact: "ទំនាក់ទំនង",
+      contact: "ទំនាក់ទំនង & សហការ",
       callUs: "ទូរស័ព្ទផ្ទាល់",
       lang: "ភាសា",
     },
 
-    // Hero
+    // Hero - Punchy, High Adrenaline, Hook
     hero: {
-      liveTag: "V-REAL MEDIA • ផលិតកម្មតថភាពតាមដងផ្លូវ",
+      liveTag: "V-REAL MEDIA • CAMBODIA STREET REALITY",
       recStatus: "REC",
-      headlineLine1: "រឿងរ៉ាវពិត",
-      headlineLine2: "ជីវិតពិត",
-      headlineLine3: "អារម្មណ៍ពិត",
-      description: "ពួកយើងកាន់កាមេរ៉ាចុះតាមផ្លូវ ជួបមនុស្សពិត និងកត់ត្រារឿងរ៉ាវជីវិតដែលគ្មានស្គ្រីប — ដើម្បីឆ្លុះបញ្ចាំងពីតថភាពសង្គម និងដាស់ស្មារតីឱ្យយើងកាន់តែយល់ចិត្តគ្នា។",
-      ctaExplore: "រឿងរ៉ាវរបស់ពួកយើង",
-      ctaWatch: "ទស្សនាវីដេអូ",
+      headlineLine1: "គ្មានស្គ្រីប",
+      headlineLine2: "គ្មានការសម្តែង",
+      headlineLine3: "តថភាពពិត ១០០%",
+      description: "ស្ទូឌីយោមាតិកាតថភាពតាមដងផ្លូវ និងការពិសោធន៍សង្គមជំនាន់ថ្មីនៅកម្ពុជា។ យើងកាន់កាមេរ៉ាចុះតាមផ្លូវបង្កើតវីដេអូដែលឆក់យកអារម្មណ៍ ជក់ចិត្តតាំងពីវិនាទីដំបូង និងបង្កើតការផ្លាស់ប្តូរពិតៗក្នុងសង្គម។",
+      ctaExplore: "ហេតុអ្វី V-REAL ខុសគេ?",
+      ctaWatch: "ទស្សនាមាតិកាពេញនិយម",
+      ctaCollab: "សហការឧបត្ថម្ភ (Sponsors)",
     },
 
-    // About
+    // About - Gen Z Creator Identity
     about: {
-      sectionBadge: "ដំណើរដើមទង • V-REAL MEDIA",
-      mainTitle: "គ្មានស្គ្រីប គ្មានការសម្តែង — យើងកត់ត្រា",
-      truthHighlight: "ជីវិតពិតជាក់ស្តែង",
-      p1: "ពួកយើងបង្កើត V-REAL MEDIA ឡើង ព្រោះតែជំនឿមួយយ៉ាងសាមញ្ញ៖ ជីវិតពិតរបស់អ្នកនៅជុំវិញខ្លួនយើង មានតម្លៃ និងមានអំណាចរំជួលចិត្តខ្លាំងជាងការសម្តែងណាទាំងអស់។ នៅតាមដងផ្លូវ ចិញ្ចើមថ្នល់ និងតាមផ្សារ មានរឿងរ៉ាវតស៊ូ ក្តីសង្ឃឹម និងទឹកចិត្តល្អជាច្រើនដែលមិនសូវមានអ្នកណាបានឮ។",
-      p2: "ក្រុមការងារពួកយើងចុះទៅដល់ទីតាំងផ្ទាល់ និយាយគ្នាដោយស្មោះត្រង់ គ្មានស្គ្រីប និងគ្មានការរៀបចំឈុតឆាកទុកជាមុនឡើយ។ តាមរយៈកម្មវិធីតថភាព និងការពិសោធន៍សង្គម យើងចង់ឱ្យបងប្អូនបានឃើញតថភាពជាក់ស្តែង យល់ពីទុក្ខធុរៈគ្នា និងបង្កើតភាពកក់ក្តៅក្នុងសង្គមខ្មែរយើង។",
-      missionTitle: "បំណងប្រាថ្នារបស់ពួកយើង",
-      missionDesc: "ផលិតវីដេអូតថភាព និងការពិសោធន៍សង្គមដែលនិយាយការពិត មិនបំភ្លៃ ដើម្បីចែករំលែកមេរៀនល្អៗ បង្កើតក្តីមេត្តា និងការជួយគ្នាទៅវិញទៅមក។",
-      visionTitle: "ទិសដៅទៅមុខ",
-      visionDesc: "ក្លាយជាកន្លែងចែករំលែករឿងរ៉ាវពិត និងភាពយន្តឯកសារដែលបងប្អូនខ្មែរទុកចិត្ត មើលហើយទទួលបានការគិតពិចារណា និងអារម្មណ៍កក់ក្តៅ។",
-      badge1: "និយាយគ្នាចេញពីចិត្ត គ្មានស្គ្រីប",
-      badge2: "គោរព និងមានការយល់ព្រមពីតួអង្គ",
-      badge3: "រក្សាសេចក្តីថ្លៃថ្នូររបស់មនុស្សគ្រប់រូប",
-      pillarsTitle: "របៀបដែលពួកយើងផលិតវីដេអូនីមួយៗ",
+      sectionBadge: "ចក្ខុវិស័យជំនាន់ថ្មី • GEN-Z STREET MEDIA",
+      mainTitle: "យើងបដិសេធរឿងប្រឌិតលើឆាក — យើងចាប់យក",
+      truthHighlight: "ថាមពលពិតនៃដងផ្លូវ",
+      p1: "យុគសម័យនៃការរៀបចំឈុតឆាក និងការសម្តែងក្លែងក្លាយបានកន្លងផុតទៅហើយ។ ទស្សនិកជនជំនាន់ថ្មីចង់ឃើញអ្វីដែលពិត ចង់ឃើញអារម្មណ៍ជាក់ស្តែង និងរឿងរ៉ាវដែលកើតឡើងពិតៗនៅជុំវិញខ្លួនពួកគេ។ នេះជាមូលហេតុដែល V-REAL MEDIA កើតឡើង។",
+      p2: "យើងជាក្រុមផលិតជំនាន់ថ្មីដែលហ៊ានចុះដល់ដងផ្លូវ ផ្សារ ចិញ្ចើមថ្នល់ និងគ្រប់ច្រកល្ហក ដើម្បីធ្វើការពិសោធន៍សង្គមដ៏ជក់ចិត្ត និងកត់ត្រាដំណើរជីវិតរបស់មនុស្សពិត។ រាល់វីដេអូ គឺផលិតឡើងដើម្បីបង្កើតការជជែកវែកញែក ឆក់យកការចាប់អារម្មណ៍ខ្លាំង និងបង្កើតឥទ្ធិពលវិជ្ជមានក្នុងសហគមន៍ខ្មែរ។",
+      missionTitle: "គោលដៅផលិតកម្ម",
+      missionDesc: "បង្កើតមាតិកាតថភាពតាមដងផ្លូវកម្រិតពិភពលោក ដែលមិនត្រឹមតែទាក់ទាញអ្នកទស្សនារាប់លាននាក់នោះទេ ប៉ុន្តែថែមទាំងផ្លាស់ប្តូរផ្នត់គំនិត និងជួយមនុស្សជាក់ស្តែង។",
+      visionTitle: "ទិសដៅអនាគត",
+      visionDesc: "ក្លាយជាបណ្តាញផ្សព្វផ្សាយមាតិកាតថភាព និងការពិសោធន៍សង្គមលេខ ១ នៅកម្ពុជា ដែលម៉ាកយីហោ (Brands & Sponsors) ទុកចិត្ត និងចង់សហការជាមួយបំផុត។",
+      badge1: "100% Unscripted — គ្មានស្គ្រីប",
+      badge2: "Viral Street Impact — ឥទ្ធិពលពិត",
+      badge3: "Cinematic Standard — គុណភាពភាពយន្ត",
+      pillarsTitle: "ទម្រង់មាតិកាដែលធ្វើឱ្យទស្សនិកជនជក់ចិត្ត",
       pillar1: {
-        title: "តថភាពតាមដងផ្លូវ",
-        tag: "Street Reality",
-        desc: "ចុះថតផ្ទាល់នៅកណ្តាលទីក្រុង និងជនបទ គ្មានការហាត់សម គ្មានការកាត់តបំភ្លៃ — បង្ហាញពីជីវិតពិតៗដែលកំពុងកើតឡើង។",
+        title: "ការពិសោធន៍សង្គមផ្ទាល់",
+        tag: "Social Experiments",
+        desc: "បង្កើតស្ថានការណ៍ដែលគ្មាននរណាទាយទុកមុន — សាកល្បងចិត្តមនុស្ស ភាពស្មោះត្រង់ និងប្រតិកម្មពិតៗនៅតាមដងផ្លូវ ដែលបង្កើតការជជែកពេញបណ្តាញសង្គម។",
       },
       pillar2: {
-        title: "ការពិសោធន៍សង្គម",
-        tag: "Social Experiment",
-        desc: "រៀបចំស្ថានការណ៍ជាក់ស្តែង ដើម្បីស្ទង់មើលប្រតិកម្ម ទឹកចិត្តស្មោះត្រង់ និងក្តីមេត្តារបស់មនុស្ស ដែលជួយឱ្យយើងចេះគិត និងយល់ចិត្តគ្នា។",
+        title: "តថភាពតាមដងផ្លូវ",
+        tag: "Street Reality",
+        desc: "សាច់រឿងពិតដែលកើតឡើងភ្លាមៗ គ្មានការហាត់សម គ្មានការកាត់តបំភ្លៃ — ថាមពលពិតដែលធ្វើឱ្យអ្នកទស្សនាមើលមិនព្រិចភ្នែកតាំងពីដើមដល់ចប់។",
       },
       pillar3: {
-        title: "រឿងរ៉ាវជីវិតមនុស្ស",
+        title: "រឿងរ៉ាវមនុស្ស & កម្លាំងចិត្ត",
         tag: "Human Stories",
-        desc: "ស្តាប់ការតស៊ូ និងបទពិសោធន៍របស់អ្នកដំណើរតាមផ្លូវ អ្នកលក់ដូរ និងបងប្អូនសាមញ្ញ ដែលរឿងខ្លះអាចជាកម្លាំងចិត្តដ៏ធំធេងសម្រាប់អ្នកទស្សនា។",
+        desc: "រឿងរ៉ាវតស៊ូ និងបទពិសោធន៍ជីវិតពិតរបស់អ្នកដំណើរតាមផ្លូវ និងបងប្អូនសាមញ្ញ — ប៉ះដួងចិត្តទស្សនិកជន និងផ្តល់កម្លាំងចិត្តពិតប្រាកដ។",
       },
       pillar4: {
-        title: "សារដាស់ស្មារតីសង្គម",
-        tag: "Community Impact",
-        desc: "គ្រប់វីដេអូមិនត្រឹមតែសម្រាប់ទស្សនាកម្សាន្តទេ តែជាសារដាស់តឿនចិត្ត ផ្សារភ្ជាប់ទំនាក់ទំនង និងលើកកម្ពស់សាមគ្គីភាពក្នុងសហគមន៍ខ្មែរ។",
+        title: "ការផ្លាស់ប្តូរជីវិត & ជំនួយពិត",
+        tag: "Real Impact & Giveback",
+        desc: "មិនមែនគ្រាន់តែជាការថតវីដេអូនោះទេ — យើងបង្កើតសកម្មភាពជួយមនុស្សជាក់ស្តែងនៅលើដងផ្លូវ បង្កើតស្នាមញញឹម និងការផ្លាស់ប្តូរពិតៗ។",
       },
+    },
+
+    // Why Sponsors & Brands Choose V-REAL
+    sponsors: {
+      badge: "BRAND PARTNERSHIPS & SPONSORSHIP",
+      title: "ហេតុអ្វី Brands & Sponsors ជ្រើសរើស V-REAL MEDIA?",
+      subtitle: "មាតិកាធម្មតាមនុស្សរំលង — ប៉ុន្តែមាតិកាតថភាពពិតរបស់ V-REAL ឆក់យកការចាប់អារម្មណ៍ពេញទំហឹង (High Retention & High Engagement)។",
+      point1Title: "ការចាប់អារម្មណ៍ពិត (High Watch Time)",
+      point1Desc: "វីដេអូគ្មានស្គ្រីបធ្វើឱ្យទស្សនិកជនជក់ចិត្តតាមដានតាំងពីវិនាទីដំបូងដល់ចប់ — គ្មានការចុច Skip ឬរំលងឡើយ។",
+      point2Title: "ការបញ្ជ្រាប Brand ប្រកបដោយភាពឆ្លាតវៃ",
+      point2Desc: "មិនមែនជាការផ្សាយពាណិជ្ជកម្មរំខានឡើយ — Brand របស់អ្នកនឹងក្លាយជាចំណែកមួយនៃសាច់រឿង ការជួយសង្គម ឬការពិសោធន៍ដែលទទួលបានការសរសើរពីមហាជន។",
+      point3Title: "កម្រិតរូបភាពភាពយន្ត 4K UHD",
+      point3Desc: "ផលិតកម្មកាមេរ៉ា សំឡេង និងបច្ចេកទេសកាត់តស្តង់ដារអន្តរជាតិ ដែលលើកកម្ពស់កិត្យានុភាពរបស់ Brand ដៃគូសហការ។",
+      point4Title: "ឥទ្ធិពល Viral លើបណ្តាញសង្គម",
+      point4Desc: "មាតិកាដែលដាស់អារម្មណ៍ទស្សនិកជន ជំរុញការចែករំលែក (Shares), ការបញ្ចេញមតិ (Comments) និងការរីករាលដាលខ្លាំងលើ TikTok និង YouTube។",
+      ctaBtn: "ទាក់ទងសហការឧបត្ថម្ភ",
     },
 
     // Categories
@@ -70,20 +90,20 @@ export const TRANSLATIONS = {
       all: "ទាំងអស់",
       "street-reality": "តថភាពតាមដងផ្លូវ",
       "social-experiment": "ការពិសោធន៍សង្គម",
-      documentary: "ភាពយន្តឯកសារ",
-      "human-stories": "រឿងរ៉ាវជីវិតពិត",
+      documentary: "ភាពយន្តឯកសារជីវិត",
+      "human-stories": "រឿងរ៉ាវមនុស្សពិត",
     },
 
     // Portfolio
     portfolio: {
-      sectionBadge: "វីដេអូរបស់ V-REAL",
-      title: "ស្នាដៃវីដេអូរបស់ពួកយើង",
+      sectionBadge: "ORIGINAL PRODUCTIONS",
+      title: "មាតិកាវីដេអូរបស់ពួកយើង",
       subtitle: "រាល់វីដេអូ គឺជាការចុះថតជាក់ស្តែង ជួបមនុស្សពិត និងរឿងរ៉ាវពិតដែលគ្មានការរៀបចំទុកជាមុន។",
       watchNow: "ទស្សនា",
       featured: "វីដេអូពិសេស",
       searchPlaceholder: "ស្វែងរកវីដេអូ...",
       emptyTitle: "វីដេអូភាគថ្មីៗកំពុងស្ថិតក្នុងការកាត់ត",
-      emptyDesc: "ក្រុមការងារពួកយើងកំពុងចុះថត និងកាត់តភាគថ្មីៗយ៉ាងសម្រិតសម្រាំង។ វីដេអូនឹងត្រូវបង្ហោះលើគេហទំព័រនេះឆាប់ៗនេះ សូមរង់ចាំទស្សនា!",
+      emptyDesc: "ក្រុមការងារពួកយើងកំពុងចុះថត និងសម្រិតសម្រាំងភាគថ្មីៗយ៉ាងយកចិត្តទុកដាក់។ វីដេអូនឹងត្រូវបង្ហោះលើគេហទំព័រនេះឆាប់ៗនេះ សូមរង់ចាំទស្សនា!",
       modalPlayback: "ការចាក់បញ្ចាំងវីដេអូ",
       openInNewTab: "បើកមើលក្នុងផ្ទាំងថ្មី",
       originalLink: "តំណភ្ជាប់ដើម",
@@ -91,11 +111,11 @@ export const TRANSLATIONS = {
 
     // News
     news: {
-      sectionBadge: "កំណត់ត្រាក្រៅឆាក",
-      title: "រឿងរ៉ាវ & កំណត់ត្រាពីទីតាំងថត",
+      sectionBadge: "BEHIND THE SCENES & LOGS",
+      title: "កំណត់ត្រាក្រៅឆាក & រឿងរ៉ាវពីទីតាំងថត",
       subtitle: "រឿងរ៉ាវប្លែកៗ អារម្មណ៍ពីទីតាំងថតផ្ទាល់ និងមេរៀនជីវិតដែលក្រុមការងារយើងបានជួបប្រទះ។",
       readStory: "អានបន្ត",
-      viewAll: "មើលរឿងរ៉ាវទាំងអស់",
+      viewAll: "មើលកំណត់ត្រាទាំងអស់",
       searchPlaceholder: "ស្វែងរកអត្ថបទ...",
       emptyTitle: "អត្ថបទកំពុងរៀបចំសរសេរ",
       emptyDesc: "ពួកយើងនឹងសរសេររៀបរាប់ពីរឿងរ៉ាវនៅពីក្រោយកាមេរ៉ា និងបទពិសោធន៍ផ្ទាល់ពីទីតាំងថតឆាប់ៗនេះ។",
@@ -104,24 +124,24 @@ export const TRANSLATIONS = {
       backToNews: "ត្រឡប់ទៅរឿងរ៉ាវទាំងអស់",
     },
 
-    // Contact CTA
+    // Contact & Brand Sponsor CTA
     cta: {
-      badge: "មានរឿងរ៉ាវចង់ចែករំលែក?",
-      title: "បើបងប្អូនមានរឿងរ៉ាវជីវិតចង់ប្រាប់ ឬមានគំនិតចង់ឱ្យពួកយើងចុះទៅថត...",
-      desc: "គ្រប់គ្នាសុទ្ធតែមានរឿងរ៉ាវពិសេសមួយក្នុងជីវិត។ បើបងប្អូន ឬមនុស្សជុំវិញខ្លួនមានដំណើរជីវិតដែលគួរឱ្យចាប់អារម្មណ៍ ឬចង់ឱ្យពួកយើងធ្វើការពិសោធន៍សង្គមលើប្រធានបទណាថ្មី សូមទាក់ទងមកពួកយើងដោយក្តីរីករាយ។",
-      callBtn: "ទូរស័ព្ទមកយើង: 096 869 1543",
-      emailBtn: "ផ្ញើអ៊ីមែលមកយើង: v.real.khmer@gmail.com",
+      badge: "COLLABORATION & SPONSORSHIP",
+      title: "ចង់ឱ្យ Brand របស់អ្នកលេចធ្លោក្នុងមាតិកា Viral ដែរឬទេ?",
+      desc: "V-REAL MEDIA ស្វាគមន៍ជានិច្ចចំពោះដៃគូសហការ Brand Sponsors និងបងប្អូនដែលមានរឿងរ៉ាវជីវិតពិសេសចង់ឱ្យពួកយើងចុះទៅថត។ ទាក់ទងមកក្រុមការងារយើងឥឡូវនេះ ដើម្បីពិភាក្សាអំពីគំនិត និងឱកាសសហការ។",
+      callBtn: "ទូរស័ព្ទសហការ: 096 869 1543",
+      emailBtn: "អ៊ីមែលសហការ: v.real.khmer@gmail.com",
     },
 
     // Footer
     footer: {
-      tagline: "ក្រុមផលិតវីដេអូតថភាពតាមដងផ្លូវ និងភាពយន្តឯកសារជីវិតពិត",
+      tagline: "ស្ទូឌីយោមាតិកាតថភាពតាមដងផ្លូវ និងការពិសោធន៍សង្គមជំនាន់ថ្មីនៅកម្ពុជា",
       navHeading: "មាតិកាសំខាន់ៗ",
-      contactHeading: "ទំនាក់ទំនងផ្ទាល់",
+      contactHeading: "ទំនាក់ទំនង & សហការ",
       socialHeading: "បណ្តាញសង្គមផ្លូវការ",
       socialDesc: "តាមដានវីដេអូប្រចាំថ្ងៃ ឈុតក្រៅឆាក និងរឿងរ៉ាវថ្មីៗលើ TikTok និង YouTube របស់ V-REAL។",
       rights: "រក្សាសិទ្ធិគ្រប់យ៉ាង។",
-      motto: "រឿងរ៉ាវពិត • ជីវិតពិត • អារម្មណ៍ពិត",
+      motto: "គ្មានស្គ្រីប • គ្មានការសម្តែង • តថភាពពិត ១០០%",
       adminPortal: "ច្រកចូលប្រព័ន្ធគ្រប់គ្រង CMS",
     },
 
@@ -176,62 +196,80 @@ export const TRANSLATIONS = {
     // Navigation
     nav: {
       home: "Home",
-      about: "Our Story",
-      portfolio: "Our Videos",
+      about: "Who We Are",
+      portfolio: "Original Videos",
+      sponsors: "For Sponsors & Brands",
       news: "Field Notes",
       admin: "Admin CMS",
-      contact: "Contact",
+      contact: "Contact & Collabs",
       callUs: "Direct Call",
       lang: "Language",
     },
 
     // Hero
     hero: {
-      liveTag: "V-REAL MEDIA • Street Reality & Documentaries",
+      liveTag: "V-REAL MEDIA • CAMBODIA STREET REALITY",
       recStatus: "REC",
-      headlineLine1: "REAL STORIES.",
-      headlineLine2: "REAL LIVES.",
-      headlineLine3: "REAL EMOTION.",
-      description: "We hit the streets with a camera and an open heart—capturing unfiltered human experiences and real-world social experiments that connect communities across Cambodia.",
-      ctaExplore: "Our Story",
-      ctaWatch: "Watch Videos",
+      headlineLine1: "NO SCRIPT.",
+      headlineLine2: "NO STAGING.",
+      headlineLine3: "100% REALITY.",
+      description: "Cambodia's next-generation street reality and social experiment media house. We hit the streets with cameras to create high-retention, addictive videos that spark cultural conversations and deliver real social impact.",
+      ctaExplore: "Why V-REAL?",
+      ctaWatch: "Watch Trending Videos",
+      ctaCollab: "Brand Sponsorships",
     },
 
     // About
     about: {
-      sectionBadge: "ORIGIN & PURPOSE • V-REAL MEDIA",
-      mainTitle: "No script, no staging — we document",
-      truthHighlight: "life as it happens",
-      p1: "V-REAL MEDIA began with a simple belief: the real lives of everyday people carry far more honesty and emotional power than any scripted production ever could. On the sidewalks, bustling markets, and provincial alleys, untold stories of courage, dilemma, and kindness are everywhere.",
-      p2: "Our team walks straight into real communities to listen, engage, and document without artificial setups. Through street reality episodes and thoughtful social experiments, we bring authentic Cambodian voices to light—challenging perspectives and fostering community empathy.",
-      missionTitle: "Our Purpose",
-      missionDesc: "To document real life and design thoughtful social experiments that spark empathy, inspire reflection, and encourage kindness across our society.",
-      visionTitle: "Where We're Headed",
-      visionDesc: "To be Cambodia's most trusted street reality and documentary platform—connecting people through honest, heartfelt storytelling.",
-      badge1: "Unscripted Conversations",
-      badge2: "Always Consensual",
-      badge3: "Respecting Human Dignity",
-      pillarsTitle: "How We Craft Every Story",
+      sectionBadge: "NEXT-GEN CREATOR PLATFORM • GEN-Z STREET MEDIA",
+      mainTitle: "We reject soundstage fiction — we capture",
+      truthHighlight: "raw street energy",
+      p1: "The era of staged scripts and fake reactions is over. Today's digital audience demands authenticity, raw human emotions, and moments that happen in the wild. That's exactly why V-REAL MEDIA exists.",
+      p2: "We are an unscripted production team hitting streets, local markets, and urban alleys to conduct viral social experiments and record untold human stories. Every video is built to stop the scroll, spark massive debate, and leave a lasting cultural footprint.",
+      missionTitle: "Production Purpose",
+      missionDesc: "To produce world-class street reality and social experiments that don't just capture millions of views, but actively bridge divides and change lives on the ground.",
+      visionTitle: "Our Trajectory",
+      visionDesc: "To stand as Cambodia's #1 viral street reality and documentary media platform—the go-to partner for top brands and sponsors.",
+      badge1: "100% Unscripted Reality",
+      badge2: "Viral Street Impact",
+      badge3: "Cinematic 4K UHD",
+      pillarsTitle: "High-Retention Content Formats",
       pillar1: {
-        title: "Street Reality",
-        tag: "Street Reality",
-        desc: "Unstaged, raw interactions filmed in urban streets and rural towns—capturing reality exactly as it unfolds.",
+        title: "Live Social Experiments",
+        tag: "Social Experiments",
+        desc: "Unpredictable street setups that test human psychology, honesty, and empathy in real time—driving massive social debates and shares.",
       },
       pillar2: {
-        title: "Social Experiments",
-        tag: "Social Experiment",
-        desc: "Creating real-world situations to observe genuine reactions, testing honesty, compassion, and human warmth.",
+        title: "Extreme Street Reality",
+        tag: "Street Reality",
+        desc: "Real-time human interactions without rehearsal or staging—pure unadulterated street adrenaline that keeps viewers glued to the screen.",
       },
       pillar3: {
-        title: "Human Stories",
+        title: "Raw Human Stories",
         tag: "Human Stories",
-        desc: "Listening to the quiet struggles, resilience, and wisdom of everyday Cambodians, turning untold stories into inspiration.",
+        desc: "Emotional journeys of everyday street vendors, workers, and resilient people—delivering authentic tears, laughter, and courage.",
       },
       pillar4: {
-        title: "Community Impact",
-        tag: "Community Impact",
-        desc: "Every story exists for a reason: to bridge divides, remind us of our shared humanity, and celebrate the Cambodian spirit.",
+        title: "Life-Changing Givebacks",
+        tag: "Real Impact & Giveback",
+        desc: "Beyond entertainment: we create tangible real-world assistance on the streets, turning video momentum into real human transformation.",
       },
+    },
+
+    // Why Sponsors & Brands Choose V-REAL
+    sponsors: {
+      badge: "BRAND PARTNERSHIPS & SPONSORSHIP",
+      title: "Why Top Brands & Sponsors Partner With V-REAL MEDIA",
+      subtitle: "Audiences skip normal ads — but they stay glued to V-REAL's authentic street reality (High Retention & High Engagement).",
+      point1Title: "High-Retention Attention",
+      point1Desc: "Unscripted setups hook viewers from the first 3 seconds to the very end—minimizing drop-offs and maximizing brand exposure.",
+      point2Title: "Seamless Organic Brand Integration",
+      point2Desc: "Not boring banner ads: your brand becomes the catalyst for a heartwarming giveback, an exciting experiment, or real human change.",
+      point3Title: "Cinematic 4K Production Standard",
+      point3Desc: "Broadcast-grade camera rigs, crisp directional audio, and dynamic editing that elevate your brand's prestige.",
+      point4Title: "Viral Social Reach Across TikTok & YouTube",
+      point4Desc: "Content built around curiosity and emotional pay-offs that naturally trigger viral shares, comments, and organic word-of-mouth.",
+      ctaBtn: "Inquire Sponsorship",
     },
 
     // Categories
@@ -239,13 +277,13 @@ export const TRANSLATIONS = {
       all: "All",
       "street-reality": "Street Reality",
       "social-experiment": "Social Experiment",
-      documentary: "Documentary",
-      "human-stories": "Human Stories",
+      documentary: "Human Documentaries",
+      "human-stories": "Real Life Stories",
     },
 
     // Portfolio
     portfolio: {
-      sectionBadge: "V-REAL PRODUCTIONS",
+      sectionBadge: "ORIGINAL PRODUCTIONS",
       title: "Our Original Videos",
       subtitle: "Unscripted street reality, community experiments, and heartfelt human documentaries.",
       watchNow: "Watch",
@@ -260,11 +298,11 @@ export const TRANSLATIONS = {
 
     // News
     news: {
-      sectionBadge: "FIELD NOTES",
+      sectionBadge: "BEHIND THE SCENES & LOGS",
       title: "Behind The Lens & Field Notes",
       subtitle: "Personal reflections, unscripted moments, and stories behind the camera from our crew.",
       readStory: "Read Story",
-      viewAll: "View All Stories",
+      viewAll: "View All Logs",
       searchPlaceholder: "Search notes...",
       emptyTitle: "Field Notes Coming Soon",
       emptyDesc: "We are putting together stories and reflections from our latest shoots. Stay tuned!",
@@ -275,22 +313,22 @@ export const TRANSLATIONS = {
 
     // Contact CTA
     cta: {
-      badge: "HAVE A STORY TO TELL?",
-      title: "Know an Untold Story or an Idea for an Experiment?",
-      desc: "Everyone has a story worth sharing. If you or someone you know has lived through a remarkable journey, or if you have a thoughtful idea for our next social experiment, our crew would love to hear from you.",
-      callBtn: "Call Us: 096 869 1543",
-      emailBtn: "Email Us: v.real.khmer@gmail.com",
+      badge: "COLLABORATION & SPONSORSHIP",
+      title: "Ready to Make Your Brand Part of Viral Street Content?",
+      desc: "V-REAL MEDIA is open to forward-thinking brand partners, sponsors, and people with captivating street stories. Connect directly with our production creators to discuss high-impact collaborations.",
+      callBtn: "Sponsorship Call: 096 869 1543",
+      emailBtn: "Sponsorship Email: v.real.khmer@gmail.com",
     },
 
     // Footer
     footer: {
-      tagline: "Authentic Street Reality & Documentary Production",
+      tagline: "Cambodia's Next-Generation Street Reality & Social Experiment Media House",
       navHeading: "Navigation",
-      contactHeading: "Direct Contact",
+      contactHeading: "Contact & Collabs",
       socialHeading: "Official Channels",
       socialDesc: "Follow our daily street episodes, behind-the-scenes teasers, and community updates on TikTok and YouTube.",
       rights: "All rights reserved.",
-      motto: "Real Stories • Real Lives • Real Emotion",
+      motto: "No Script • No Staging • 100% Reality",
       adminPortal: "Admin CMS Login",
     },
 

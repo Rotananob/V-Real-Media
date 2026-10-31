@@ -3,9 +3,9 @@
  */
 export const BRAND = {
   name: "V-REAL MEDIA",
-  tagline: "Real Stories • Real Lives • Real Emotion",
-  description: "We hit the streets with a camera and an open heart—capturing unfiltered human experiences and real-world social experiments that connect communities across Cambodia.",
-  shortDescription: "Unscripted street reality, meaningful social experiments, and authentic human documentaries in Cambodia.",
+  tagline: "No Script • No Staging • 100% Reality",
+  description: "Cambodia's next-generation street reality and social experiment media house. We hit the streets with cameras to create high-retention, addictive videos that spark cultural conversations and deliver real social impact.",
+  shortDescription: "Viral street reality, unscripted social experiments, and high-impact human documentaries in Cambodia.",
   
   // Contact details
   contact: {

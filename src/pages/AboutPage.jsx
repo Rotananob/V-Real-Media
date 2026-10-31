@@ -22,13 +22,13 @@ export default function AboutPage() {
           <h1 className={`text-4xl sm:text-6xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-6 ${
             language === 'km' ? 'font-khmer' : 'font-display uppercase'
           }`}>
-            {language === 'km' ? "រឿងរ៉ាវពិត ដែលកើតចេញពីដងផ្លូវ" : "Real Stories From The Streets"}
+            {language === 'km' ? "ចក្ខុវិស័យជំនាន់ថ្មី • តថភាពពិត ១០០%" : "Next-Gen Street Reality • 100% Unscripted"}
           </h1>
 
           <p className="text-base sm:text-lg text-neutral-600 leading-relaxed">
             {language === 'km' 
-              ? "ដំណើរដើមទង គោលបំណង និងទឹកចិត្តរបស់ក្រុមការងារ V-REAL MEDIA ក្នុងការចុះទៅកត់ត្រាជីវិតពិតរបស់មនុស្សនៅជុំវិញខ្លួនយើង។"
-              : "The origin, purpose, and heart behind V-REAL MEDIA—capturing authentic lives across Cambodia."}
+              ? "ស្វែងយល់ពីបេសកកម្មរបស់ V-REAL MEDIA ក្នុងការផ្លាស់ប្តូរទម្រង់មាតិកាឌីជីថលនៅកម្ពុជា តាមរយៈការពិសោធន៍សង្គមដ៏ជក់ចិត្ត និងតថភាពតាមដងផ្លូវកម្រិតពិភពលោក។"
+              : "Discover V-REAL MEDIA's mission to revolutionize Cambodian digital storytelling through high-retention street reality and viral social experiments."}
           </p>
         </div>
 
@@ -48,11 +48,11 @@ export default function AboutPage() {
 
             <div className="lg:col-span-8 space-y-5">
               <span className="text-xs text-accent-red font-mono uppercase tracking-widest font-semibold block">
-                ORIGIN STORY & PURPOSE
+                CREATOR PLATFORM & VISION
               </span>
 
               <h2 className="text-2xl sm:text-4xl font-extrabold text-neutral-900 leading-tight">
-                {language === 'km' ? "យើងមិនថតរឿងសម្តែង — យើងស្តាប់រឿងរ៉ាវពិតរបស់មនុស្ស" : "We Don't Stage Stories — We Listen to Real People"}
+                {language === 'km' ? "គ្មានស្គ្រីប គ្មានការរៀបចំ — ថាមពលពិតនៃដងផ្លូវ" : "Zero Scripts. Zero Staging. Pure Street Adrenaline."}
               </h2>
 
               <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">

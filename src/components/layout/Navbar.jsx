@@ -28,6 +28,7 @@ export default function Navbar() {
     { name: t.nav.home, path: '/' },
     { name: t.nav.about, path: '/#about', hash: '#about' },
     { name: t.nav.portfolio, path: '/#portfolio', hash: '#portfolio' },
+    { name: t.nav.sponsors, path: '/#sponsors', hash: '#sponsors' },
     { name: t.nav.news, path: '/news' },
     { name: t.nav.contact, path: '/#contact', hash: '#contact' },
   ];

@@ -5,7 +5,7 @@ import PortfolioGrid from '../components/home/PortfolioGrid';
 import LatestPosts from '../components/home/LatestPosts';
 import VideoModal from '../components/home/VideoModal';
 import { BRAND } from '../config/brand';
-import { Phone, Mail, MapPin, ExternalLink } from 'lucide-react';
+import { Phone, Mail, MapPin, ExternalLink, Zap, Eye, Video, Share2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function Home() {
@@ -27,6 +27,133 @@ export default function Home() {
 
       {/* About Section (Vision, Mission, Pillars) */}
       <About />
+
+      {/* Brand & Sponsor Partnership Section (Gen Z & Viral Media Kit) */}
+      <section id="sponsors" className="py-24 bg-[#FAFAFA] border-t border-b border-neutral-200 font-khmer">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="max-w-3xl mb-16">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-2 h-2 rounded-full bg-accent-red" />
+              <span className="text-xs font-mono uppercase tracking-widest text-accent-red font-semibold">
+                {t.sponsors.badge}
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-4">
+              {t.sponsors.title}
+            </h2>
+
+            <p className="text-base text-neutral-600 leading-relaxed">
+              {t.sponsors.subtitle}
+            </p>
+          </div>
+
+          {/* 4 Value Pillars for Brands */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div className="p-6 rounded-2xl bg-white border border-neutral-200 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-neutral-100 border border-neutral-200 flex items-center justify-center text-accent-red mb-4">
+                  <Eye className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-neutral-900 mb-2">
+                  {t.sponsors.point1Title}
+                </h3>
+                <p className="text-xs text-neutral-600 leading-relaxed">
+                  {t.sponsors.point1Desc}
+                </p>
+              </div>
+              <div className="mt-6 pt-3 border-t border-neutral-100 text-[11px] font-mono text-neutral-400">
+                HIGH RETENTION
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white border border-neutral-200 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-neutral-100 border border-neutral-200 flex items-center justify-center text-accent-red mb-4">
+                  <Zap className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-neutral-900 mb-2">
+                  {t.sponsors.point2Title}
+                </h3>
+                <p className="text-xs text-neutral-600 leading-relaxed">
+                  {t.sponsors.point2Desc}
+                </p>
+              </div>
+              <div className="mt-6 pt-3 border-t border-neutral-100 text-[11px] font-mono text-neutral-400">
+                ORGANIC INTEGRATION
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white border border-neutral-200 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-neutral-100 border border-neutral-200 flex items-center justify-center text-accent-red mb-4">
+                  <Video className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-neutral-900 mb-2">
+                  {t.sponsors.point3Title}
+                </h3>
+                <p className="text-xs text-neutral-600 leading-relaxed">
+                  {t.sponsors.point3Desc}
+                </p>
+              </div>
+              <div className="mt-6 pt-3 border-t border-neutral-100 text-[11px] font-mono text-neutral-400">
+                CINEMATIC 4K
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white border border-neutral-200 shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-neutral-100 border border-neutral-200 flex items-center justify-center text-accent-red mb-4">
+                  <Share2 className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-neutral-900 mb-2">
+                  {t.sponsors.point4Title}
+                </h3>
+                <p className="text-xs text-neutral-600 leading-relaxed">
+                  {t.sponsors.point4Desc}
+                </p>
+              </div>
+              <div className="mt-6 pt-3 border-t border-neutral-100 text-[11px] font-mono text-neutral-400">
+                VIRAL SOCIAL REACH
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Collab Pitch Card */}
+          <div className="p-8 rounded-2xl bg-neutral-900 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+            <div>
+              <h3 className="text-xl font-bold mb-2">
+                {language === 'km' ? 'តើអ្នកតំណាងឱ្យ Brand, Agency ឬផលិតផលមែនទេ?' : 'Representing a Brand, Agency, or Product?'}
+              </h3>
+              <p className="text-xs sm:text-sm text-neutral-400 max-w-xl leading-relaxed">
+                {language === 'km' 
+                  ? 'ទាក់ទងមកយើងឥឡូវនេះ ដើម្បីពិភាក្សាអំពីកញ្ចប់ឧបត្ថម្ភ (Sponsorship Packages) និងការបញ្ជ្រាប Brand ក្នុងមាតិកា Viral លើដងផ្លូវកម្ពុជា។'
+                  : 'Get in touch directly with our creator team to discuss custom sponsorship packages, product placements, and viral street activations.'}
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+              <a
+                href={`tel:${BRAND.contact.phone}`}
+                className="w-full sm:w-auto px-6 py-3 rounded-lg bg-accent-red hover:bg-accent-darkRed text-white text-xs font-semibold transition flex items-center justify-center gap-2 shadow-xs"
+              >
+                <Phone className="w-4 h-4" />
+                <span>{language === 'km' ? 'ទូរស័ព្ទសហការ' : 'Call Sponsorship'}: {BRAND.contact.phoneDisplay}</span>
+              </a>
+
+              <a
+                href={`mailto:${BRAND.contact.email}?subject=Brand%20Sponsorship%20Inquiry%20-%20V-REAL%20MEDIA`}
+                className="w-full sm:w-auto px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition flex items-center justify-center gap-2 border border-white/15"
+              >
+                <Mail className="w-4 h-4" />
+                <span>{language === 'km' ? 'ផ្ញើអ៊ីមែលសហការ' : 'Email Sponsorship'}</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
 
       {/* Portfolio Grid (Street Reality, Social Experiments, Documentaries) */}
       <PortfolioGrid title={t.portfolio.title} showAll={false} />

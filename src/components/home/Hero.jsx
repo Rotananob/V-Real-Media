@@ -52,15 +52,16 @@ export default function Hero() {
             href="#portfolio"
             className="w-full sm:w-auto px-6 py-3 rounded-lg bg-neutral-900 text-white font-semibold text-sm hover:bg-neutral-800 transition shadow-xs flex items-center justify-center gap-2"
           >
-            <span>{language === 'km' ? 'ទស្សនាវីដេអូ' : 'Watch Videos'}</span>
+            <span>{t.hero.ctaWatch}</span>
             <ArrowDown className="w-4 h-4" />
           </a>
 
           <a
-            href="#vision"
+            href="#sponsors"
             className="w-full sm:w-auto px-6 py-3 rounded-lg bg-white hover:bg-neutral-50 border border-neutral-200 text-neutral-800 font-semibold text-sm transition shadow-xs flex items-center justify-center gap-2"
           >
-            <span>{language === 'km' ? 'រឿងរ៉ាវរបស់ពួកយើង' : 'Our Story'}</span>
+            <span className="w-2 h-2 rounded-full bg-accent-red" />
+            <span>{t.hero.ctaCollab}</span>
           </a>
 
           <a
@@ -70,6 +71,27 @@ export default function Hero() {
             <Phone className="w-4 h-4 text-accent-red" />
             <span>{BRAND.contact.phoneDisplay}</span>
           </a>
+        </motion.div>
+
+        {/* High-Retention Creator Proof Bar */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="mt-12 pt-8 border-t border-neutral-200/60 flex flex-wrap items-center justify-center gap-6 text-xs text-neutral-500 font-mono"
+        >
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-red" />
+            <span>UNSCRIPTED REALITY</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-neutral-400" />
+            <span>HIGH RETENTION</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-neutral-400" />
+            <span>CINEMATIC 4K</span>
+          </div>
         </motion.div>
 
       </div>
