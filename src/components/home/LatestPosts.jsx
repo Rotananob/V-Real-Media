@@ -5,9 +5,11 @@ import { usePosts } from '../../hooks/usePosts';
 import PostCard from '../posts/PostCard';
 import Loader from '../common/Loader';
 import EmptyState from '../common/EmptyState';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function LatestPosts() {
   const { posts, loading } = usePosts('all');
+  const { t, language } = useLanguage();
   const latestPosts = posts.slice(0, 3);
 
   return (
@@ -20,30 +22,32 @@ export default function LatestPosts() {
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2 h-2 rounded-full bg-accent-red" />
               <span className="text-xs font-mono uppercase tracking-widest text-accent-red font-semibold">
-                EDITORIAL & NEWS
+                {t.news.sectionBadge}
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight uppercase">
-              Latest Stories & Insights
+            <h2 className={`text-3xl sm:text-4xl font-extrabold text-white tracking-tight ${
+              language === 'km' ? 'font-khmer' : 'font-display uppercase'
+            }`}>
+              {t.news.title}
             </h2>
           </div>
 
           <Link
             to="/news"
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-accent-red hover:text-white transition group"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-accent-red hover:text-white transition group font-khmer font-semibold"
           >
-            <span>View All Stories</span>
+            <span>{t.news.viewAll}</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
         {/* Content */}
         {loading ? (
-          <Loader size="lg" text="Loading Latest Stories..." />
+          <Loader size="lg" text="កំពុងទាញយកព័ត៌មាន..." />
         ) : latestPosts.length === 0 ? (
           <EmptyState
-            title="No Stories Published Yet"
-            description="Our documentary team is currently on the ground capturing new stories."
+            title={t.news.emptyTitle}
+            description="ក្រុមការងារកំពុងរៀបចំអត្ថបទថ្មីៗពីទីតាំងជាក់ស្តែង។"
             icon={Newspaper}
           />
         ) : (

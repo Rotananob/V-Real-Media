@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, Globe, Shield, ArrowUpRight, Heart, Play } from 'lucide-react';
+import { Phone, Mail, Globe, Shield, ArrowUpRight } from 'lucide-react';
 import { BRAND } from '../../config/brand';
+import { useLanguage } from '../../context/LanguageContext';
 
 function YouTubeIcon({ className = "w-4 h-4" }) {
   return (
@@ -13,9 +14,10 @@ function YouTubeIcon({ className = "w-4 h-4" }) {
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t, language, setLanguage } = useLanguage();
 
   return (
-    <footer className="relative bg-background-secondary border-t border-border pt-16 pb-12 overflow-hidden">
+    <footer className="relative bg-background-secondary border-t border-border pt-16 pb-12 overflow-hidden font-khmer">
       {/* Subtle background red glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-24 bg-accent-red/5 blur-3xl pointer-events-none" />
 
@@ -25,65 +27,79 @@ export default function Footer() {
           {/* Column 1: Brand Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg overflow-hidden border border-border bg-surface flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl overflow-hidden border border-border bg-surface flex items-center justify-center p-0.5 shadow-human-card">
                 <img
                   src="/assets/logo.jpg"
                   alt="V-Real Media"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
               <div className="flex flex-col">
                 <span className="font-display font-bold text-lg text-white">
                   {BRAND.name}
                 </span>
-                <span className="text-[10px] tracking-widest text-accent-red uppercase font-mono">
-                  Authentic Street Cinema
+                <span className="text-[11px] text-accent-red font-khmer">
+                  {t.footer.tagline}
                 </span>
               </div>
             </div>
 
-            <p className="text-sm text-content-secondary leading-relaxed">
-              {BRAND.description}
+            <p className="text-sm text-content-secondary leading-relaxed font-khmer">
+              {t.hero.description}
             </p>
 
-            <div className="flex items-center gap-2 pt-2">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface border border-border">
-                <span className="w-2 h-2 rounded-full bg-accent-red animate-rec-pulse" />
-                <span className="text-xs text-content-primary font-mono font-medium">LIVE PRODUCTION</span>
-              </div>
+            {/* Language Switcher in Footer */}
+            <div className="pt-2 flex items-center gap-2">
+              <span className="text-xs text-content-muted">{t.nav.lang}:</span>
+              <button
+                onClick={() => setLanguage('km')}
+                className={`px-2 py-0.5 rounded text-xs transition ${
+                  language === 'km' ? 'bg-accent-red text-white font-bold' : 'bg-surface text-content-secondary border border-border'
+                }`}
+              >
+                🇰🇭 ខ្មែរ
+              </button>
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-2 py-0.5 rounded text-xs transition ${
+                  language === 'en' ? 'bg-accent-red text-white font-bold' : 'bg-surface text-content-secondary border border-border'
+                }`}
+              >
+                🇬🇧 English
+              </button>
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Column 2: Navigation Links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-heading font-semibold uppercase tracking-wider text-white">
-              Navigation
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white">
+              {t.footer.navHeading}
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link to="/" className="text-content-secondary hover:text-accent-red transition-colors">
-                  Home Overview
+                  {t.nav.home}
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="text-content-secondary hover:text-accent-red transition-colors">
-                  About Our Mission
+                  {t.nav.about}
                 </Link>
               </li>
               <li>
                 <Link to="/portfolio" className="text-content-secondary hover:text-accent-red transition-colors">
-                  Cinematic Portfolio
+                  {t.nav.portfolio}
                 </Link>
               </li>
               <li>
                 <Link to="/news" className="text-content-secondary hover:text-accent-red transition-colors">
-                  News & Documentary Feeds
+                  {t.nav.news}
                 </Link>
               </li>
               <li>
-                <Link to="/login" className="text-content-muted hover:text-white transition-colors flex items-center gap-1">
-                  <Shield className="w-3.5 h-3.5 text-accent-red" />
-                  <span>Admin CMS Login</span>
+                <Link to="/login" className="text-accent-red hover:underline transition-colors flex items-center gap-1.5 pt-1">
+                  <Shield className="w-4 h-4" />
+                  <span>{t.footer.adminPortal}</span>
                 </Link>
               </li>
             </ul>
@@ -91,8 +107,8 @@ export default function Footer() {
 
           {/* Column 3: Contact Details */}
           <div className="space-y-4">
-            <h4 className="text-sm font-heading font-semibold uppercase tracking-wider text-white">
-              Direct Contact
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white">
+              {t.footer.contactHeading}
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
@@ -104,7 +120,7 @@ export default function Footer() {
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs text-content-muted block">Phone</span>
+                    <span className="text-xs text-content-muted block">{t.nav.callUs}</span>
                     <span className="font-mono text-content-primary group-hover:text-accent-red transition">
                       {BRAND.contact.phoneDisplay}
                     </span>
@@ -129,7 +145,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={BRAND.contact.website}
+                  href="https://v-real-media.web.app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-content-secondary hover:text-white transition group"
@@ -140,7 +156,7 @@ export default function Footer() {
                   <div>
                     <span className="text-xs text-content-muted block">Website</span>
                     <span className="text-content-primary group-hover:text-accent-red transition font-mono">
-                      v-real.web.app
+                      v-real-media.web.app
                     </span>
                   </div>
                 </a>
@@ -150,11 +166,11 @@ export default function Footer() {
 
           {/* Column 4: Social Channels */}
           <div className="space-y-4">
-            <h4 className="text-sm font-heading font-semibold uppercase tracking-wider text-white">
-              Official Channels
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white">
+              {t.footer.socialHeading}
             </h4>
-            <p className="text-xs text-content-secondary leading-relaxed">
-              Follow our daily street episodes, behind-the-scenes teasers, and community updates on TikTok and YouTube.
+            <p className="text-xs text-content-secondary leading-relaxed font-khmer">
+              {t.footer.socialDesc}
             </p>
 
             <div className="flex flex-col gap-2.5">
@@ -163,7 +179,7 @@ export default function Footer() {
                 href={BRAND.social.tiktok.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded-lg bg-surface border border-border hover:border-accent-red/60 text-content-primary transition group"
+                className="flex items-center justify-between p-2.5 rounded-lg bg-surface border border-border hover:border-accent-red/60 text-content-primary transition group shadow-human-card"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-7 h-7 rounded-full bg-black border border-border flex items-center justify-center text-white">
@@ -182,7 +198,7 @@ export default function Footer() {
                 href={BRAND.social.youtube.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded-lg bg-surface border border-border hover:border-accent-red/60 text-content-primary transition group"
+                className="flex items-center justify-between p-2.5 rounded-lg bg-surface border border-border hover:border-accent-red/60 text-content-primary transition group shadow-human-card"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-7 h-7 rounded-full bg-accent-red/20 border border-accent-red/40 flex items-center justify-center text-accent-red">
@@ -202,10 +218,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-content-muted">
-          <p>© {currentYear} {BRAND.name}. All rights reserved.</p>
+          <p>© {currentYear} {BRAND.name}. {t.footer.rights}</p>
           <div className="flex items-center gap-6">
-            <span className="text-content-secondary">
-              Real Stories • Real People • Real Impact
+            <span className="text-content-secondary font-khmer">
+              {t.footer.motto}
             </span>
           </div>
         </div>

@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Play, AlertCircle } from 'lucide-react';
+import { X, ExternalLink, Play } from 'lucide-react';
 import { detectVideoProvider, getSafeEmbedUrl } from '../../utils/videoUtils';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function VideoModal({ isOpen, video, onClose }) {
+  const { t } = useLanguage();
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
@@ -35,7 +38,7 @@ export default function VideoModal({ isOpen, video, onClose }) {
           initial={{ opacity: 0, scale: 0.95, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
+          transition={{ duration: 0.25, ease: 'easeOut' }}
           className="relative z-10 w-full max-w-4xl bg-surface border border-border rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
         >
           {/* Header Bar */}
@@ -43,10 +46,10 @@ export default function VideoModal({ isOpen, video, onClose }) {
             <div className="flex items-center gap-2.5">
               <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-rec-pulse" />
               <span className="text-xs font-mono font-bold tracking-widest text-accent-red uppercase">
-                {parsed.provider.toUpperCase()} PLAYBACK
+                {parsed.provider.toUpperCase()} {t.portfolio.modalPlayback}
               </span>
               <span className="text-content-muted text-xs hidden sm:inline">•</span>
-              <span className="text-xs text-content-secondary truncate max-w-xs sm:max-w-md">
+              <span className="text-xs text-content-secondary truncate max-w-xs sm:max-w-md font-khmer">
                 {video.title}
               </span>
             </div>
@@ -78,23 +81,23 @@ export default function VideoModal({ isOpen, video, onClose }) {
                 className="w-full h-full object-contain"
               />
             ) : (
-              <div className="text-center p-8 max-w-md">
+              <div className="text-center p-8 max-w-md font-khmer">
                 <div className="w-12 h-12 rounded-full bg-surface-elevated border border-border flex items-center justify-center mx-auto mb-4 text-accent-red">
                   <ExternalLink className="w-6 h-6" />
                 </div>
-                <h4 className="text-lg font-heading font-bold text-white mb-2">
-                  External Media Video
+                <h4 className="text-lg font-bold text-white mb-2">
+                  {video.title}
                 </h4>
                 <p className="text-xs text-content-secondary mb-6 leading-relaxed">
-                  This video is hosted on an external platform ({parsed.provider}) and is configured to view directly on their official player.
+                  វីដេអូនេះត្រូវបានបង្ហោះនៅលើ {parsed.provider}។ អ្នកអាចចុចបើកទស្សនាលើផ្លេតហ្វមដើមបានដោយផ្ទាល់។
                 </p>
                 <a
                   href={videoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-accent-red text-white text-xs font-bold uppercase tracking-wider shadow-rec-glow hover:bg-accent-darkRed transition"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent-red text-white text-xs font-bold uppercase tracking-wider shadow-rec-glow hover:bg-accent-darkRed transition"
                 >
-                  <span>Open Video in New Tab</span>
+                  <span>{t.portfolio.openInNewTab}</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -102,12 +105,12 @@ export default function VideoModal({ isOpen, video, onClose }) {
           </div>
 
           {/* Video Metadata Footer */}
-          <div className="p-5 bg-surface border-t border-border/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="p-5 bg-surface border-t border-border/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-khmer">
             <div>
-              <h3 className="text-base font-heading font-bold text-white mb-1">
+              <h3 className="text-base font-bold text-white mb-1">
                 {video.title}
               </h3>
-              <p className="text-xs text-content-secondary line-clamp-2 max-w-2xl">
+              <p className="text-xs text-content-secondary line-clamp-2 max-w-2xl leading-relaxed">
                 {video.description}
               </p>
             </div>
@@ -119,7 +122,7 @@ export default function VideoModal({ isOpen, video, onClose }) {
                 rel="noopener noreferrer"
                 className="shrink-0 px-3.5 py-1.5 rounded-lg bg-surface-elevated border border-border hover:border-accent-red text-xs text-content-secondary hover:text-white transition flex items-center gap-1.5"
               >
-                <span>Original Link</span>
+                <span>{t.portfolio.originalLink}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             )}

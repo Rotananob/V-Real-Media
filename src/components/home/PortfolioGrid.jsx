@@ -5,14 +5,24 @@ import VideoModal from './VideoModal';
 import Loader from '../common/Loader';
 import EmptyState from '../common/EmptyState';
 import { BRAND } from '../../config/brand';
+import { useLanguage } from '../../context/LanguageContext';
 import { Film } from 'lucide-react';
 
-export default function PortfolioGrid({ title = "Featured Productions", showAll = false }) {
+export default function PortfolioGrid({ title, showAll = false }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [activeVideo, setActiveVideo] = useState(null);
   const { portfolio, loading } = usePortfolio(selectedCategory);
+  const { t, language } = useLanguage();
 
   const displayItems = showAll ? portfolio : portfolio.slice(0, 6);
+
+  const categories = [
+    { id: "all", name: t.categories.all },
+    { id: "street-reality", name: t.categories["street-reality"] },
+    { id: "social-experiment", name: t.categories["social-experiment"] },
+    { id: "documentary", name: t.categories.documentary },
+    { id: "human-stories", name: t.categories["human-stories"] },
+  ];
 
   return (
     <section id="portfolio" className="py-24 bg-background-primary relative">
@@ -24,25 +34,27 @@ export default function PortfolioGrid({ title = "Featured Productions", showAll 
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2 h-2 rounded-full bg-accent-red" />
               <span className="text-xs font-mono uppercase tracking-widest text-accent-red font-semibold">
-                ORIGINAL WORKS
+                {t.portfolio.sectionBadge}
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight uppercase">
-              {title}
+            <h2 className={`text-3xl sm:text-4xl font-extrabold text-white tracking-tight ${
+              language === 'km' ? 'font-khmer' : 'font-display uppercase'
+            }`}>
+              {title || t.portfolio.title}
             </h2>
-            <p className="text-sm text-content-secondary mt-2">
-              Explore authentic street reality captures, community experiments, and human-centric documentaries.
+            <p className="text-sm text-content-secondary mt-2 font-khmer">
+              {t.portfolio.subtitle}
             </p>
           </div>
 
           {/* Category Filters */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-            {BRAND.categories.map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat.id}
                 type="button"
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-medium font-mono uppercase tracking-wider whitespace-nowrap transition-all duration-200 ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-medium font-khmer whitespace-nowrap transition-all duration-200 ${
                   selectedCategory === cat.id
                     ? 'bg-accent-red text-white shadow-rec-glow'
                     : 'bg-surface border border-border text-content-secondary hover:text-white hover:border-border/80'
@@ -56,11 +68,11 @@ export default function PortfolioGrid({ title = "Featured Productions", showAll 
 
         {/* Content Section */}
         {loading ? (
-          <Loader size="lg" text="Loading Productions..." />
+          <Loader size="lg" text="កំពុងទាញយកវីដេអូ..." />
         ) : displayItems.length === 0 ? (
           <EmptyState
-            title="No Productions Found"
-            description="We haven't added works to this category yet. Check back soon for new episodes."
+            title={t.portfolio.emptyTitle}
+            description={t.portfolio.emptyDesc}
             icon={Film}
           />
         ) : (
