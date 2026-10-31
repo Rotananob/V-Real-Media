@@ -20,6 +20,7 @@ import { formatDate } from '../utils/formatDate';
 import ConfirmDialog from '../components/common/ConfirmDialog';
 import Loader from '../components/common/Loader';
 import EmptyState from '../components/common/EmptyState';
+import { AUTHORIZED_ADMIN_EMAILS } from '../components/common/ProtectedRoute';
 
 import {
   LayoutDashboard,
@@ -98,6 +99,23 @@ export default function AdminDashboard() {
     thumbnailPath: null,
     title: '',
   });
+
+  // Zero-Bypass Internal RBAC Defense Verification
+  useEffect(() => {
+    if (!user) {
+      navigate('/login', { replace: true });
+      return;
+    }
+    const cleanEmail = (user.email || '').toLowerCase().trim();
+    const isWhitelisted = AUTHORIZED_ADMIN_EMAILS.some(
+      (email) => email.toLowerCase() === cleanEmail
+    );
+    if (!isWhitelisted) {
+      console.error(`[SECURITY BREACH ATTEMPT] Blocked unauthorized dashboard access for: ${cleanEmail}`);
+      if (logout) logout();
+      navigate('/login?error=unauthorized', { replace: true });
+    }
+  }, [user, navigate, logout]);
 
   // Load data
   const loadAllData = async () => {

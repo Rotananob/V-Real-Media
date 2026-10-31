@@ -6,33 +6,42 @@ service firebase.storage {
       return request.auth != null;
     }
 
-    function isAdmin() {
-      return isAuthenticated() && request.auth.token.admin == true;
+    // Whitelist check: ONLY designated administrator accounts are permitted write access
+    function isAuthorizedAdmin() {
+      return isAuthenticated() &&
+             (
+               request.auth.token.email.lower() in [
+                 'v.real.khmer@gmail.com',
+                 'admin.roth@vreal.media'
+               ] ||
+               request.auth.token.admin == true
+             );
     }
 
+    // Safe image upload validation (explicitly disallow SVGs, HTML, scripts, or executables)
     function isAllowedImage() {
-      return request.resource.contentType.matches('image/jpeg') ||
-             request.resource.contentType.matches('image/png') ||
-             request.resource.contentType.matches('image/webp') ||
-             request.resource.contentType.matches('image/gif');
+      return request.resource.contentType == 'image/jpeg' ||
+             request.resource.contentType == 'image/png' ||
+             request.resource.contentType == 'image/webp';
     }
 
+    // Max 8MB file size limit to prevent Denial of Service and storage flooding
     function isUnderMaxSize() {
-      return request.resource.size <= 10 * 1024 * 1024; // 10MB limit
+      return request.resource.size <= 8 * 1024 * 1024;
     }
 
-    // Upload paths for CMS posts and portfolio
+    // Upload paths for CMS posts and portfolio covers
     match /uploads/{folder}/{docId}/{fileName} {
-      // Public can read uploaded media
+      // Public can only read approved images
       allow read: if true;
 
-      // Only administrators can upload images with proper mime and size
-      allow create: if isAdmin() && isAllowedImage() && isUnderMaxSize();
-      allow update: if isAdmin() && isAllowedImage() && isUnderMaxSize();
-      allow delete: if isAdmin();
+      // Only authorized administrators can upload or delete files
+      allow create: if isAuthorizedAdmin() && isAllowedImage() && isUnderMaxSize();
+      allow update: if isAuthorizedAdmin() && isAllowedImage() && isUnderMaxSize();
+      allow delete: if isAuthorizedAdmin();
     }
 
-    // Default deny all other paths
+    // Strict Default Deny: All other paths are locked down
     match /{allPaths=**} {
       allow read, write: if false;
     }

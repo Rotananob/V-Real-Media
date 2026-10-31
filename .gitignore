@@ -33,3 +33,10 @@ dist-ssr
 # Firebase
 .firebase
 .firebaserc
+
+# Security & Private Credentials
+ADMIN_CREDENTIALS.md
+*.credentials.md
+*credentials*.json
+serviceAccountKey*.json
+users.json

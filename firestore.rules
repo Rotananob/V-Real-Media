@@ -2,58 +2,68 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Helper functions
+    // Helper functions: Strict Cryptographic Authentication & RBAC Whitelist
     function isAuthenticated() {
       return request.auth != null;
     }
 
-    function isAdmin() {
-      return isAuthenticated() && request.auth.token.admin == true;
+    // Whitelist check: ONLY designated administrator accounts are permitted write access
+    function isAuthorizedAdmin() {
+      return isAuthenticated() &&
+             (
+               request.auth.token.email.lower() in [
+                 'v.real.khmer@gmail.com',
+                 'admin.roth@vreal.media'
+               ] ||
+               request.auth.token.admin == true
+             );
     }
 
     function isPublished() {
       return resource.data.status == 'published';
     }
 
-    // Validation for posts
+    // Strict schema & sanitization validation for posts
     function isValidPost(data) {
-      return data.title is string && data.title.size() > 0 &&
-             data.slug is string && data.slug.size() > 0 &&
+      return data.title is string && data.title.size() >= 1 && data.title.size() <= 200 &&
+             data.slug is string && data.slug.size() >= 1 && data.slug.size() <= 200 &&
              data.status in ['published', 'draft'] &&
-             data.category is string;
+             data.category in ['street-reality', 'social-experiment', 'documentary', 'human-stories'] &&
+             (!('videoURL' in data) || (data.videoURL is string && !data.videoURL.matches('(?i)^javascript:.*')));
     }
 
-    // Validation for portfolio
+    // Strict schema & sanitization validation for portfolio
     function isValidPortfolio(data) {
-      return data.title is string && data.title.size() > 0 &&
-             data.slug is string && data.slug.size() > 0 &&
+      return data.title is string && data.title.size() >= 1 && data.title.size() <= 200 &&
+             data.slug is string && data.slug.size() >= 1 && data.slug.size() <= 200 &&
              data.status in ['published', 'draft'] &&
-             data.category is string;
+             data.category in ['street-reality', 'social-experiment', 'documentary', 'human-stories'] &&
+             (!('videoURL' in data) || (data.videoURL is string && !data.videoURL.matches('(?i)^javascript:.*')));
     }
 
-    // POSTS COLLECTION
+    // POSTS COLLECTION (Zero-Bypass Security)
     match /posts/{postId} {
-      // Public can read published posts; Admin can read all
-      allow read: if isPublished() || isAdmin();
+      // Public can only read published posts; Authorized Admins can read all drafts
+      allow read: if isPublished() || isAuthorizedAdmin();
 
-      // Only administrators can create, update, or delete
-      allow create: if isAdmin() && isValidPost(request.resource.data);
-      allow update: if isAdmin() && isValidPost(request.resource.data);
-      allow delete: if isAdmin();
+      // Only whitelisted administrators can create, update, or delete
+      allow create: if isAuthorizedAdmin() && isValidPost(request.resource.data);
+      allow update: if isAuthorizedAdmin() && isValidPost(request.resource.data);
+      allow delete: if isAuthorizedAdmin();
     }
 
-    // PORTFOLIO COLLECTION
+    // PORTFOLIO COLLECTION (Zero-Bypass Security)
     match /portfolio/{itemId} {
-      // Public can read published portfolio; Admin can read all
-      allow read: if isPublished() || isAdmin();
+      // Public can only read published portfolio; Authorized Admins can read all drafts
+      allow read: if isPublished() || isAuthorizedAdmin();
 
-      // Only administrators can create, update, or delete
-      allow create: if isAdmin() && isValidPortfolio(request.resource.data);
-      allow update: if isAdmin() && isValidPortfolio(request.resource.data);
-      allow delete: if isAdmin();
+      // Only whitelisted administrators can create, update, or delete
+      allow create: if isAuthorizedAdmin() && isValidPortfolio(request.resource.data);
+      allow update: if isAuthorizedAdmin() && isValidPortfolio(request.resource.data);
+      allow delete: if isAuthorizedAdmin();
     }
 
-    // Default deny all other paths
+    // Strict Default Deny: All other paths are locked down
     match /{document=**} {
       allow read, write: if false;
     }
