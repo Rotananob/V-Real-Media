@@ -22,13 +22,13 @@ export default function AboutPage() {
           <h1 className={`text-4xl sm:text-6xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-6 ${
             language === 'km' ? 'font-khmer' : 'font-display uppercase'
           }`}>
-            {language === 'km' ? "កញ្ចក់ឆ្លុះបញ្ចាំងតថភាពមនុស្ស" : "The Lens of Reality"}
+            {language === 'km' ? "រឿងរ៉ាវពិត ដែលកើតចេញពីដងផ្លូវ" : "Real Stories From The Streets"}
           </h1>
 
           <p className="text-base sm:text-lg text-neutral-600 leading-relaxed">
             {language === 'km' 
-              ? "ស្វែងយល់ពីទស្សនវិស័យ គោលការណ៍សីលធម៌ និងស្តង់ដារនៃការផលិតភាពយន្តឯកសារ និងកម្មវិធីតថភាពតាមដងផ្លូវរបស់យើង។"
-              : "Discover the philosophy, ethos, and production principles behind our street reality shows and documentary cinema."}
+              ? "ដំណើរដើមទង គោលបំណង និងទឹកចិត្តរបស់ក្រុមការងារ V-REAL MEDIA ក្នុងការចុះទៅកត់ត្រាជីវិតពិតរបស់មនុស្សនៅជុំវិញខ្លួនយើង។"
+              : "The origin, purpose, and heart behind V-REAL MEDIA—capturing authentic lives across Cambodia."}
           </p>
         </div>
 
@@ -52,7 +52,7 @@ export default function AboutPage() {
               </span>
 
               <h2 className="text-2xl sm:text-4xl font-extrabold text-neutral-900 leading-tight">
-                {language === 'km' ? "កើតចេញពីដងផ្លូវ។ ដឹកនាំដោយរឿងរ៉ាវពិតរបស់មនុស្ស។" : "Born From The Streets. Driven By Real Human Stories."}
+                {language === 'km' ? "យើងមិនថតរឿងសម្តែង — យើងស្តាប់រឿងរ៉ាវពិតរបស់មនុស្ស" : "We Don't Stage Stories — We Listen to Real People"}
               </h2>
 
               <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
@@ -93,9 +93,9 @@ export default function AboutPage() {
               {t.about.missionDesc}
             </p>
             <ul className="space-y-2 text-xs text-neutral-500">
-              <li>• {language === 'km' ? 'គោរពសេចក្តីថ្លៃថ្នូររបស់មនុស្សគ្រប់រូបក្នុងគ្រប់វីដេអូ' : 'Honor human dignity in all documentary captures'}</li>
-              <li>• {language === 'km' ? 'បង្ហាញពីវីរបុរសស្ងៀមស្ងាត់ក្នុងសហគមន៍' : 'Highlight uncelebrated grassroots heroes'}</li>
-              <li>• {language === 'km' ? 'លើកកម្ពស់ការយល់ចិត្តគ្នាក្នុងសង្គម' : 'Foster empathy across socio-economic boundaries'}</li>
+              <li>• {language === 'km' ? 'គោរព និងរក្សាសេចក្តីថ្លៃថ្នូររបស់មនុស្សគ្រប់រូប' : 'Respect and uphold human dignity in every video'}</li>
+              <li>• {language === 'km' ? 'បង្ហាញពីរឿងរ៉ាវតស៊ូរបស់អ្នករកស៊ី និងបងប្អូនសាមញ្ញ' : 'Spotlight the perseverance of everyday people'}</li>
+              <li>• {language === 'km' ? 'ជួយឱ្យយើងចេះយល់ចិត្ត និងស្រឡាញ់គ្នាទៅវិញទៅមក' : 'Encourage mutual empathy and community kindness'}</li>
             </ul>
           </div>
 
@@ -108,9 +108,9 @@ export default function AboutPage() {
               {t.about.visionDesc}
             </p>
             <ul className="space-y-2 text-xs text-neutral-500">
-              <li>• {language === 'km' ? 'ពង្រីកការផលិតទៅកាន់គ្រប់ខេត្តក្រុងនៃប្រទេសកម្ពុជា' : 'Expand production to all provinces in Cambodia'}</li>
-              <li>• {language === 'km' ? 'កំណត់ស្តង់ដារគុណភាពសម្រាប់ការពិសោធន៍សង្គម' : 'Set benchmarks for ethical social experiments'}</li>
-              <li>• {language === 'km' ? 'បណ្តុះបណ្តាលយុវជនជំនាន់ក្រោយលើការផលិតភាពយន្តឯកសារ' : 'Mentor emerging documentary filmmakers'}</li>
+              <li>• {language === 'km' ? 'ចុះទៅកាន់គ្រប់ខេត្តក្រុងដើម្បីស្តាប់រឿងរ៉ាវផ្សេងៗពីគ្នា' : 'Document authentic voices across all Cambodian provinces'}</li>
+              <li>• {language === 'km' ? 'ធ្វើការពិសោធន៍សង្គមប្រកបដោយភាពស្មោះត្រង់ និងមិនបំភ្លៃ' : 'Conduct honest, unmanipulated social experiments'}</li>
+              <li>• {language === 'km' ? 'លើកទឹកចិត្តយុវជនឱ្យចាប់អារម្មណ៍រឿងរ៉ាវពិតក្នុងសង្គម' : 'Inspire youth to appreciate real stories in society'}</li>
             </ul>
           </div>
         </div>

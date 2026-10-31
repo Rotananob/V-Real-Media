@@ -47,7 +47,7 @@ export default function LatestPosts() {
         ) : latestPosts.length === 0 ? (
           <EmptyState
             title={t.news.emptyTitle}
-            description="ក្រុមការងារកំពុងរៀបចំអត្ថបទថ្មីៗពីទីតាំងជាក់ស្តែង។"
+            description={t.news.emptyDesc}
             icon={Newspaper}
           />
         ) : (

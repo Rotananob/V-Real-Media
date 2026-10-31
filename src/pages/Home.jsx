@@ -15,8 +15,8 @@ export default function Home() {
   const featuredHeroVideo = {
     title: language === 'km' ? "វីដេអូបង្ហាញពីសកម្មភាព V-REAL MEDIA" : "V-REAL MEDIA Official Showcase",
     description: language === 'km' 
-      ? "រឿងរ៉ាវពិត មនុស្សពិត ផលប៉ះពាល់ពិត។ ទិដ្ឋភាពភាពយន្តឯកសារនៃសហគមន៍កម្ពុជា។" 
-      : "Real Stories. Real People. Real Impact. A cinematic documentary look into Cambodian communities.",
+      ? "រឿងរ៉ាវពិត ជីវិតពិត អារម្មណ៍ពិត — ទិដ្ឋភាពតថភាពជាក់ស្តែងក្នុងសង្គមខ្មែរយើង។" 
+      : "Real Stories • Real Lives • Real Emotion — Unscripted humanity across Cambodia.",
     videoURL: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   };
 

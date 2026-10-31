@@ -21,11 +21,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className={`text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-neutral-900 leading-[1.15] mb-6 ${
+          className={`text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-neutral-900 leading-[1.18] mb-6 ${
             language === 'km' ? 'font-khmer' : 'font-display uppercase'
           }`}
         >
-          {t.hero.headlineLine1} {t.hero.headlineLine2}<br />
+          {t.hero.headlineLine1} • {t.hero.headlineLine2}<br />
           <span className="text-accent-red">
             {t.hero.headlineLine3}
           </span>
@@ -52,7 +52,7 @@ export default function Hero() {
             href="#portfolio"
             className="w-full sm:w-auto px-6 py-3 rounded-lg bg-neutral-900 text-white font-semibold text-sm hover:bg-neutral-800 transition shadow-xs flex items-center justify-center gap-2"
           >
-            <span>{language === 'km' ? 'ស្នាដៃផលិតកម្ម' : 'Our Productions'}</span>
+            <span>{language === 'km' ? 'ទស្សនាវីដេអូ' : 'Watch Videos'}</span>
             <ArrowDown className="w-4 h-4" />
           </a>
 
@@ -60,7 +60,7 @@ export default function Hero() {
             href="#vision"
             className="w-full sm:w-auto px-6 py-3 rounded-lg bg-white hover:bg-neutral-50 border border-neutral-200 text-neutral-800 font-semibold text-sm transition shadow-xs flex items-center justify-center gap-2"
           >
-            <span>{language === 'km' ? 'ទស្សនវិស័យរបស់យើង' : 'Our Vision'}</span>
+            <span>{language === 'km' ? 'រឿងរ៉ាវរបស់ពួកយើង' : 'Our Story'}</span>
           </a>
 
           <a

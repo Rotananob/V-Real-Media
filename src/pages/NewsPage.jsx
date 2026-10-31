@@ -96,7 +96,7 @@ export default function NewsPage() {
             description={
               searchQuery
                 ? `រកមិនឃើញរឿងរ៉ាវដែលត្រូវនឹង "${searchQuery}" ឡើយ។`
-                : "មិនទាន់មានអត្ថបទត្រូវបានចេញផ្សាយក្នុងផ្នែកនេះឡើយ។"
+                : t.news.emptyDesc
             }
             icon={Newspaper}
             action={
