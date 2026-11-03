@@ -13,10 +13,10 @@ export default function Home() {
   const { t, language } = useLanguage();
 
   const featuredHeroVideo = {
-    title: language === 'km' ? "វីដេអូបង្ហាញពីសកម្មភាព V-REAL MEDIA" : "V-REAL MEDIA Official Showcase",
+    title: language === 'km' ? "Teaser បឋម — V-REAL MEDIA" : "V-REAL MEDIA Official Teaser",
     description: language === 'km' 
-      ? "ការពិសោធន៍សង្គម និងតថភាពលើដងផ្លូវកម្ពុជា — គ្មានស្គ្រីប គ្មានការសម្តែង ឆក់យកការចាប់អារម្មណ៍ពិត ១០០%។" 
-      : "Cambodian street reality & viral social experiments — 100% raw, unscripted engagement.",
+      ? "ទស្សនីយភាពប្លែកភ្នែក ដើម្បីស្នាមញញឹមរបស់អ្នក និងបន្តដំណើរជានិច្ច។" 
+      : "Fresh perspectives for genuine smiles — keeping the creative journey alive.",
     videoURL: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   };
 
@@ -131,8 +131,8 @@ export default function Home() {
               </h3>
               <p className="text-xs sm:text-sm text-neutral-400 max-w-xl leading-relaxed">
                 {language === 'km' 
-                  ? 'ទាក់ទងមកយើងឥឡូវនេះ ដើម្បីពិភាក្សាអំពីកញ្ចប់ឧបត្ថម្ភ (Sponsorship Packages) និងការបញ្ជ្រាប Brand ក្នុងមាតិកា Viral លើដងផ្លូវកម្ពុជា។'
-                  : 'Get in touch directly with our creator team to discuss custom sponsorship packages, product placements, and viral street activations.'}
+                  ? 'ទាក់ទងមកយើងឥឡូវនេះ ដើម្បីពិភាក្សាអំពីឱកាសសហការ ការផ្សារភ្ជាប់ម៉ាកយីហោ (Brand Integration) និងការចាប់ដៃគូផលិតកម្ម។'
+                  : 'Get in touch directly with our creator team to discuss brand integration and collaborative opportunities.'}
               </p>
             </div>
 

@@ -22,13 +22,13 @@ export default function AboutPage() {
           <h1 className={`text-4xl sm:text-6xl font-extrabold text-neutral-900 tracking-tight leading-tight mb-6 ${
             language === 'km' ? 'font-khmer' : 'font-display uppercase'
           }`}>
-            {language === 'km' ? "ចក្ខុវិស័យជំនាន់ថ្មី • តថភាពពិត ១០០%" : "Next-Gen Street Reality • 100% Unscripted"}
+            {language === 'km' ? "ចក្ខុវិស័យ & គោលបំណងរបស់យើង" : "Our Vision & Purpose"}
           </h1>
 
           <p className="text-base sm:text-lg text-neutral-600 leading-relaxed">
             {language === 'km' 
-              ? "ស្វែងយល់ពីបេសកកម្មរបស់ V-REAL MEDIA ក្នុងការផ្លាស់ប្តូរទម្រង់មាតិកាឌីជីថលនៅកម្ពុជា តាមរយៈការពិសោធន៍សង្គមដ៏ជក់ចិត្ត និងតថភាពតាមដងផ្លូវកម្រិតពិភពលោក។"
-              : "Discover V-REAL MEDIA's mission to revolutionize Cambodian digital storytelling through high-retention street reality and viral social experiments."}
+              ? "នាំយកអ្វីដែលប្លែកភ្នែក ដើម្បីឱ្យអ្នកមើលអាចញញឹមបាន និងបន្តដំណើរនេះទៅមុខជានិច្ចដោយក្តីស្រលាញ់ ព្រោះនេះជាចក្ខុវិស័យពិតរបស់យើង។"
+              : "Bringing fresh perspectives that make you smile — and keeping this creative journey alive with passion."}
           </p>
         </div>
 
@@ -48,11 +48,11 @@ export default function AboutPage() {
 
             <div className="lg:col-span-8 space-y-5">
               <span className="text-xs text-accent-red font-mono uppercase tracking-widest font-semibold block">
-                CREATOR PLATFORM & VISION
+                CREATIVE MEDIA & VISION
               </span>
 
               <h2 className="text-2xl sm:text-4xl font-extrabold text-neutral-900 leading-tight">
-                {language === 'km' ? "គ្មានស្គ្រីប គ្មានការរៀបចំ — ថាមពលពិតនៃដងផ្លូវ" : "Zero Scripts. Zero Staging. Pure Street Adrenaline."}
+                {language === 'km' ? "ភាពច្នៃប្រឌិតប្លែកភ្នែក & ស្នាមញញឹមពិតប្រាកដ" : "Fresh Perspectives & Genuine Smiles"}
               </h2>
 
               <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
@@ -93,9 +93,9 @@ export default function AboutPage() {
               {t.about.missionDesc}
             </p>
             <ul className="space-y-2 text-xs text-neutral-500">
-              <li>• {language === 'km' ? 'គោរព និងរក្សាសេចក្តីថ្លៃថ្នូររបស់មនុស្សគ្រប់រូប' : 'Respect and uphold human dignity in every video'}</li>
-              <li>• {language === 'km' ? 'បង្ហាញពីរឿងរ៉ាវតស៊ូរបស់អ្នករកស៊ី និងបងប្អូនសាមញ្ញ' : 'Spotlight the perseverance of everyday people'}</li>
-              <li>• {language === 'km' ? 'ជួយឱ្យយើងចេះយល់ចិត្ត និងស្រឡាញ់គ្នាទៅវិញទៅមក' : 'Encourage mutual empathy and community kindness'}</li>
+              <li>• {language === 'km' ? 'នាំយកអ្វីដែលប្លែកភ្នែក ផ្តល់ភាពរីករាយ និងស្នាមញញឹម' : 'Bring fresh, entertaining perspectives and real smiles'}</li>
+              <li>• {language === 'km' ? 'រៀបចំការផលិតប្រកបដោយការយកចិត្តទុកដាក់ និងវិជ្ជាជីវៈ' : 'Dedication to craftsmanship and quality production'}</li>
+              <li>• {language === 'km' ? 'ស្មោះត្រង់ចំពោះការងារ មិនបំផ្លើស មិនអួតអាង' : 'Authentic and honest without artificial hype'}</li>
             </ul>
           </div>
 
@@ -108,9 +108,9 @@ export default function AboutPage() {
               {t.about.visionDesc}
             </p>
             <ul className="space-y-2 text-xs text-neutral-500">
-              <li>• {language === 'km' ? 'ចុះទៅកាន់គ្រប់ខេត្តក្រុងដើម្បីស្តាប់រឿងរ៉ាវផ្សេងៗពីគ្នា' : 'Document authentic voices across all Cambodian provinces'}</li>
-              <li>• {language === 'km' ? 'ធ្វើការពិសោធន៍សង្គមប្រកបដោយភាពស្មោះត្រង់ និងមិនបំភ្លៃ' : 'Conduct honest, unmanipulated social experiments'}</li>
-              <li>• {language === 'km' ? 'លើកទឹកចិត្តយុវជនឱ្យយល់ដឹងពីតថភាពជាក់ស្ដែងក្នុងសង្គម' : 'Inspire youth to understand real social dynamics'}</li>
+              <li>• {language === 'km' ? 'បន្តដំណើរផលិតទៅមុខជានិច្ចដោយក្តីស្រលាញ់' : 'Sustain our creative journey with passion'}</li>
+              <li>• {language === 'km' ? 'ពង្រីកការច្នៃប្រឌិត និងស្វែងរកគំនិតថ្មីៗជាប្រចាំ' : 'Continuously explore new ideas and formats'}</li>
+              <li>• {language === 'km' ? 'ផ្ដល់តម្លៃ និងភាពវិជ្ជមានដល់អ្នកទស្សនាគ្រប់រូប' : 'Provide uplifting value and positive vibes to all viewers'}</li>
             </ul>
           </div>
         </div>

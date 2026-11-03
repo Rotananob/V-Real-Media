@@ -84,7 +84,7 @@ export default function Navbar() {
                 <span className="w-2 h-2 rounded-full bg-accent-red inline-block" title="Active Production" />
               </div>
               <span className="text-[11px] text-neutral-500 font-khmer hidden sm:block">
-                {language === 'km' ? 'មាតិកាតថភាពដងផ្លូវ • កម្ពុជា' : 'Cambodia Street Reality'}
+                {language === 'km' ? 'ច្នៃប្រឌិតថ្មី • ស្នាមញញឹម' : 'Fresh Perspective • Real Smiles'}
               </span>
             </div>
           </Link>

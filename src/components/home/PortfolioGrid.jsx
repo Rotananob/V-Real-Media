@@ -5,7 +5,8 @@ import VideoModal from './VideoModal';
 import Loader from '../common/Loader';
 import EmptyState from '../common/EmptyState';
 import { useLanguage } from '../../context/LanguageContext';
-import { Film } from 'lucide-react';
+import { BRAND } from '../../config/brand';
+import { Film, Play, ExternalLink, Sparkles } from 'lucide-react';
 
 export default function PortfolioGrid({ title, showAll = false }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -17,10 +18,10 @@ export default function PortfolioGrid({ title, showAll = false }) {
 
   const categories = [
     { id: "all", name: t.categories.all },
-    { id: "street-reality", name: t.categories["street-reality"] },
-    { id: "social-experiment", name: t.categories["social-experiment"] },
-    { id: "documentary", name: t.categories.documentary },
-    { id: "human-stories", name: t.categories["human-stories"] },
+    { id: "creative", name: t.categories["creative"] || "ការច្នៃប្រឌិតថ្មី" },
+    { id: "highlights", name: t.categories["highlights"] || "ឈុតពិសេស" },
+    { id: "behind-the-scenes", name: t.categories["behind-the-scenes"] || "សកម្មភាពក្រៅឆាក" },
+    { id: "special-editions", name: t.categories["special-editions"] || "ភាគពិសេស" },
   ];
 
   return (
@@ -69,11 +70,66 @@ export default function PortfolioGrid({ title, showAll = false }) {
         {loading ? (
           <Loader size="lg" text="កំពុងទាញយកវីដេអូ..." />
         ) : displayItems.length === 0 ? (
-          <EmptyState
-            title={t.portfolio.emptyTitle}
-            description={t.portfolio.emptyDesc}
-            icon={Film}
-          />
+          <div className="relative rounded-3xl bg-neutral-900 border border-neutral-800 text-white overflow-hidden p-8 sm:p-12 shadow-xl">
+            {/* Ambient Background Glow */}
+            <div className="absolute -top-24 -right-24 w-96 h-96 bg-accent-red/10 rounded-full blur-3xl pointer-events-none" />
+            
+            <div className="relative z-10 max-w-3xl">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-mono text-neutral-300 mb-6 backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-accent-red animate-pulse" />
+                <span className="font-bold text-accent-red tracking-wider">EPISODE 01</span>
+                <span className="text-neutral-500">|</span>
+                <span>{language === 'km' ? 'កំពុងសម្រិតសម្រាំងក្នុងបន្ទប់កាត់ត' : 'IN POST-PRODUCTION'}</span>
+              </div>
+
+              <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4 font-khmer">
+                {language === 'km' ? 'ភាគដំបូងនឹងមកដល់ក្នុងពេលឆាប់ៗនេះ' : 'Episode 01 Premiere Dropping Soon'}
+              </h3>
+
+              <p className="text-neutral-300 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl font-khmer">
+                {language === 'km'
+                  ? 'ក្រុមការងារពួកយើងកំពុងផ្ចិតផ្ចង់រៀបចំមាតិកាប្លែកភ្នែក ដើម្បីនាំយកស្នាមញញឹមជូនអ្នកទស្សនាទាំងអស់គ្នា។ វីដេអូភាគទី ១ នឹងត្រូវដាក់បញ្ចាំងនៅលើគេហទំព័រនេះភ្លាមៗនៅពេលសម្រេច ១០០%!'
+                  : 'Our team is carefully fine-tuning our premiere episode to bring fresh perspectives and real smiles. It will be showcased right here as soon as editing wraps!'}
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3 font-khmer">
+                <button
+                  type="button"
+                  onClick={() => setActiveVideo({
+                    title: language === 'km' ? "Teaser បឋម — V-REAL MEDIA" : "V-REAL MEDIA Official Teaser",
+                    description: language === 'km' ? "ទស្សនីយភាពប្លែកភ្នែក ដើម្បីស្នាមញញឹមរបស់អ្នក" : "Fresh perspectives for genuine smiles",
+                    videoURL: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  })}
+                  className="px-6 py-3 rounded-xl bg-accent-red hover:bg-red-600 text-white font-bold text-xs sm:text-sm flex items-center gap-2 transition-all shadow-md hover:scale-[1.02] cursor-pointer"
+                >
+                  <Play className="w-4 h-4 fill-white" />
+                  <span>{language === 'km' ? 'មើល Teaser បឋម' : 'Watch Premiere Teaser'}</span>
+                </button>
+
+                <a
+                  href={BRAND.social.youtube.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-neutral-200 hover:text-white font-semibold text-xs sm:text-sm flex items-center gap-2 border border-white/10 transition-colors"
+                >
+                  <span>YouTube</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+
+                <a
+                  href={BRAND.social.tiktok.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-neutral-200 hover:text-white font-semibold text-xs sm:text-sm flex items-center gap-2 border border-white/10 transition-colors"
+                >
+                  <span>TikTok</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayItems.map((item) => (

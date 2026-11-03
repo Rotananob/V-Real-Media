@@ -18,12 +18,12 @@ export default function Hero({ onWatchTeaser }) {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.2]);
   const heroY = useTransform(scrollYProgress, [0, 0.8], [0, -45]);
 
-  // Dynamic Word Cycler (Fearless, viral, non-repetitive keywords)
+  // Dynamic Word Cycler (Fresh perspectives & genuine smiles)
   const words = t.hero.dynamicWords || [
-    "ការពិសោធន៍សង្គម Viral",
-    "សាកល្បងចិត្តមនុស្សពិត",
-    "គ្មានស្គ្រីប គ្មានការសម្តែង",
-    "ឆក់អារម្មណ៍រាប់លាននាក់",
+    "ដើម្បីស្នាមញញឹមរបស់អ្នក",
+    "ការច្នៃប្រឌិតថ្មីៗ",
+    "ទស្សនីយភាពប្លែកអារម្មណ៍",
+    "ត្រៀមជួបគ្នាឆាប់ៗក្នុង EP 01",
   ];
 
   const [wordIndex, setWordIndex] = useState(0);
@@ -57,30 +57,22 @@ export default function Hero({ onWatchTeaser }) {
         style={{ scale: heroScale, opacity: heroOpacity, y: heroY }}
         className="relative z-10 max-w-5xl mx-auto text-center flex-grow flex flex-col justify-center items-center"
       >
-        {/* Live Camera REC HUD Badge with 2D Audio Visualizer */}
+        {/* Pre-release Status HUD Badge (Humble, Authentic, Real Status) */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
-          className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-neutral-900 text-white border border-neutral-700/80 shadow-md backdrop-blur-md text-[11px] font-mono mb-8"
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-neutral-900 text-white border border-neutral-700/80 shadow-md backdrop-blur-md text-[11px] font-mono mb-8"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-red opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-red"></span>
           </span>
-          <span className="font-bold tracking-widest text-accent-red">REC</span>
+          <span className="font-bold tracking-wider text-accent-red">EPISODE 01</span>
           <span className="text-neutral-500">|</span>
-          <span className="text-neutral-300 font-semibold">4K 60FPS</span>
+          <span className="text-neutral-300 font-medium">{language === 'km' ? 'កំពុងសម្រិតសម្រាំងក្នុងបន្ទប់កាត់ត' : 'IN POST-PRODUCTION'}</span>
           <span className="text-neutral-500">|</span>
-          {/* Animated 2D Audio Equalizer bars */}
-          <div className="flex items-center gap-0.5 h-3">
-            <span className="w-0.5 h-2 bg-accent-red animate-pulse" />
-            <span className="w-0.5 h-3 bg-accent-red animate-pulse delay-75" />
-            <span className="w-0.5 h-1.5 bg-accent-red animate-pulse delay-150" />
-            <span className="w-0.5 h-2.5 bg-accent-red animate-pulse delay-100" />
-          </div>
-          <span className="text-neutral-500 hidden sm:inline">|</span>
-          <span className="text-neutral-300 hidden sm:inline font-mono">PHNOM PENH LIVE</span>
+          <span className="text-neutral-400 font-mono">DROPPING SOON</span>
         </motion.div>
 
         {/* Dynamic Kinetic Headline (Sliding Word Rotator) */}
@@ -195,31 +187,31 @@ export default function Hero({ onWatchTeaser }) {
             transition={{ duration: 25, ease: 'linear', repeat: Infinity }}
             className="flex items-center gap-8 text-xs font-mono tracking-wider font-semibold text-neutral-500"
           >
-            <span className="inline-flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-accent-red" /> 100% RAW & UNSCRIPTED</span>
+            <span className="inline-flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-accent-red" /> FRESH PERSPECTIVES</span>
             <span className="text-accent-red">•</span>
-            <span className="inline-flex items-center gap-1.5"><Video className="w-3.5 h-3.5 text-neutral-600" /> 4K CINEMATIC CAPTURE</span>
+            <span className="inline-flex items-center gap-1.5"><Flame className="w-3.5 h-3.5 text-accent-red" /> REAL SMILES</span>
             <span className="text-accent-red">•</span>
-            <span className="inline-flex items-center gap-1.5"><Compass className="w-3.5 h-3.5 text-neutral-600" /> VIRAL SOCIAL EXPERIMENTS</span>
+            <span className="inline-flex items-center gap-1.5"><Video className="w-3.5 h-3.5 text-neutral-600" /> EPISODE 01 IN THE LAB</span>
             <span className="text-accent-red">•</span>
-            <span className="inline-flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-accent-red" /> HIGH-RETENTION GEN Z</span>
+            <span className="inline-flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-accent-red" /> CREATIVE MEDIA HOUSE</span>
             <span className="text-accent-red">•</span>
-            <span className="inline-flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-neutral-600" /> CAMBODIA GROUND ZERO</span>
+            <span className="inline-flex items-center gap-1.5"><Compass className="w-3.5 h-3.5 text-neutral-600" /> KEEP MOVING FORWARD</span>
             <span className="text-accent-red">•</span>
-            <span className="inline-flex items-center gap-1.5"><Flame className="w-3.5 h-3.5 text-accent-red" /> ZERO STAGING • PURE REALITY</span>
+            <span className="inline-flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-neutral-600" /> PHNOM PENH, CAMBODIA</span>
             <span className="text-accent-red">•</span>
 
             {/* Repeated for continuous loop */}
-            <span className="inline-flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-accent-red" /> 100% RAW & UNSCRIPTED</span>
+            <span className="inline-flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-accent-red" /> FRESH PERSPECTIVES</span>
             <span className="text-accent-red">•</span>
-            <span className="inline-flex items-center gap-1.5"><Video className="w-3.5 h-3.5 text-neutral-600" /> 4K CINEMATIC CAPTURE</span>
+            <span className="inline-flex items-center gap-1.5"><Flame className="w-3.5 h-3.5 text-accent-red" /> REAL SMILES</span>
             <span className="text-accent-red">•</span>
-            <span className="inline-flex items-center gap-1.5"><Compass className="w-3.5 h-3.5 text-neutral-600" /> VIRAL SOCIAL EXPERIMENTS</span>
+            <span className="inline-flex items-center gap-1.5"><Video className="w-3.5 h-3.5 text-neutral-600" /> EPISODE 01 IN THE LAB</span>
             <span className="text-accent-red">•</span>
-            <span className="inline-flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-accent-red" /> HIGH-RETENTION GEN Z</span>
+            <span className="inline-flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-accent-red" /> CREATIVE MEDIA HOUSE</span>
             <span className="text-accent-red">•</span>
-            <span className="inline-flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-neutral-600" /> CAMBODIA GROUND ZERO</span>
+            <span className="inline-flex items-center gap-1.5"><Compass className="w-3.5 h-3.5 text-neutral-600" /> KEEP MOVING FORWARD</span>
             <span className="text-accent-red">•</span>
-            <span className="inline-flex items-center gap-1.5"><Flame className="w-3.5 h-3.5 text-accent-red" /> ZERO STAGING • PURE REALITY</span>
+            <span className="inline-flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-neutral-600" /> PHNOM PENH, CAMBODIA</span>
             <span className="text-accent-red">•</span>
           </motion.div>
         </div>

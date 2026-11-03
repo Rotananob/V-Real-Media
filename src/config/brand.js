@@ -3,9 +3,9 @@
  */
 export const BRAND = {
   name: "V-REAL MEDIA",
-  tagline: "No Script • No Staging • 100% Reality",
-  description: "Cambodia's next-generation street reality and social experiment media house. We hit the streets with cameras to create high-retention, addictive videos that spark cultural conversations and deliver real social impact.",
-  shortDescription: "Viral street reality, unscripted social experiments, and high-impact human documentaries in Cambodia.",
+  tagline: "អ្វីដែលប្លែកភ្នែក • ស្នាមញញឹម • បន្តដំណើរទៅមុខ",
+  description: "V-REAL MEDIA — ក្រុមផលិតមាតិកាច្នៃប្រឌិតជំនាន់ថ្មីនៅកម្ពុជា។ គោលបំណងរបស់យើងគឺនាំយកអ្វីដែលប្លែកភ្នែក ដើម្បីឱ្យអ្នកមើលអាចញញឹមបាន និងបន្តដំណើរទៅមុខជានិច្ច។",
+  shortDescription: "នាំយកអ្វីដែលប្លែកភ្នែក ដើម្បីស្នាមញញឹមរបស់អ្នក និងបន្តដំណើរទៅមុខជានិច្ច។",
   
   // Contact details
   contact: {
